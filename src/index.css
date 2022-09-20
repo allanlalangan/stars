@@ -1,7 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 body {
   font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI',
     'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans',
     'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  @apply text-8xl;
+}
+h2 {
+  @apply text-7xl;
+}
+h3 {
+  @apply text-6xl;
+}
+h4 {
+  @apply text-5xl;
+}
+h5 {
+  @apply text-4xl;
+}
+h6 {
+  @apply text-3xl;
 }
