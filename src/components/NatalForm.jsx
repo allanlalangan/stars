@@ -5,12 +5,22 @@ import axios from 'axios';
 const NatalForm = ({ isLoaded }) => {
   const [birthplaceValue, setBirthplaceValue] = useState('');
   const [geoSearchResults, setGeoSearchResults] = useState([]);
+  const [formData, setFormData] = useState({
+    day: null,
+    month: null,
+    year: null,
+    hour: null,
+    min: null,
+    lat: null,
+    lon: null,
+    tzone: null,
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const handleLocationInputChange = (e) => {
+  const handleBirthplaceInputChange = (e) => {
     setBirthplaceValue(e.target.value);
   };
 
@@ -20,20 +30,19 @@ const NatalForm = ({ isLoaded }) => {
   };
 
   useEffect(() => {
-    console.log(geoSearchResults);
-  }, [geoSearchResults]);
-
-  useEffect(() => {
     const source = axios.CancelToken.source();
+    if (birthplaceValue.length < 3 && geoSearchResults.length > 0) {
+      setGeoSearchResults([]);
+    }
     if (birthplaceValue.length >= 3) {
-      getGeo(birthplaceValue, source).then((data) =>
-        setGeoSearchResults(data.geonames)
+      getGeo(birthplaceValue, source).then(
+        (data) => data !== undefined && setGeoSearchResults(data.geonames)
       );
-    } else setGeoSearchResults([]);
+    }
     return () => {
       source.cancel();
     };
-  }, [birthplaceValue]);
+  }, [birthplaceValue, geoSearchResults.length]);
 
   return (
     <form
@@ -134,7 +143,7 @@ const NatalForm = ({ isLoaded }) => {
         </label>
         <input
           type='text'
-          onChange={handleLocationInputChange}
+          onChange={handleBirthplaceInputChange}
           value={birthplaceValue}
           name='birthplace'
           id='birthplace'
