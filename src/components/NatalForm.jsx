@@ -1,4 +1,4 @@
-const BirthdayForm = () => {
+const NatalForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
   };
@@ -54,4 +54,4 @@ const BirthdayForm = () => {
     </form>
   );
 };
-export default BirthdayForm;
+export default NatalForm;
