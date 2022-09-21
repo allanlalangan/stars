@@ -1,11 +1,18 @@
 import NatalForm from './components/NatalForm';
+import { useJsApiLoader } from '@react-google-maps/api';
+
 // import Counter from './components/Counter';
 
 const App = () => {
+  const { isLoaded } = useJsApiLoader({
+    googleMapsApiKey: process.env.REACT_APP_GOOGLE_API_KEY,
+    libraries: ['places'],
+  });
+
   return (
     <div>
       <h1 className='text-red-400 font-medium'>Stars</h1>
-      <NatalForm />
+      <NatalForm isLoaded={isLoaded} />
       {/* <Counter /> */}
     </div>
   );
