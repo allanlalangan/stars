@@ -1,7 +1,39 @@
+import { getGeo } from '../api/natalAPI';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+
 const NatalForm = ({ isLoaded }) => {
+  const [birthplaceValue, setBirthplaceValue] = useState('');
+  const [geoSearchResults, setGeoSearchResults] = useState([]);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
+  const handleLocationInputChange = (e) => {
+    setBirthplaceValue(e.target.value);
+  };
+
+  const handleResultClick = (res) => {
+    console.log(res);
+    setGeoSearchResults([]);
+  };
+
+  useEffect(() => {
+    console.log(geoSearchResults);
+  }, [geoSearchResults]);
+
+  useEffect(() => {
+    const source = axios.CancelToken.source();
+    if (birthplaceValue.length >= 3) {
+      getGeo(birthplaceValue, source).then((data) =>
+        setGeoSearchResults(data.geonames)
+      );
+    } else setGeoSearchResults([]);
+    return () => {
+      source.cancel();
+    };
+  }, [birthplaceValue]);
 
   return (
     <form
@@ -96,18 +128,31 @@ const NatalForm = ({ isLoaded }) => {
           </select>
         </section>
       </fieldset>
-      <fieldset className='my-2 flex items-center'>
+      <fieldset className='relative my-2 flex items-center'>
         <label htmlFor='birthplace' className='w-1/2'>
           Place of Birth
         </label>
         <input
           type='text'
+          onChange={handleLocationInputChange}
+          value={birthplaceValue}
           name='birthplace'
           id='birthplace'
           placeholder='Enter a location'
-          defaultValue=''
           className='w-1/2 p-2'
         />
+        {geoSearchResults?.length !== 0 && (
+          <ul className='absolute top-full left-1/2 z-10 w-1/2 bg-sky-100'>
+            {geoSearchResults.map((res) => (
+              <li
+                onClick={() => handleResultClick(res)}
+                className='cursor-pointer py-2 px-4 hover:bg-sky-200 active:bg-sky-300'
+              >
+                {`${res.place_name}, ${res.country_code}, ${res.timezone_id}`}
+              </li>
+            ))}
+          </ul>
+        )}
       </fieldset>
 
       <button type='submit' className='border border-cyan-500 p-4'>
