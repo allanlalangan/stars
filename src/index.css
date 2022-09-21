@@ -10,27 +10,36 @@
   }
 
   h1 {
-    @apply text-8xl;
-  }
-  h2 {
-    @apply text-7xl;
-  }
-  h3 {
     @apply text-6xl;
   }
-  h4 {
+  h2 {
     @apply text-5xl;
   }
-  h5 {
+  h3 {
     @apply text-4xl;
   }
-  h6 {
+  h4 {
     @apply text-3xl;
+  }
+  h5 {
+    @apply text-2xl;
+  }
+  h6 {
+    @apply text-xl;
   }
 }
 
 @layer components {
+  .counter-btn {
+    @apply px-2 py-1 border border-cyan-500 m-1 transition-all;
+  }
 }
 
 @layer utilities {
+  .counter-btn:hover {
+    @apply bg-cyan-600 text-white;
+  }
+  .counter-btn:active {
+    @apply bg-cyan-800 text-white;
+  }
 }
