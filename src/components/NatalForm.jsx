@@ -3,7 +3,7 @@ const NatalForm = () => {
     e.preventDefault();
   };
   return (
-    <form onSubmit={handleSubmit} className='flex flex-col mx-auto w-1/2'>
+    <form onSubmit={handleSubmit} className='flex flex-col mx-auto w-3/4'>
       <h3>Enter Your Birthday</h3>
       <fieldset className='flex items-center'>
         <label htmlFor='date' className='w-1/2'>
@@ -52,8 +52,8 @@ const NatalForm = () => {
         <label htmlFor='year' className='w-1/2'>
           Time
         </label>
-        <section>
-          <select defaultValue={1} name='hour' id='hour'>
+        <section className='p-2 w-1/2 flex'>
+          <select className='w-1/3' defaultValue={1} name='hour' id='hour'>
             <option value=''>Hour</option>
             {Array(12)
               .fill(0, 0, 12)
@@ -61,7 +61,7 @@ const NatalForm = () => {
                 <option value={index + 1}>{index + 1}</option>
               ))}
           </select>
-          <select defaultValue={0} name='minute' id='minute'>
+          <select className='w-1/3' defaultValue={0} name='minute' id='minute'>
             <option value=''>Minute</option>
             {Array(60)
               .fill(0, 0, 60)
@@ -71,7 +71,7 @@ const NatalForm = () => {
                 }${index}`}</option>
               ))}
           </select>
-          <select name='meridian' id='meridian'>
+          <select className='w-1/3' name='meridian' id='meridian'>
             <option value='am'>AM</option>
             <option value='pm'>PM</option>
           </select>
