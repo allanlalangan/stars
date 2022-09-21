@@ -48,6 +48,49 @@ const NatalForm = () => {
           className='w-1/2 p-2'
         />
       </fieldset>
+      <fieldset className='flex items-center'>
+        <label htmlFor='year' className='w-1/2'>
+          Time
+        </label>
+        <section>
+          <select defaultValue={1} name='hour' id='hour'>
+            <option value=''>Hour</option>
+            {Array(12)
+              .fill(0, 0, 12)
+              .map((e, index) => (
+                <option value={index + 1}>{index + 1}</option>
+              ))}
+          </select>
+          <select defaultValue={0} name='minute' id='minute'>
+            <option value=''>Minute</option>
+            {Array(60)
+              .fill(0, 0, 60)
+              .map((e, index) => (
+                <option value={index}>{`${
+                  index <= 9 ? '0' : ''
+                }${index}`}</option>
+              ))}
+          </select>
+          <select name='meridian' id='meridian'>
+            <option value='am'>AM</option>
+            <option value='pm'>PM</option>
+          </select>
+        </section>
+      </fieldset>
+      <fieldset className='flex items-center'>
+        <label htmlFor='birthplace' className='w-1/2'>
+          Place of Birth
+        </label>
+        <input
+          type='text'
+          name='birthplace'
+          id='birthplace'
+          placeholder='Enter a Location'
+          defaultValue=''
+          className='w-1/2 p-2'
+        />
+      </fieldset>
+
       <button type='submit' className='border border-cyan-500 p-4'>
         Submit
       </button>

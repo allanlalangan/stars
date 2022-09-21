@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   user: null,
+  birthDate: null,
   isLoading: false,
   isError: false,
   isSuccess: false,
@@ -13,11 +14,12 @@ const authSlice = createSlice({
   initialState,
   reducers: {
     reset(state) {
-      state.user = null;
-      state.isLoading = false;
-      state.isError = false;
-      state.isSuccess = false;
-      state.message = '';
+      state.user = initialState.user;
+      state.birthDate = initialState.birthDate;
+      state.isLoading = initialState.isLoading;
+      state.isError = initialState.isError;
+      state.isSuccess = initialState.isSuccess;
+      state.message = initialState.message;
     },
   },
 });
