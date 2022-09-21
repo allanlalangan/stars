@@ -17,7 +17,7 @@ const NatalForm = ({ isLoaded }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex flex-col md:mx-auto p-4 md:w-2/3 lg:w-1/2'
+      className='flex flex-col p-4 md:mx-auto md:w-2/3 lg:w-1/2'
     >
       <h3>Enter Your Birthday</h3>
       <fieldset className='flex items-center'>
@@ -77,7 +77,7 @@ const NatalForm = ({ isLoaded }) => {
         <label htmlFor='year' className='w-1/2'>
           Time
         </label>
-        <section className='p-2 w-1/2 flex'>
+        <section className='flex w-1/2 p-2'>
           <select className='w-1/3' name='hour' id='hour' placeholder='hour'>
             <option value=''>Hour</option>
             {Array(12)
