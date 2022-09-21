@@ -1,26 +1,15 @@
-import { Autocomplete } from '@react-google-maps/api';
-import { useCallback, useState } from 'react';
-
 const NatalForm = ({ isLoaded }) => {
-  const [autocomplete, setAutocomplete] = useState(null);
-  const onLoad = (input) => {
-    setAutocomplete(input);
-  };
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
-  const handlePlaceChange = useCallback(() => {
-    console.log('lat:' + autocomplete.getPlace().geometry.location.lat());
-    console.log('lng:' + autocomplete.getPlace().geometry.location.lng());
-  }, [autocomplete]);
   return (
     <form
       onSubmit={handleSubmit}
       className='flex flex-col p-4 md:mx-auto md:w-2/3 lg:w-1/2'
     >
-      <h3>Enter Your Birthday</h3>
-      <fieldset className='flex items-center'>
+      <h3>Generate Natal Chart</h3>
+      <fieldset className='my-2 flex items-center'>
         <label htmlFor='date' className='w-1/2'>
           Name
         </label>
@@ -30,10 +19,10 @@ const NatalForm = ({ isLoaded }) => {
           id='name'
           placeholder='Enter a name'
           defaultValue=''
-          className='p-2'
+          className='w-1/2 p-2'
         />
       </fieldset>
-      <fieldset className='flex items-center'>
+      <fieldset className='my-2 flex items-center'>
         <label htmlFor='date' className='w-1/2'>
           Date
         </label>
@@ -47,7 +36,7 @@ const NatalForm = ({ isLoaded }) => {
           className='w-1/2 p-2'
         />
       </fieldset>
-      <fieldset className='flex items-center'>
+      <fieldset className='my-2 flex items-center'>
         <label htmlFor='month' className='w-1/2'>
           Month
         </label>
@@ -61,7 +50,7 @@ const NatalForm = ({ isLoaded }) => {
           className='w-1/2 p-2'
         />
       </fieldset>
-      <fieldset className='flex items-center'>
+      <fieldset className='my-2 flex items-center'>
         <label htmlFor='year' className='w-1/2'>
           Year
         </label>
@@ -73,7 +62,7 @@ const NatalForm = ({ isLoaded }) => {
           className='w-1/2 p-2'
         />
       </fieldset>
-      <fieldset className='flex items-center'>
+      <fieldset className='my-2 flex items-center'>
         <label htmlFor='year' className='w-1/2'>
           Time
         </label>
@@ -107,22 +96,18 @@ const NatalForm = ({ isLoaded }) => {
           </select>
         </section>
       </fieldset>
-      <fieldset className='flex items-center'>
+      <fieldset className='my-2 flex items-center'>
         <label htmlFor='birthplace' className='w-1/2'>
           Place of Birth
         </label>
-        {isLoaded && (
-          <Autocomplete onLoad={onLoad} onPlaceChanged={handlePlaceChange}>
-            <input
-              type='text'
-              name='birthplace'
-              id='birthplace'
-              placeholder='Enter a location'
-              defaultValue=''
-              className='p-2'
-            />
-          </Autocomplete>
-        )}
+        <input
+          type='text'
+          name='birthplace'
+          id='birthplace'
+          placeholder='Enter a location'
+          defaultValue=''
+          className='w-1/2 p-2'
+        />
       </fieldset>
 
       <button type='submit' className='border border-cyan-500 p-4'>
