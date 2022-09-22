@@ -3,46 +3,63 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const NatalForm = ({ isLoaded }) => {
-  const [birthplaceValue, setBirthplaceValue] = useState('');
+  const [birthplaceInput, setBirthplaceInput] = useState('');
   const [geoSearchResults, setGeoSearchResults] = useState([]);
-  const [formData, setFormData] = useState({
-    day: null,
+  const [values, setValues] = useState({
+    date: null,
     month: null,
     year: null,
     hour: null,
     min: null,
+    meridian: 'am',
     lat: null,
     lon: null,
     tzone: null,
   });
+
+  const handleValueChange = (e) => {
+    console.log(e.target.name);
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
   };
 
   const handleBirthplaceInputChange = (e) => {
-    setBirthplaceValue(e.target.value);
+    setBirthplaceInput(e.target.value);
   };
 
   const handleResultClick = (res) => {
-    console.log(res);
     setGeoSearchResults([]);
+    setValues({
+      ...values,
+      lat: Number(res.latitude),
+      lon: Number(res.longitude),
+    });
   };
 
   useEffect(() => {
+    console.log(values);
+  }, [values]);
+
+  useEffect(() => {
     const source = axios.CancelToken.source();
-    if (birthplaceValue.length < 3 && geoSearchResults.length > 0) {
+    if (birthplaceInput.length < 3 && geoSearchResults.length > 0) {
       setGeoSearchResults([]);
     }
-    if (birthplaceValue.length >= 3) {
-      getGeo(birthplaceValue, source).then(
+    if (birthplaceInput.length >= 3) {
+      getGeo(birthplaceInput, source).then(
         (data) => data !== undefined && setGeoSearchResults(data.geonames)
       );
     }
     return () => {
       source.cancel();
     };
-  }, [birthplaceValue, geoSearchResults.length]);
+  }, [birthplaceInput, geoSearchResults.length]);
 
   return (
     <form
@@ -68,6 +85,7 @@ const NatalForm = ({ isLoaded }) => {
           Date
         </label>
         <input
+          onChange={handleValueChange}
           type='number'
           name='date'
           id='date'
@@ -82,6 +100,7 @@ const NatalForm = ({ isLoaded }) => {
           Month
         </label>
         <input
+          onChange={handleValueChange}
           type='number'
           name='month'
           id='month'
@@ -96,6 +115,7 @@ const NatalForm = ({ isLoaded }) => {
           Year
         </label>
         <input
+          onChange={handleValueChange}
           type='number'
           name='year'
           id='year'
@@ -108,7 +128,13 @@ const NatalForm = ({ isLoaded }) => {
           Time
         </label>
         <section className='flex w-1/2 p-2'>
-          <select className='w-1/3' name='hour' id='hour' placeholder='hour'>
+          <select
+            onChange={handleValueChange}
+            className='w-1/3'
+            name='hour'
+            id='hour'
+            placeholder='hour'
+          >
             <option value=''>Hour</option>
             {Array(12)
               .fill(0, 0, 12)
@@ -117,10 +143,11 @@ const NatalForm = ({ isLoaded }) => {
               ))}
           </select>
           <select
+            onChange={handleValueChange}
             className='w-1/3'
-            name='minute'
-            id='minute'
-            placeholder='minute'
+            name='min'
+            id='min'
+            placeholder='min'
           >
             <option value=''>Minute</option>
             {Array(60)
@@ -131,7 +158,13 @@ const NatalForm = ({ isLoaded }) => {
                 }${index}`}</option>
               ))}
           </select>
-          <select className='w-1/3' name='meridian' id='meridian'>
+          <select
+            onChange={handleValueChange}
+            value={values.meridian}
+            className='w-1/3'
+            name='meridian'
+            id='meridian'
+          >
             <option value='am'>AM</option>
             <option value='pm'>PM</option>
           </select>
@@ -144,7 +177,7 @@ const NatalForm = ({ isLoaded }) => {
         <input
           type='text'
           onChange={handleBirthplaceInputChange}
-          value={birthplaceValue}
+          value={birthplaceInput}
           name='birthplace'
           id='birthplace'
           placeholder='Enter a location'
