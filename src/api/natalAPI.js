@@ -29,3 +29,31 @@ export const getGeo = async (value, source) => {
     console.log(error);
   }
 };
+
+export const getTimeZone = async (value) => {
+  try {
+    const config = {
+      method: 'POST',
+      url: `https://json.astrologyapi.com/v1/timezone`,
+      data: {
+        country_code: value,
+        isDst: true,
+      },
+      headers: {
+        authorization:
+          'Basic ' +
+          btoa(
+            process.env.REACT_APP_ASTROLOGY_API_USER_ID +
+              ':' +
+              process.env.REACT_APP_ASTROLOGY_API_KEY
+          ),
+        'Content-Type': 'application/json',
+      },
+    };
+
+    const { data } = await axios.post(config.url, config.data, config);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

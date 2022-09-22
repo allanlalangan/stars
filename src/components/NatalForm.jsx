@@ -1,13 +1,12 @@
-import { getGeo } from '../api/natalAPI';
+import { getGeo, getTimeZone } from '../api/natalAPI';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useNatal from '../hooks/useNatal';
 
 const NatalForm = ({ isLoaded }) => {
   const [birthplaceInput, setBirthplaceInput] = useState('');
-  const [geoSearchResults, setGeoSearchResults] = useState([]);
-
   const { setBirthValues, birthValues } = useNatal();
+  const [geoSearchResults, setGeoSearchResults] = useState([]);
 
   const handleValueChange = (e) => {
     console.log(e.target.name);
@@ -32,6 +31,7 @@ const NatalForm = ({ isLoaded }) => {
     );
     setBirthValues((prevValues) => ({
       ...prevValues,
+      countryCode: res.country_code,
       lat: Number(res.latitude),
       lon: Number(res.longitude),
     }));
