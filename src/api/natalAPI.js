@@ -41,15 +41,32 @@ export const getTimeZone = async (value) => {
     const config = {
       ...configBase,
       method: 'POST',
-      url: `https://json.astrologyapi.com/v1/timezone`,
+      url: 'https://json.astrologyapi.com/v1/timezone_with_dst',
+      data: value,
+    };
+
+    const { data } = await axios.post(config.url, config.data, config);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPlanets = async (birthData) => {
+  try {
+    const config = {
+      ...configBase,
+      method: 'POST',
+      url: 'https://json.astrologyapi.com/v1/planets/tropical',
       data: {
-        country_code: value,
-        isDst: true,
+        ...birthData,
       },
     };
 
     const { data } = await axios.post(config.url, config.data, config);
-    return data;
+    console.log(data);
+    // return data;
   } catch (error) {
     console.log(error);
   }

@@ -1,9 +1,9 @@
-import { getGeo, getTimeZone } from '../api/natalAPI';
+import { getGeo, getPlanets } from '../api/natalAPI';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useNatal from '../hooks/useNatal';
 
-const NatalForm = ({ isLoaded }) => {
+const NatalForm = () => {
   const [birthplaceInput, setBirthplaceInput] = useState('');
   const { setBirthValues, birthValues } = useNatal();
   const [geoSearchResults, setGeoSearchResults] = useState([]);
@@ -18,6 +18,19 @@ const NatalForm = ({ isLoaded }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData(e.target);
+
+    const userBirthData = {
+      day: Number(formData.get('date')),
+      month: Number(formData.get('month')),
+      year: Number(formData.get('year')),
+      hour: Number(formData.get('hour')),
+      min: Number(formData.get('min')),
+      lat: Number(birthValues.lat),
+      lon: Number(birthValues.lon),
+      tzone: Number(birthValues.tzone),
+    };
+    getPlanets(userBirthData);
   };
 
   const handleBirthplaceInputChange = (e) => {
@@ -36,14 +49,6 @@ const NatalForm = ({ isLoaded }) => {
       lon: Number(res.longitude),
     }));
   };
-
-  useEffect(() => {
-    console.log(birthValues);
-  }, [birthValues]);
-
-  useEffect(() => {
-    console.log(geoSearchResults);
-  }, [geoSearchResults]);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
@@ -126,21 +131,21 @@ const NatalForm = ({ isLoaded }) => {
         <section className='flex w-1/2 p-2'>
           <select
             onChange={handleValueChange}
-            className='w-1/3'
+            className='w-1/2'
             name='hour'
             id='hour'
             placeholder='hour'
           >
             <option value=''>Hour</option>
-            {Array(12)
-              .fill(0, 0, 12)
+            {Array(24)
+              .fill(0, 0, 24)
               .map((e, index) => (
-                <option value={index + 1}>{index + 1}</option>
+                <option value={index}>{index}</option>
               ))}
           </select>
           <select
             onChange={handleValueChange}
-            className='w-1/3'
+            className='w-1/2'
             name='min'
             id='min'
             placeholder='min'
@@ -154,7 +159,7 @@ const NatalForm = ({ isLoaded }) => {
                 }${index}`}</option>
               ))}
           </select>
-          <select
+          {/* <select
             onChange={handleValueChange}
             value={birthValues.meridian}
             className='w-1/3'
@@ -163,7 +168,7 @@ const NatalForm = ({ isLoaded }) => {
           >
             <option value='am'>AM</option>
             <option value='pm'>PM</option>
-          </select>
+          </select> */}
         </section>
       </fieldset>
       <fieldset className='relative my-2 flex items-center'>

@@ -11,9 +11,12 @@ const App = () => {
           <Link to='/'>
             <h1 className='cursor-pointer font-medium text-red-400'>Stars</h1>
           </Link>
-          <nav className='flex items-center'>
+          <nav className='flex items-center justify-evenly'>
             <Link to='/generate-chart'>
-              <button>Generate Natal Chart</button>
+              <button className='mx-2'>Generate Natal Chart</button>
+            </Link>
+            <Link to='/login'>
+              <button className='mx-2'>Login</button>
             </Link>
           </nav>
         </header>

@@ -22,12 +22,24 @@ const useNatal = () => {
   }, [birthValues.lat, birthValues.lon]);
 
   useEffect(() => {
-    getTimeZone(birthValues.countryCode)
-      .then((data) => {
-        setBirthValues((prev) => ({ ...prev, tzone: data.timezone || null }));
+    if (birthValues.date && birthValues.month && birthValues.year) {
+      getTimeZone({
+        latitude: Number(birthValues.lat),
+        longitude: Number(birthValues.lon),
+        date: `${birthValues.month}-${birthValues.date}-${birthValues.year}`,
       })
-      .catch((e) => console.log(e));
-  }, [birthValues.countryCode]);
+        .then((data) => {
+          setBirthValues((prev) => ({ ...prev, tzone: data.timezone || null }));
+        })
+        .catch((e) => console.log(e));
+    }
+  }, [
+    birthValues.lat,
+    birthValues.lon,
+    birthValues.date,
+    birthValues.month,
+    birthValues.year,
+  ]);
 
   return { setBirthValues, birthValues };
 };
