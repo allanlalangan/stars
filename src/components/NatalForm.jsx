@@ -1,26 +1,18 @@
 import { getGeo } from '../api/natalAPI';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
+import useNatal from '../hooks/useNatal';
 
 const NatalForm = ({ isLoaded }) => {
   const [birthplaceInput, setBirthplaceInput] = useState('');
   const [geoSearchResults, setGeoSearchResults] = useState([]);
-  const [values, setValues] = useState({
-    date: null,
-    month: null,
-    year: null,
-    hour: null,
-    min: null,
-    meridian: 'am',
-    lat: null,
-    lon: null,
-    tzone: null,
-  });
+
+  const { setBirthValues, birthValues } = useNatal();
 
   const handleValueChange = (e) => {
     console.log(e.target.name);
-    setValues({
-      ...values,
+    setBirthValues({
+      ...birthValues,
       [e.target.name]: e.target.value,
     });
   };
@@ -35,22 +27,26 @@ const NatalForm = ({ isLoaded }) => {
 
   const handleResultClick = (res) => {
     setGeoSearchResults([]);
-    setValues({
-      ...values,
+    setBirthplaceInput(
+      `${res.place_name}, ${res.country_code}, ${res.timezone_id}`
+    );
+    setBirthValues((prevValues) => ({
+      ...prevValues,
       lat: Number(res.latitude),
       lon: Number(res.longitude),
-    });
+    }));
   };
 
   useEffect(() => {
-    console.log(values);
-  }, [values]);
+    console.log(birthValues);
+  }, [birthValues]);
+
+  useEffect(() => {
+    console.log(geoSearchResults);
+  }, [geoSearchResults]);
 
   useEffect(() => {
     const source = axios.CancelToken.source();
-    if (birthplaceInput.length < 3 && geoSearchResults.length > 0) {
-      setGeoSearchResults([]);
-    }
     if (birthplaceInput.length >= 3) {
       getGeo(birthplaceInput, source).then(
         (data) => data !== undefined && setGeoSearchResults(data.geonames)
@@ -59,7 +55,7 @@ const NatalForm = ({ isLoaded }) => {
     return () => {
       source.cancel();
     };
-  }, [birthplaceInput, geoSearchResults.length]);
+  }, [birthplaceInput]);
 
   return (
     <form
@@ -160,7 +156,7 @@ const NatalForm = ({ isLoaded }) => {
           </select>
           <select
             onChange={handleValueChange}
-            value={values.meridian}
+            value={birthValues.meridian}
             className='w-1/3'
             name='meridian'
             id='meridian'
@@ -177,24 +173,29 @@ const NatalForm = ({ isLoaded }) => {
         <input
           type='text'
           onChange={handleBirthplaceInputChange}
+          onFocus={() => {
+            setBirthplaceInput('');
+            setBirthValues((prev) => ({ ...prev, lat: null, lon: null }));
+          }}
           value={birthplaceInput}
           name='birthplace'
           id='birthplace'
           placeholder='Enter a location'
           className='w-1/2 p-2'
         />
-        {geoSearchResults?.length !== 0 && (
-          <ul className='absolute top-full left-1/2 z-10 w-1/2 bg-sky-100'>
-            {geoSearchResults.map((res) => (
-              <li
-                onClick={() => handleResultClick(res)}
-                className='cursor-pointer py-2 px-4 hover:bg-sky-200 active:bg-sky-300'
-              >
-                {`${res.place_name}, ${res.country_code}, ${res.timezone_id}`}
-              </li>
-            ))}
-          </ul>
-        )}
+        {geoSearchResults?.length > 0 &&
+          !geoSearchResults?.some((res) => res.timezone_id === '') && (
+            <ul className='absolute top-full left-1/2 z-10 w-1/2 bg-sky-100'>
+              {geoSearchResults.map((res) => (
+                <li
+                  onClick={(e) => handleResultClick(res)}
+                  className='cursor-pointer py-2 px-4 hover:bg-sky-200 active:bg-sky-300'
+                >
+                  {`${res.place_name}, ${res.country_code}, ${res.timezone_id}`}
+                </li>
+              ))}
+            </ul>
+          )}
       </fieldset>
 
       <button type='submit' className='border border-cyan-500 p-4'>
