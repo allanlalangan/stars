@@ -7,16 +7,22 @@ const App = () => {
   return (
     <div>
       <BrowserRouter>
-        <header className='flex w-full justify-between bg-sky-50 px-4'>
+        <header className='flex w-full justify-between bg-gray-900 px-4 text-slate-300'>
           <Link to='/'>
-            <h1 className='cursor-pointer font-medium text-red-400'>Stars</h1>
+            <h1 className='cursor-pointer py-2 transition hover:text-slate-100'>
+              Stars✨
+            </h1>
           </Link>
           <nav className='flex items-center justify-evenly'>
             <Link to='/generate-chart'>
-              <button className='mx-2'>Generate Natal Chart</button>
+              <button className='mx-2 transition hover:text-slate-100'>
+                Generate Natal Chart
+              </button>
             </Link>
             <Link to='/login'>
-              <button className='mx-2'>Login</button>
+              <button className='mx-2 transition hover:text-slate-100'>
+                Login
+              </button>
             </Link>
           </nav>
         </header>

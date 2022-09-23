@@ -190,11 +190,11 @@ const NatalForm = () => {
         />
         {geoSearchResults?.length > 0 &&
           !geoSearchResults?.some((res) => res.timezone_id === '') && (
-            <ul className='absolute top-full left-1/2 z-10 w-1/2 bg-sky-100'>
+            <ul className='absolute top-full left-1/2 z-10 w-1/2 bg-indigo-100'>
               {geoSearchResults.map((res) => (
                 <li
                   onClick={(e) => handleResultClick(res)}
-                  className='cursor-pointer py-2 px-4 hover:bg-sky-200 active:bg-sky-300'
+                  className='cursor-pointer py-2 px-4 hover:bg-indigo-200 active:bg-indigo-300'
                 >
                   {`${res.place_name}, ${res.country_code}, ${res.timezone_id}`}
                 </li>
@@ -203,7 +203,10 @@ const NatalForm = () => {
           )}
       </fieldset>
 
-      <button type='submit' className='border border-cyan-500 p-4'>
+      <button
+        type='submit'
+        className='border border-indigo-200 p-4 font-heading uppercase transition hover:bg-indigo-200'
+      >
         Submit
       </button>
     </form>

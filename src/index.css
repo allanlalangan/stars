@@ -1,37 +1,50 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Anaheim&family=Inknut+Antiqua:wght@300;400;500;600;700;800;900&family=Source+Code+Pro:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 @layer base {
   body {
-    font-family: 'DM Sans', 'Roboto', 'Fira Sans', sans-serif, -apple-system;
+    /* font-family: 'Roboto', 'Fira Sans', sans-serif, -apple-system; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    @apply font-body;
   }
 
   h1 {
-    @apply text-6xl;
+    @apply font-display;
   }
-  h2 {
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+
+  h1 {
     @apply text-5xl;
   }
-  h3 {
+  h2 {
     @apply text-4xl;
   }
-  h4 {
+  h3 {
     @apply text-3xl;
   }
-  h5 {
+  h4 {
     @apply text-2xl;
   }
-  h6 {
+  h5 {
     @apply text-xl;
+  }
+  h6 {
+    @apply text-lg;
   }
 }
 
 @layer components {
   .counter-btn {
-    @apply px-2 py-1 border border-cyan-500 m-1 transition-all;
+    @apply m-1 border border-cyan-500 px-2 py-1 transition-all;
   }
 }
 
