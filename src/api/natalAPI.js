@@ -46,7 +46,6 @@ export const getTimeZone = async (value) => {
     };
 
     const { data } = await axios.post(config.url, config.data, config);
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -65,8 +64,7 @@ export const getPlanets = async (birthData) => {
     };
 
     const { data } = await axios.post(config.url, config.data, config);
-    console.log(data);
-    // return data;
+    return data;
   } catch (error) {
     console.log(error);
   }

@@ -3,13 +3,12 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useNatal from '../hooks/useNatal';
 
-const NatalForm = () => {
+const NatalForm = ({ activeNatalChart, setActiveNatalChart }) => {
   const [birthplaceInput, setBirthplaceInput] = useState('');
   const { setBirthValues, birthValues } = useNatal();
   const [geoSearchResults, setGeoSearchResults] = useState([]);
 
   const handleValueChange = (e) => {
-    console.log(e.target.name);
     setBirthValues({
       ...birthValues,
       [e.target.name]: e.target.value,
@@ -21,16 +20,18 @@ const NatalForm = () => {
     const formData = new FormData(e.target);
 
     const userBirthData = {
-      day: Number(formData.get('date')),
-      month: Number(formData.get('month')),
-      year: Number(formData.get('year')),
-      hour: Number(formData.get('hour')),
-      min: Number(formData.get('min')),
-      lat: Number(birthValues.lat),
-      lon: Number(birthValues.lon),
-      tzone: Number(birthValues.tzone),
+      day: +formData.get('date'),
+      month: +formData.get('month'),
+      year: +formData.get('year'),
+      hour: +formData.get('hour'),
+      min: +formData.get('min'),
+      lat: +birthValues.lat,
+      lon: +birthValues.lon,
+      tzone: +birthValues.tzone,
     };
-    getPlanets(userBirthData);
+    getPlanets(userBirthData).then((chartData) =>
+      setActiveNatalChart(chartData)
+    );
   };
 
   const handleBirthplaceInputChange = (e) => {
@@ -61,6 +62,10 @@ const NatalForm = () => {
       source.cancel();
     };
   }, [birthplaceInput]);
+
+  useEffect(() => {
+    console.log(activeNatalChart);
+  }, [activeNatalChart]);
 
   return (
     <form
@@ -140,7 +145,9 @@ const NatalForm = () => {
             {Array(24)
               .fill(0, 0, 24)
               .map((e, index) => (
-                <option value={index}>{index}</option>
+                <option key={index} value={index}>
+                  {index}
+                </option>
               ))}
           </select>
           <select
@@ -154,7 +161,7 @@ const NatalForm = () => {
             {Array(60)
               .fill(0, 0, 60)
               .map((e, index) => (
-                <option value={index}>{`${
+                <option key={index} value={index}>{`${
                   index <= 9 ? '0' : ''
                 }${index}`}</option>
               ))}
@@ -191,8 +198,9 @@ const NatalForm = () => {
         {geoSearchResults?.length > 0 &&
           !geoSearchResults?.some((res) => res.timezone_id === '') && (
             <ul className='absolute top-full left-1/2 z-10 w-1/2 bg-indigo-100'>
-              {geoSearchResults.map((res) => (
+              {geoSearchResults.map((res, index) => (
                 <li
+                  key={index}
                   onClick={(e) => handleResultClick(res)}
                   className='cursor-pointer py-2 px-4 hover:bg-indigo-200 active:bg-indigo-300'
                 >
