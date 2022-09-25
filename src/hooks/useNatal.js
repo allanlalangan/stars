@@ -2,23 +2,20 @@ import { useEffect, useState } from 'react';
 import { getTimeZone } from '../api/natalAPI';
 
 const useNatal = () => {
-  const [activeNatalChart, setActiveNatalChart] = useState(null);
   const [birthValues, setBirthValues] = useState({
     date: null,
     month: null,
     year: null,
     hour: null,
     min: null,
-    meridian: 'am',
     lat: null,
     lon: null,
-    countryCode: null,
     tzone: null,
   });
 
   useEffect(() => {
     if (!birthValues.lat && !birthValues.lon) {
-      setBirthValues((prev) => ({ ...prev, countryCode: null, tzone: null }));
+      setBirthValues((prev) => ({ ...prev, tzone: null }));
     }
 
     if (birthValues.date && birthValues.month && birthValues.year) {
@@ -40,7 +37,7 @@ const useNatal = () => {
     birthValues.year,
   ]);
 
-  return { setBirthValues, birthValues, activeNatalChart, setActiveNatalChart };
+  return { setBirthValues, birthValues };
 };
 
 export default useNatal;

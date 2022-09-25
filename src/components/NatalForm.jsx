@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import useNatal from '../hooks/useNatal';
 
-const NatalForm = ({ activeNatalChart, setActiveNatalChart }) => {
+const NatalForm = ({ setActiveNatalChart }) => {
   const [birthplaceInput, setBirthplaceInput] = useState('');
   const { setBirthValues, birthValues } = useNatal();
   const [geoSearchResults, setGeoSearchResults] = useState([]);
@@ -45,9 +45,8 @@ const NatalForm = ({ activeNatalChart, setActiveNatalChart }) => {
     );
     setBirthValues((prevValues) => ({
       ...prevValues,
-      countryCode: res.country_code,
-      lat: Number(res.latitude),
-      lon: Number(res.longitude),
+      lat: +res.latitude,
+      lon: +res.longitude,
     }));
   };
 
@@ -62,10 +61,6 @@ const NatalForm = ({ activeNatalChart, setActiveNatalChart }) => {
       source.cancel();
     };
   }, [birthplaceInput]);
-
-  useEffect(() => {
-    console.log(activeNatalChart);
-  }, [activeNatalChart]);
 
   return (
     <form
@@ -166,16 +161,6 @@ const NatalForm = ({ activeNatalChart, setActiveNatalChart }) => {
                 }${index}`}</option>
               ))}
           </select>
-          {/* <select
-            onChange={handleValueChange}
-            value={birthValues.meridian}
-            className='w-1/3'
-            name='meridian'
-            id='meridian'
-          >
-            <option value='am'>AM</option>
-            <option value='pm'>PM</option>
-          </select> */}
         </section>
       </fieldset>
       <fieldset className='relative my-2 flex items-center'>
