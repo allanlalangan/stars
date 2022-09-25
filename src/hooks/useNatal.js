@@ -20,9 +20,7 @@ const useNatal = () => {
     if (!birthValues.lat && !birthValues.lon) {
       setBirthValues((prev) => ({ ...prev, countryCode: null, tzone: null }));
     }
-  }, [birthValues.lat, birthValues.lon]);
 
-  useEffect(() => {
     if (birthValues.date && birthValues.month && birthValues.year) {
       getTimeZone({
         latitude: +birthValues.lat,
