@@ -8,7 +8,7 @@
     /* font-family: 'Roboto', 'Fira Sans', sans-serif, -apple-system; */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply font-body;
+    @apply bg-slate-50 font-body;
   }
 
   h1 {

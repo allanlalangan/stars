@@ -13,16 +13,14 @@ const authSlice = createSlice({
   name: 'auth',
   initialState,
   reducers: {
-    reset(state) {
-      state.user = initialState.user;
-      state.birthDate = initialState.birthDate;
-      state.isLoading = initialState.isLoading;
-      state.isError = initialState.isError;
-      state.isSuccess = initialState.isSuccess;
-      state.message = initialState.message;
+    login(state) {
+      return state;
+    },
+    logout(state) {
+      state.user = null;
     },
   },
 });
 
 export default authSlice.reducer;
-export const { reset } = authSlice.actions;
+export const { login, logout } = authSlice.actions;

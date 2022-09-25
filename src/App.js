@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 
 import HomePage from './pages/home';
+import LoginPage from './pages/login';
 import GenerateChartPage from './pages/generate-chart';
 
 const App = () => {
@@ -29,6 +30,7 @@ const App = () => {
         <main className='px-4'>
           <Routes>
             <Route path='/' element={<HomePage />} />
+            <Route path='/login' element={<LoginPage />} />
             <Route path='/generate-chart' element={<GenerateChartPage />} />
           </Routes>
         </main>
