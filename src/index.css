@@ -49,6 +49,14 @@
   .counter-btn {
     @apply m-1 border border-cyan-500 px-2 py-1 transition-all;
   }
+
+  .input:not(:invalid) + span {
+    @apply hidden;
+  }
+
+  .input:invalid + span {
+    @apply absolute top-3/4 z-10;
+  }
 }
 
 @layer utilities {

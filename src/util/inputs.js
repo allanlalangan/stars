@@ -5,7 +5,7 @@ export const inputs = [
     placeholder: 'Username',
     label: 'Username',
     required: true,
-    errorMessage: '',
+    errorMessage: 'Username must be atleast 8 characters',
   },
   {
     name: 'email',
@@ -13,7 +13,7 @@ export const inputs = [
     placeholder: 'Email',
     label: 'Email',
     required: true,
-    errorMessage: '',
+    errorMessage: 'Please enter a valid email',
   },
   {
     name: 'password',
@@ -22,7 +22,7 @@ export const inputs = [
     label: 'Password',
     required: true,
     errorMessage:
-      'Password should contain 8-20 characters. 1 lowercase letter, 1 uppercase letter, 1 number, and 1 special character required.',
+      'Password should contain: 8-20 characters, at least 1 lowercase and 1 uppercase letter, 1 number, and 1 special character required.',
     pattern:
       '(?=[A-Za-z0-9@#$%^&+!=]+$)^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[@#$%^&+!=])(?=.{8,20}).*$',
   },

@@ -26,17 +26,19 @@ const Register = () => {
       className='m-auto mt-4 flex max-w-screen-sm flex-col border border-indigo-200 p-4'
     >
       {registerInputs?.map((input, i) => (
-        <FormInput
-          key={i}
-          onChange={onChange}
-          {...input}
-          pattern={
-            input.name === 'confirm'
-              ? values.password
-              : input.pattern || undefined
-          }
-          value={values[input.name]}
-        />
+        <>
+          <FormInput
+            key={i}
+            onChange={onChange}
+            {...input}
+            pattern={
+              input.name === 'confirm'
+                ? values.password
+                : input.pattern || undefined
+            }
+            value={values[input.name]}
+          />
+        </>
       ))}
       <fieldset className='flex items-center'>
         <label htmlFor='birthdate' className='w-1/3'>
