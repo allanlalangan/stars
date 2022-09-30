@@ -7,7 +7,12 @@ module.exports = {
       heading: ['Source Code Pro'],
       body: ['Anaheim'],
     },
-    extend: {},
+    extend: {
+      height: {
+        header: '10%',
+        main: '90%',
+      },
+    },
   },
   plugins: [],
 };
