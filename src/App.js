@@ -3,18 +3,24 @@ import { BrowserRouter, Route, Routes, Link } from 'react-router-dom';
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import GenerateChartPage from './pages/generate-chart';
+import DashboardPage from './pages/dashboard';
 
 const App = () => {
   return (
-    <div>
+    <>
       <BrowserRouter>
-        <header className='flex w-full justify-between bg-gray-900 px-4 text-slate-300'>
+        <header className='flex h-header w-full items-center justify-between bg-gray-900 px-4 text-slate-300'>
           <Link to='/'>
-            <h1 className='cursor-pointer py-2 transition hover:text-slate-100'>
+            <span className='cursor-pointer py-2 font-display text-4xl transition hover:text-slate-100'>
               Stars✨
-            </h1>
+            </span>
           </Link>
           <nav className='flex items-center justify-evenly'>
+            <Link to='/dashboard'>
+              <button className='mx-2 transition hover:text-slate-100'>
+                Dashboard
+              </button>
+            </Link>
             <Link to='/generate-chart'>
               <button className='mx-2 transition hover:text-slate-100'>
                 Generate Natal Chart
@@ -27,15 +33,16 @@ const App = () => {
             </Link>
           </nav>
         </header>
-        <main className='px-4'>
+        <main className='h-main'>
           <Routes>
             <Route path='/' element={<HomePage />} />
+            <Route path='/dashboard' element={<DashboardPage />} />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/generate-chart' element={<GenerateChartPage />} />
           </Routes>
         </main>
       </BrowserRouter>
-    </div>
+    </>
   );
 };
 export default App;
