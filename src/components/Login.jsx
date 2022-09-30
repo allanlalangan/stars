@@ -1,9 +1,14 @@
 import { Link } from 'react-router-dom';
+import { inputs } from '../util/inputs';
+import FormInput from './FormInput';
 
 const Login = () => {
+  const loginInputs = inputs.slice(1, 3);
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+
   return (
     <form
       onSubmit={handleSubmit}
@@ -16,26 +21,16 @@ const Login = () => {
         <span className='z-10 bg-slate-50 px-4'>or</span>
         <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
       </span>
-      <fieldset className='flex items-center'>
-        <label htmlFor='email' className='w-1/3'>
-          Email
-        </label>
-        <input
-          type='text'
-          className='my-2 w-2/3 p-2'
-          placeholder='Email'
-        ></input>
-      </fieldset>
-      <fieldset className='flex items-center'>
-        <label htmlFor='password' className='w-1/3'>
-          Password
-        </label>
-        <input
-          type='text'
-          className='my-2 w-2/3 p-2'
-          placeholder='Password'
-        ></input>
-      </fieldset>
+      {loginInputs?.map(({ name, type, placeholder, required, label }, i) => (
+        <FormInput
+          key={i}
+          name={name}
+          type={type}
+          placeholder={placeholder}
+          required={required}
+          label={label}
+        />
+      ))}
       <span>
         Not a member?{' '}
         <Link
