@@ -65,7 +65,7 @@ const NatalForm = ({ setActiveNatalChart }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex flex-col p-4 md:mx-auto md:w-2/3 lg:w-1/2'
+      className='m-auto flex max-w-screen-sm flex-col p-4'
     >
       <h3>Generate Natal Chart</h3>
       <fieldset className='my-2 flex items-center'>

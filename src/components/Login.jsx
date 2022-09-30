@@ -7,7 +7,7 @@ const Login = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='m-auto mt-4 flex w-3/4 flex-col border border-indigo-200 p-4'
+      className='m-auto mt-4 flex max-w-screen-sm flex-col border border-indigo-200 p-4'
     >
       <button className='bg-indigo-50 py-4 transition hover:bg-indigo-200'>
         Login with Gmail
