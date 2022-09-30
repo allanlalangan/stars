@@ -38,7 +38,10 @@ const Login = () => {
       </fieldset>
       <span>
         Not a member?{' '}
-        <Link className='underline-offset-4 hover:underline' to='/'>
+        <Link
+          className='underline-offset-4 hover:underline'
+          to='/create-account'
+        >
           <strong>Create an account</strong>
         </Link>{' '}
         to map the stars!
