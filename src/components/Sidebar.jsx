@@ -1,15 +1,20 @@
+import { GiCandleLight, GiCrystalBall } from 'react-icons/gi';
+
 const Sidebar = () => {
   return (
     <section className='flex h-full w-1/4 max-w-screen-sm flex-col items-center bg-slate-200'>
-      <h6 className='mx-auto  border-b-2 border-b-slate-600 text-center'>
-        Altar
-      </h6>
-      <nav className='flex flex-col'>
-        <button className='px-2'>Forecasts</button>
-        <button className='px-2'>Calendar </button>
-        <button className='px-2'>Manifest</button>
-        <button className='px-2'>Readings</button>
-        <button className='px-2'>Writings</button>
+      <nav className='flex flex-col items-center'>
+        <button className='mt-2 p-2 text-xl tracking-wide'>Forecasts</button>
+        <button className='mt-2 p-2 text-xl tracking-wide'>Calendar</button>
+        <button className='mt-2 p-2 text-xl tracking-wide'>The Moon</button>
+        <button className='mt-2 p-2 text-xl tracking-wide'>Goals</button>
+        <button className='mt-2 p-2 text-xl tracking-wide'>Read</button>
+        <button className='mt-2 p-2 text-xl tracking-wide'>Write</button>
+        <button className='mt-2 flex items-center bg-slate-700 p-2 text-xl tracking-wide text-slate-50'>
+          <GiCrystalBall className='mx-1' />
+          Altar
+          <GiCandleLight className='mx-1' />
+        </button>
       </nav>
     </section>
   );

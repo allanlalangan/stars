@@ -1,7 +1,7 @@
 const HomePage = () => {
   return (
     <>
-      <section>
+      <section className='px-4'>
         <h2>Home</h2>
       </section>
     </>
