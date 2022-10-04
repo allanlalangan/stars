@@ -1,12 +1,15 @@
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
 import FormInput from './FormInput';
 
 const Login = () => {
   const loginInputs = inputs.slice(1, 3);
+  const { user } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(user);
   };
 
   return (
@@ -31,6 +34,12 @@ const Login = () => {
           label={label}
         />
       ))}
+      <button
+        type='submit'
+        className='bg-indigo-50 py-4 transition hover:bg-indigo-200'
+      >
+        Login
+      </button>
       <span>
         Not a member?{' '}
         <Link

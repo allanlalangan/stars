@@ -8,9 +8,7 @@ const Sidebar = () => {
         <button className='px-2'>Forecasts</button>
         <button className='px-2'>Calendar </button>
         <button className='px-2'>Manifest</button>
-        <button className='px-2'>Balance</button>
-        <button className='px-2'>Tarot</button>
-        <button className='px-2'>Charts</button>
+        <button className='px-2'>Readings</button>
         <button className='px-2'>Writings</button>
       </nav>
     </section>

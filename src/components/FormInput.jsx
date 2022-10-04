@@ -11,7 +11,7 @@ const FormInput = (props) => {
     required,
   } = props;
   return (
-    <fieldset className='relative flex items-center py-4'>
+    <fieldset className='relative mb-2 flex items-center'>
       <label htmlFor={name} className='w-1/3'>
         {label}
       </label>
