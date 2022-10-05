@@ -2,6 +2,7 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
 import FormInput from './FormInput';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
   const loginInputs = inputs.slice(1, 3);
@@ -17,8 +18,10 @@ const Login = () => {
       onSubmit={handleSubmit}
       className='m-auto mt-4 flex max-w-screen-sm flex-col border border-indigo-200 p-4'
     >
-      <button className='bg-indigo-50 py-4 transition hover:bg-indigo-200'>
-        Login with Gmail
+      <button className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'>
+        <FcGoogle className='mx-2 text-2xl' />
+
+        <span className=''>Login with Gmail</span>
       </button>
       <span className='relative m-auto flex w-full flex-col content-center items-center py-2 text-center'>
         <span className='z-10 bg-slate-50 px-4'>or</span>
