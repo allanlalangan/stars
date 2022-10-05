@@ -2,11 +2,9 @@ import Register from '../components/Register';
 
 const CreateAccountPage = () => {
   return (
-    <>
-      <section>
-        <Register />
-      </section>
-    </>
+    <section className='w-full'>
+      <Register />
+    </section>
   );
 };
 export default CreateAccountPage;

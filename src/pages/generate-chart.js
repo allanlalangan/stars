@@ -5,12 +5,10 @@ import NatalPlacements from '../components/NatalPlacements';
 const GenerateChartPage = () => {
   const [activeNatalChart, setActiveNatalChart] = useState(null);
   return (
-    <>
-      <section>
-        <NatalForm setActiveNatalChart={setActiveNatalChart} />
-        <NatalPlacements placements={activeNatalChart} />
-      </section>
-    </>
+    <section className='w-full'>
+      <NatalForm setActiveNatalChart={setActiveNatalChart} />
+      <NatalPlacements placements={activeNatalChart} />
+    </section>
   );
 };
 export default GenerateChartPage;

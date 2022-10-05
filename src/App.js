@@ -7,13 +7,15 @@ import LoginPage from './pages/login';
 import CreateAccountPage from './pages/create-account';
 import GenerateChartPage from './pages/generate-chart';
 import DashboardPage from './pages/dashboard';
+import Sidebar from './components/Sidebar';
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Header />
-        <main className='h-main'>
+        <main className='flex h-main'>
+          <Sidebar />
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route path='/dashboard' element={<DashboardPage />} />
