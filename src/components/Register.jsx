@@ -1,4 +1,4 @@
-import FormInput from './FormInput';
+import FormInputText from './FormInputText';
 import { Link } from 'react-router-dom';
 import { inputs as registerInputs } from '../util/inputs';
 import { useState } from 'react';
@@ -27,7 +27,7 @@ const Register = () => {
     >
       {registerInputs?.map((input, i) => (
         <>
-          <FormInput
+          <FormInputText
             key={i}
             onChange={onChange}
             {...input}

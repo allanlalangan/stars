@@ -1,18 +1,17 @@
-const FormInput = (props) => {
-  const {
-    onChange,
-    label,
-    type,
-    name,
-    value,
-    pattern,
-    placeholder,
-    errorMessage,
-    required,
-  } = props;
+const FormInputText = ({
+  onChange,
+  label,
+  type,
+  name,
+  value,
+  pattern,
+  placeholder,
+  errorMessage,
+  required,
+}) => {
   return (
     <fieldset className='relative mb-2 flex items-center'>
-      <label htmlFor={name} className='w-1/3'>
+      <label htmlFor={name} className='w-1/2'>
         {label}
       </label>
       <input
@@ -22,7 +21,7 @@ const FormInput = (props) => {
         value={value}
         pattern={pattern}
         placeholder={placeholder}
-        className='input my-2 w-2/3 p-2'
+        className='input my-2 w-1/2 p-2 text-center'
         required={required}
       />
       {errorMessage && (
@@ -33,4 +32,4 @@ const FormInput = (props) => {
     </fieldset>
   );
 };
-export default FormInput;
+export default FormInputText;

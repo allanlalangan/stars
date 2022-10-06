@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
-import FormInput from './FormInput';
+import FormInputText from './FormInputText';
 import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
@@ -21,14 +21,14 @@ const Login = () => {
       <button className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'>
         <FcGoogle className='mx-2 text-2xl' />
 
-        <span className=''>Login with Gmail</span>
+        <span className=''>Login with Google</span>
       </button>
       <span className='relative m-auto flex w-full flex-col content-center items-center py-2 text-center'>
         <span className='z-10 bg-slate-50 px-4'>or</span>
         <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
       </span>
       {loginInputs?.map(({ name, type, placeholder, required, label }, i) => (
-        <FormInput
+        <FormInputText
           key={i}
           name={name}
           type={type}
