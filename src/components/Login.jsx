@@ -16,7 +16,7 @@ const Login = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='m-auto mt-4 flex max-w-screen-sm flex-col border border-indigo-200 p-4'
+      className='m-auto mt-4 flex flex-col border border-indigo-200 p-4 md:w-1/2'
     >
       <button className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'>
         <FcGoogle className='mx-2 text-2xl' />

@@ -2,6 +2,7 @@ import FormInputText from './FormInputText';
 import { Link } from 'react-router-dom';
 import { inputs as registerInputs } from '../util/inputs';
 import { useState } from 'react';
+import { FcGoogle } from 'react-icons/fc';
 
 const Register = () => {
   const [values, setValues] = useState({
@@ -23,8 +24,17 @@ const Register = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='m-auto mt-4 flex max-w-screen-sm flex-col border border-indigo-200 p-4'
+      className='m-auto mt-4 flex flex-col border border-indigo-200 p-4 md:w-1/2'
     >
+      <button className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'>
+        <FcGoogle className='mx-2 text-2xl' />
+
+        <span className=''>Continue with Google</span>
+      </button>
+      <span className='relative m-auto flex w-full flex-col content-center items-center py-2 text-center'>
+        <span className='z-10 bg-slate-50 px-4'>or</span>
+        <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
+      </span>
       {registerInputs?.map((input, i) => (
         <>
           <FormInputText
@@ -40,13 +50,6 @@ const Register = () => {
           />
         </>
       ))}
-      <fieldset className='flex items-center'>
-        <label htmlFor='birthdate' className='w-1/3'>
-          Date of Birth
-        </label>
-        <input type='date' name='birthdate' className='my-2 w-1/3 p-2'></input>
-        <input type='time' name='birthtime' className='my-2 w-1/3 p-2'></input>
-      </fieldset>
       <button
         type='submit'
         className='bg-indigo-50 py-4 transition hover:bg-indigo-200'

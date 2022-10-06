@@ -22,11 +22,7 @@ const NatalForm = () => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      className='m-auto flex flex-col p-4 sm:w-2/3 md:w-1/2'
-    >
-      <h3>Generate Natal Chart</h3>
+    <form onSubmit={handleSubmit} className='m-auto flex flex-col p-4 md:w-1/2'>
       {/* <fieldset className='my-2 flex items-center'>
         <label htmlFor='date' className='w-1/2'>
           Name
