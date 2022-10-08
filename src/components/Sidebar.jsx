@@ -5,11 +5,8 @@ const Sidebar = () => {
   return (
     <nav className='flex h-full w-1/5 max-w-screen-sm flex-col items-center justify-between bg-slate-200'>
       <ul>
-        <li className='mt-1 cursor-pointer text-lg tracking-wide'>Forecasts</li>
-        <li className='mt-1 cursor-pointer text-lg tracking-wide'>Calendar</li>
-        <li className='mt-1 cursor-pointer text-lg tracking-wide'>The Moon</li>
+        <li className='mt-1 cursor-pointer text-lg tracking-wide'>Dashboard</li>
         <li className='mt-1 cursor-pointer text-lg tracking-wide'>Goals</li>
-        <li className='mt-1 cursor-pointer text-lg tracking-wide'>Read</li>
         <li className='mt-1 cursor-pointer text-lg tracking-wide'>Write</li>
         <li className='mt-1 flex cursor-pointer items-center bg-slate-700 text-lg tracking-wide text-slate-50'>
           <GiCrystalBall className='mx-1' />
