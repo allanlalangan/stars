@@ -15,6 +15,26 @@ const configBase = {
   },
 };
 
+const options = {
+  method: 'GET',
+  url: 'https://astrologer.p.rapidapi.com/api/v2/now',
+  headers: {
+    'X-RapidAPI-Key': '2665d90ab0mshad0b66c56f2db57p1e4be4jsne0b794a0399d',
+    'X-RapidAPI-Host': 'astrologer.p.rapidapi.com',
+  },
+};
+
+export const getNow = async (value, source) => {
+  try {
+    const { data } = await axios(options);
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error);
+    throw new Error(error.message || error);
+  }
+};
+
 export const getGeo = async (value, source) => {
   try {
     const config = {
