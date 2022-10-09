@@ -1,11 +1,16 @@
 import { GiCandleLight, GiCrystalBall } from 'react-icons/gi';
 import { HiUsers, HiMail, HiBell } from 'react-icons/hi';
+import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
     <nav className='flex h-full w-1/5 max-w-screen-sm flex-col items-center justify-between bg-slate-200'>
       <ul>
-        <li className='mt-1 cursor-pointer text-lg tracking-wide'>Dashboard</li>
+        <Link to='/dashboard'>
+          <li className='mt-1 cursor-pointer text-lg tracking-wide'>
+            Dashboard
+          </li>
+        </Link>
         <li className='mt-1 cursor-pointer text-lg tracking-wide'>Goals</li>
         <li className='mt-1 cursor-pointer text-lg tracking-wide'>Write</li>
         <li className='mt-1 flex cursor-pointer items-center bg-slate-700 text-lg tracking-wide text-slate-50'>

@@ -12,11 +12,6 @@ const Header = () => {
         </span>
       </Link>
       <nav className='flex w-full items-center justify-end'>
-        <Link to='/dashboard'>
-          <button className='mx-2 transition hover:text-slate-100'>
-            Dashboard
-          </button>
-        </Link>
         <Link to='/generate-chart'>
           <button className='mx-2 transition hover:text-slate-100'>
             Generate Natal Chart
