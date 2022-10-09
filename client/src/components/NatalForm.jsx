@@ -4,6 +4,7 @@ import FormInputText from './FormInputText';
 const NatalForm = () => {
   const [nameValue, setNameValue] = useState('');
   const [searchInputValue, setSearchInputValue] = useState('');
+  const [timezoneInputValue, setTimezoneInputValue] = useState('');
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -87,7 +88,16 @@ const NatalForm = () => {
           className='w-1/2 p-2 text-center'
         />
       </fieldset>
-
+      <FormInputText
+        onChange={(e) => setTimezoneInputValue(e.target.value)}
+        label='Timezone'
+        type='text'
+        name='timezone'
+        value={timezoneInputValue}
+        placeholder='Search Timezone'
+        errorMessage='Enter a Timezone'
+        required
+      />
       <button
         type='submit'
         className='border border-indigo-200 p-4 font-heading uppercase transition hover:bg-indigo-200'
