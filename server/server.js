@@ -1,6 +1,8 @@
-const express = require('express');
 require('dotenv').config();
 const { connectDB } = require('./config/db');
+const express = require('express');
+
+connectDB();
 
 const app = express();
 const PORT = process.env.PORT;
@@ -8,7 +10,6 @@ app.listen(PORT || 5000, () => {
   console.log(`Server start on port: ${PORT}`);
 });
 
-connectDB();
 // Body Parser Middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
