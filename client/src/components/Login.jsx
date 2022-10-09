@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
-import FormInputText from './FormInputText';
+import FormInput from './FormInput';
 import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
@@ -27,16 +27,19 @@ const Login = () => {
         <span className='z-10 bg-slate-50 px-4'>or</span>
         <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
       </span>
-      {loginInputs?.map(({ name, type, placeholder, required, label }, i) => (
-        <FormInputText
-          key={i}
-          name={name}
-          type={type}
-          placeholder={placeholder}
-          required={required}
-          label={label}
-        />
-      ))}
+      {loginInputs?.map(
+        ({ name, type, placeholder, required, label, errorMessage }, i) => (
+          <FormInput
+            key={i}
+            name={name}
+            type={type}
+            placeholder={placeholder}
+            required={required}
+            label={label}
+            errorMessage={errorMessage}
+          />
+        )
+      )}
       <button
         type='submit'
         className='bg-indigo-50 py-4 transition hover:bg-indigo-200'
