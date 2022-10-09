@@ -1,10 +1,12 @@
 require('dotenv').config();
+const cors = require('cors');
 const { connectDB } = require('./config/db');
 const express = require('express');
 
 connectDB();
 
 const app = express();
+app.use(cors());
 const PORT = process.env.PORT;
 app.listen(PORT || 5000, () => {
   console.log(`Server start on port: ${PORT}`);
