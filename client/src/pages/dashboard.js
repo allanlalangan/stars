@@ -1,5 +1,3 @@
-import Sidebar from '../components/Sidebar';
-
 const DashboardPage = () => {
   return (
     <section className='h-full w-full overflow-scroll p-4'>
