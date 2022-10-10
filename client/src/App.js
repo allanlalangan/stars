@@ -8,10 +8,23 @@ import CreateAccountPage from './pages/create-account';
 import GenerateChartPage from './pages/generate-chart';
 import DashboardPage from './pages/dashboard';
 import Sidebar from './components/Sidebar';
+import { getMillisecondsUntilMidnight } from './util/utils';
+import { useEffect, useMemo } from 'react';
 
 const App = () => {
+  const millisecondsUntilMidnight = useMemo(getMillisecondsUntilMidnight, []);
+  useEffect(() => {
+    let interval;
+    if (millisecondsUntilMidnight) {
+      interval = setInterval(() => {
+        console.log(millisecondsUntilMidnight);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+    }
+  }, [millisecondsUntilMidnight]);
   return (
-    <>
+    <div className='app'>
       <BrowserRouter>
         <Header />
         <main className='flex h-main'>
@@ -25,7 +38,7 @@ const App = () => {
           </Routes>
         </main>
       </BrowserRouter>
-    </>
+    </div>
   );
 };
 export default App;
