@@ -1,4 +1,9 @@
+import { useEffect } from 'react';
+import { useSelector } from 'react-redux';
+import { getFullSignName } from '../util/utils';
+
 const DashboardPage = () => {
+  const { data, planets, houses } = useSelector((state) => state.today);
   return (
     <section className='h-full w-full overflow-scroll p-4'>
       <h2 className='mb-4'>Hello, Allan!</h2>
@@ -7,6 +12,16 @@ const DashboardPage = () => {
           <h3 className='bg-slate-700 p-2 text-yellow-200'>
             The Planets Today
           </h3>
+          <article>
+            <ul>
+              {planets?.map((planet, i) => (
+                <li key={i}>
+                  {planet.name} at {planet.position.toFixed(2)}º{' '}
+                  {getFullSignName(planet.sign)}
+                </li>
+              ))}
+            </ul>
+          </article>
         </li>
         <li className='col-span-6 flex min-h-[20rem] flex-col border-2 border-gray-900 p-4'>
           <h3 className='h-fit bg-slate-700 p-2 text-yellow-200'>Transits</h3>
