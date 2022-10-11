@@ -7,16 +7,18 @@ import GenerateChartPage from './pages/generate-chart';
 import DashboardPage from './pages/dashboard';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import { getCurrentPlanets } from './features/todaySlice';
+// import { useEffect } from 'react';
+// import { useDispatch } from 'react-redux';
+// import { getCurrentPlanets } from './features/todaySlice';
+import { useSelector } from 'react-redux';
 
 const App = () => {
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getCurrentPlanets());
-    console.log('getting now');
-  }, []);
+  const { user } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   dispatch(getCurrentPlanets());
+  //   console.log('getting now');
+  // }, []);
   return (
     <div className='app'>
       <BrowserRouter>
@@ -25,7 +27,10 @@ const App = () => {
           <Sidebar />
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/dashboard' element={<DashboardPage />} />
+            <Route
+              path='/dashboard'
+              element={user ? <DashboardPage /> : <LoginPage />}
+            />
             <Route path='/login' element={<LoginPage />} />
             <Route path='/create-account' element={<CreateAccountPage />} />
             <Route path='/generate-chart' element={<GenerateChartPage />} />
