@@ -11,7 +11,7 @@ const FormInput = ({
   required,
 }) => {
   return (
-    <fieldset className='relative mb-2 flex items-center'>
+    <fieldset className='relative mb-2 flex flex-col'>
       <label htmlFor={name} className='w-1/2'>
         {label}
       </label>
@@ -23,7 +23,7 @@ const FormInput = ({
         value={value}
         pattern={pattern}
         placeholder={placeholder}
-        className='input my-2 w-1/2 p-2 text-center'
+        className='input my-2 w-full p-2 text-center'
         required={required}
       />
       {errorMessage && (

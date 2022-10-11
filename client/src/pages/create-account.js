@@ -2,7 +2,7 @@ import Register from '../components/Register';
 
 const CreateAccountPage = () => {
   return (
-    <section className='w-full p-4'>
+    <section className='w-full overflow-y-scroll p-4'>
       <Register />
     </section>
   );
