@@ -1,28 +1,22 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Header from './components/Header';
-
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import CreateAccountPage from './pages/create-account';
 import GenerateChartPage from './pages/generate-chart';
 import DashboardPage from './pages/dashboard';
+import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-import { getMillisecondsUntilMidnight } from './util/utils';
-import { useEffect, useMemo } from 'react';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getCurrentPlanets } from './features/todaySlice';
 
 const App = () => {
-  const millisecondsUntilMidnight = useMemo(getMillisecondsUntilMidnight, []);
+  const dispatch = useDispatch();
   useEffect(() => {
-    let interval;
-    if (millisecondsUntilMidnight) {
-      interval = setInterval(() => {
-        console.log(millisecondsUntilMidnight);
-      }, 1000);
-    } else {
-      clearInterval(interval);
-    }
-  }, [millisecondsUntilMidnight]);
+    dispatch(getCurrentPlanets());
+    console.log('getting now');
+  }, []);
   return (
     <div className='app'>
       <BrowserRouter>
