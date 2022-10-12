@@ -11,6 +11,7 @@ import Sidebar from './components/Sidebar';
 // import { useDispatch } from 'react-redux';
 // import { getCurrentPlanets } from './features/todaySlice';
 import { useSelector } from 'react-redux';
+import AltarPage from './pages/altar';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
@@ -23,7 +24,7 @@ const App = () => {
     <div className='app'>
       <BrowserRouter>
         <Header />
-        <main className='flex h-main'>
+        <main className='flex flex-col-reverse md:h-main md:flex-row'>
           <Sidebar />
           <Routes>
             <Route path='/' element={<HomePage />} />
@@ -34,6 +35,10 @@ const App = () => {
             <Route path='/login' element={<LoginPage />} />
             <Route path='/create-account' element={<CreateAccountPage />} />
             <Route path='/generate-chart' element={<GenerateChartPage />} />
+            <Route
+              path='/altar'
+              element={user ? <AltarPage /> : <LoginPage />}
+            />
           </Routes>
         </main>
       </BrowserRouter>
