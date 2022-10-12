@@ -23,7 +23,7 @@ const FormInput = ({
         value={value}
         pattern={pattern}
         placeholder={placeholder}
-        className='input my-2 w-full p-2 text-center'
+        className='input my-2 w-full p-2'
         required={required}
       />
       {errorMessage && (
