@@ -19,7 +19,19 @@ const login = async (req, res) => {
   const { email, password } = req.body;
   try {
     await res.status(200).json({ message: 'Login Route' });
-  } catch (error) {}
+  } catch (error) {
+    await res.status(500).json({ message: error.message || error });
+  }
 };
 
-module.exports = { register, login };
+const getUser = async (req, res) => {
+  try {
+    await res.status(200).json({ message: 'Get User Route' });
+  } catch (error) {
+    await res.status(500).json({ message: error.message || error });
+  }
+};
+
+const requestFriendship = async (req, res) => {};
+
+module.exports = { register, login, getUser };
