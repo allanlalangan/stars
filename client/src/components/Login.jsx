@@ -1,4 +1,5 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { googleAuth } from '../features/authSlice';
 import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
 import FormInput from './FormInput';
@@ -6,14 +7,12 @@ import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
   const loginInputs = inputs.slice(1, 3);
-  const { user } = useSelector((state) => state.auth);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(user);
   };
 
-  const googleAuth = () => {
+  const handleGoogleLogin = () => {
     window.open('http://localhost:5000/auth/google/callback', '_self');
   };
 
@@ -24,7 +23,7 @@ const Login = () => {
     >
       <button
         type='button'
-        onClick={googleAuth}
+        onClick={handleGoogleLogin}
         className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'
       >
         <FcGoogle className='mx-2 text-2xl' />
