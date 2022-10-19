@@ -7,36 +7,58 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <nav className='fixed bottom-0 flex w-screen flex-col items-center justify-between bg-slate-200 md:static md:h-full md:w-1/5 md:max-w-screen-sm'>
-      <ul className='flex md:flex-col'>
+    <nav className='fixed bottom-0 flex w-screen flex-col items-center justify-between bg-slate-200 md:static md:h-full md:w-1/4'>
+      <ul className='flex w-full justify-evenly p-4 md:flex-col md:justify-start'>
         <Link to='/'>
-          <li className='mt-1 flex cursor-pointer items-center text-lg tracking-wide'>
-            <BsStars className='mx-1' />
-            Feed
+          <li className='mt-1 flex w-full cursor-pointer content-between items-center text-lg tracking-wide'>
+            <span className='flex w-full items-center'>
+              <BsStars className='mx-1' />
+              Feed
+            </span>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+              1
+            </span>
           </li>
         </Link>
         <Link to='/dashboard'>
-          <li className='mt-1 flex cursor-pointer items-center text-lg tracking-wide'>
-            <MdSpaceDashboard className='mx-1' />
-            Dashboard
+          <li className='mt-1 flex w-full cursor-pointer content-between items-center text-lg tracking-wide'>
+            <span className='flex w-full items-center'>
+              <MdSpaceDashboard className='mx-1' />
+              Dashboard
+            </span>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+              3
+            </span>
           </li>
         </Link>
         <Link to='/altar'>
-          <li className='mt-1 flex cursor-pointer items-center text-lg tracking-wide'>
-            <GiCandleLight className='mx-1' />
-            Altar
+          <li className='mt-1 flex w-full cursor-pointer content-between items-center text-lg tracking-wide'>
+            <span className='flex w-full items-center'>
+              <GiCandleLight className='mx-1' />
+              Altar
+            </span>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+              1
+            </span>
           </li>
         </Link>
         <Link to='/'>
-          <li className='mt-1 flex cursor-pointer items-center text-lg tracking-wide'>
-            <GiOpenBook className='mx-1' />
-            Reference
+          <li className='mt-1 flex w-full cursor-pointer content-between items-center text-lg tracking-wide'>
+            <span className='flex w-full items-center'>
+              <GiOpenBook className='mx-1' />
+              Reference
+            </span>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+              2
+            </span>
           </li>
         </Link>
         <Link to='/'>
-          <li className='mt-1 flex cursor-pointer items-center text-lg tracking-wide'>
-            <FaBookmark className='mx-1' />
-            Archive
+          <li className='mt-1 flex w-full cursor-pointer content-between items-center text-lg tracking-wide'>
+            <span className='flex w-full items-center'>
+              <FaBookmark className='mx-1' />
+              Archive
+            </span>
           </li>
         </Link>
       </ul>
