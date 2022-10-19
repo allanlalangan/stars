@@ -7,7 +7,7 @@
   .app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    @apply h-screen bg-slate-50 font-body;
+    @apply h-screen bg-slate-50 font-body text-primary-800;
   }
 
   h1 {

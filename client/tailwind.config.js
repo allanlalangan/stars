@@ -16,6 +16,10 @@ module.exports = {
         header: '10%',
         main: '90%',
       },
+      colors: ({ colors }) => ({
+        primary: colors.indigo,
+        secondary: colors.yellow,
+      }),
     },
   },
   plugins: [],

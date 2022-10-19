@@ -15,7 +15,7 @@ const Sidebar = () => {
               <BsStars className='mx-1' />
               Feed
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-secondary-200 text-sm font-bold shadow-sm'>
               1
             </span>
           </li>
@@ -26,7 +26,7 @@ const Sidebar = () => {
               <MdSpaceDashboard className='mx-1' />
               Dashboard
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-secondary-200 text-sm font-bold shadow-sm'>
               3
             </span>
           </li>
@@ -37,7 +37,7 @@ const Sidebar = () => {
               <GiCandleLight className='mx-1' />
               Altar
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-secondary-200 text-sm font-bold shadow-sm'>
               1
             </span>
           </li>
@@ -48,7 +48,7 @@ const Sidebar = () => {
               <GiOpenBook className='mx-1' />
               Reference
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-yellow-200 shadow-sm'>
+            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-secondary-200 text-sm font-bold shadow-sm'>
               2
             </span>
           </li>
