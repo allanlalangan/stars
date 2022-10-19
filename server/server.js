@@ -39,8 +39,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/api/users', require('./routes/users_routes'));
-app.use('/api/posts', require('./routes/posts_routes'));
+app.use('/api/users', require('./routes/users'));
+app.use('/api/posts', require('./routes/posts'));
 app.use('/auth', require('./routes/auth'));
 
 // Get Current Plants Route
