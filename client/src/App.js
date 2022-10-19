@@ -1,28 +1,33 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser, reset } from './features/authSlice';
 
+import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import CreateAccountPage from './pages/create-account';
-import GenerateChartPage from './pages/generate-chart';
-import ChartsPage from './pages/charts';
-import TarotPage from './pages/tarot';
 import DashboardPage from './pages/dashboard';
+import AltarPage from './pages/altar';
+import TarotPage from './pages/tarot';
+import TarotDeckPage from './pages/tarot-deck';
+import ChartsPage from './pages/charts';
+import GenerateChartPage from './pages/generate-chart';
+
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
-// import { useEffect } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { getCurrentPlanets } from './features/todaySlice';
-import { useSelector } from 'react-redux';
-import AltarPage from './pages/altar';
-import TarotDeckPage from './pages/tarot-deck';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
-  // const dispatch = useDispatch();
-  // useEffect(() => {
-  //   dispatch(getCurrentPlanets());
-  //   console.log('getting now');
-  // }, []);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    console.log(user);
+  }, [user]);
+  useEffect(() => {
+    dispatch(getUser());
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch]);
   return (
     <div className='app'>
       <BrowserRouter>
@@ -31,11 +36,20 @@ const App = () => {
           <Sidebar />
           <Routes>
             <Route path='/' element={<HomePage />} />
-            <Route path='/dashboard' element={<DashboardPage />} />
-            <Route path='/login' element={<LoginPage />} />
+            <Route
+              path='/dashboard'
+              element={user ? <DashboardPage /> : <Navigate to='/login' />}
+            />
+            <Route
+              path='/login'
+              element={!user ? <LoginPage /> : <Navigate to='/' />}
+            />
             <Route path='/create-account' element={<CreateAccountPage />} />
             <Route path='/generate-chart' element={<GenerateChartPage />} />
-            <Route path='/altar' element={<AltarPage />}>
+            <Route
+              path='/altar'
+              element={user ? <AltarPage /> : <Navigate to='/login' />}
+            >
               <Route path='tarot' element={<TarotPage />}>
                 <Route path='deck/:id' element={<TarotDeckPage />} />
               </Route>

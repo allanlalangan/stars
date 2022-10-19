@@ -9,7 +9,7 @@ const Sidebar = () => {
   return (
     <nav className='fixed bottom-0 flex w-screen flex-col items-center justify-between bg-slate-200 md:static md:h-full md:w-1/5 md:max-w-screen-sm'>
       <ul className='flex md:flex-col'>
-        <Link to='/dashboard'>
+        <Link to='/'>
           <li className='mt-1 flex cursor-pointer items-center text-lg tracking-wide'>
             <BsStars className='mx-1' />
             Feed
