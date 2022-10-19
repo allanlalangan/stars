@@ -1,6 +1,6 @@
 const HomePage = () => {
   return (
-    <section className='w-full p-4'>
+    <section className='p-4 md:w-3/4'>
       <h2>Home</h2>
     </section>
   );

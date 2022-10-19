@@ -2,7 +2,7 @@ import { Link, Outlet } from 'react-router-dom';
 
 const AltarPage = () => {
   return (
-    <section className='flex h-full w-full flex-col p-4'>
+    <section className='flex h-full flex-col p-4 md:w-3/4'>
       <h2>Altar</h2>
       <nav className='flex w-1/2'>
         <Link to='tarot'>

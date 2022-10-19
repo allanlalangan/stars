@@ -5,7 +5,7 @@ import { getFullSignName } from '../util/utils';
 const DashboardPage = () => {
   const { data, planets, houses } = useSelector((state) => state.today);
   return (
-    <section className='h-full w-full overflow-scroll p-4'>
+    <section className='h-full overflow-scroll p-4 md:w-3/4'>
       <h2 className='mb-4'>Hello, Allan!</h2>
       <article className='grid h-full grid-cols-12 gap-4'>
         <section className='col-span-6 row-span-3 flex flex-col border-2 border-gray-900 p-4'>
