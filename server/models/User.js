@@ -4,12 +4,10 @@ const bcrypt = require('bcryptjs');
 
 const UserSchema = Schema(
   {
-    given_name: { type: String, required: [true, 'Please enter your name'] },
-    username: {
-      type: String,
-      required: [true, 'Please enter a username'],
-      unique: true,
-    },
+    googleId: { type: String, unique: true },
+    firstName: { type: String, required: [true, 'Please enter your name'] },
+    lastName: String,
+    image: String,
     email: {
       type: String,
       required: [true, 'Please enter an email address'],
@@ -17,12 +15,9 @@ const UserSchema = Schema(
     },
     password: {
       type: String,
-      required: [true, 'Please enter a password'],
       minLength: 8,
       select: false,
     },
-    resetPasswordToken: String,
-    resetPasswordExpire: Date,
   },
   { timestamps: true }
 );

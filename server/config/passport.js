@@ -11,8 +11,24 @@ module.exports = function (passport) {
         scope: ['profile', 'email'],
       },
       async (accessToken, refreshToken, profile, done) => {
-        console.log(profile);
-        done(null, profile);
+        const newUser = await new User({
+          googleId: profile.id,
+          firstName: profile.name.givenName,
+          lastName: profile.name.familyName,
+          email: profile.emails[0].value,
+          image: profile.photos[0].value,
+        });
+        try {
+          let user = await User.findOne({ googleId: profile.id });
+          if (user) {
+            done(null, user);
+          } else {
+            await newUser.save();
+            done(null, newUser);
+          }
+        } catch (error) {
+          console.log(error);
+        }
       }
     )
   );
