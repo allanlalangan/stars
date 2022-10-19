@@ -13,12 +13,20 @@ const Login = () => {
     console.log(user);
   };
 
+  const googleAuth = () => {
+    window.open('http://localhost:5000/auth/google/callback', '_self');
+  };
+
   return (
     <form
       onSubmit={handleSubmit}
       className='m-auto mt-4 flex flex-col border border-indigo-200 p-4 md:w-1/2'
     >
-      <button className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'>
+      <button
+        type='button'
+        onClick={googleAuth}
+        className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'
+      >
         <FcGoogle className='mx-2 text-2xl' />
 
         <span className=''>Login with Google</span>

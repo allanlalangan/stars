@@ -1,7 +1,14 @@
+import { Link } from 'react-router-dom';
+
 const ChartsPage = () => {
   return (
     <article>
       <h3>Star Charts</h3>
+      <Link to='/generate-chart'>
+        <button className='mr-2 mt-1 flex cursor-pointer items-center bg-slate-700 p-2 text-lg tracking-wide text-slate-50'>
+          Generate Natal Chart
+        </button>
+      </Link>
       <section className='flex w-full'>
         <article className='w-2/3'>
           <h4>Your Chart</h4>

@@ -3,6 +3,9 @@ import { GiStarSattelites } from 'react-icons/gi';
 import { HiMenuAlt2, HiCog } from 'react-icons/hi';
 
 const Header = () => {
+  const handleLogout = () => {
+    window.open('http://localhost:5000/auth/logout', '_self');
+  };
   return (
     <header className='flex h-header w-full items-center justify-between bg-gray-900 pr-4 text-slate-300'>
       <Link className='w-1/5' to='/'>
@@ -12,16 +15,22 @@ const Header = () => {
         </span>
       </Link>
       <nav className='flex w-full items-center justify-end'>
-        <Link to='/generate-chart'>
-          <button className='mx-2 transition hover:text-slate-100'>
-            Generate Natal Chart
-          </button>
+        <Link to='/login'>
+          <figure className='mx-2 flex w-6 justify-center rounded-[50%] border border-yellow-100 transition hover:text-slate-100'>
+            <span>A</span>
+          </figure>
         </Link>
         <Link to='/login'>
           <button className='mx-2 transition hover:text-slate-100'>
             Login
           </button>
         </Link>
+        <button
+          onClick={handleLogout}
+          className='mx-2 transition hover:text-slate-100'
+        >
+          Logout
+        </button>
         <Link to='/'>
           <button className='mx-2 transition hover:text-slate-100'>
             <HiMenuAlt2 />
