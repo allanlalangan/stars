@@ -25,14 +25,17 @@ router.get('/login/failed', async (req, res) => {
 router.get(
   '/google/callback',
   passport.authenticate('google', {
-    successRedirect: 'http://localhost:3000/altar',
+    successRedirect: 'http://localhost:3000/dashboard',
     failureRedirect: '/',
+    prompt: 'select_account',
   })
 );
 
 router.get(
   '/google',
-  passport.authenticate('google', { scope: ['profile', 'email'] })
+  passport.authenticate('google', {
+    scope: ['profile', 'email'],
+  })
 );
 
 router.get('/logout', (req, res, next) => {
