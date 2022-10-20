@@ -36,7 +36,7 @@ const Header = () => {
         )}
         {user && (
           <>
-            <button className='mx-2 flex w-8 justify-center rounded-[50%] border border-secondary-100 transition hover:text-slate-100'>
+            <button className='mx-2 flex w-8 justify-center rounded-[50%] border-2 border-secondary-100 transition hover:text-slate-100'>
               <span className='flex'>
                 <img
                   className='w-full rounded-[50%]'
