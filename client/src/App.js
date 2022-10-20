@@ -15,6 +15,7 @@ import GenerateChartPage from './pages/generate-chart';
 
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
+import FeedPage from './pages/feed';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
@@ -36,6 +37,10 @@ const App = () => {
           <Sidebar />
           <Routes>
             <Route path='/' element={<HomePage />} />
+            <Route
+              path='/feed'
+              element={user ? <FeedPage /> : <Navigate to='/login' />}
+            />
             <Route
               path='/dashboard'
               element={user ? <DashboardPage /> : <Navigate to='/login' />}
