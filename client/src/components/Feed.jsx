@@ -1,6 +1,6 @@
 const Feed = () => {
   return (
-    <section className='flex flex-col overflow-y-scroll'>
+    <section className='flex flex-col overflow-y-scroll p-4'>
       <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Mischa</h4>
         <p>celebrates their 33rd journey around the Sun!</p>

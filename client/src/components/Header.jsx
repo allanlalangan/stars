@@ -36,12 +36,12 @@ const Header = () => {
         )}
         {user && (
           <>
-            <button className='mx-2 flex w-8 justify-center rounded-[50%] border-2 border-secondary-100 transition hover:text-slate-100'>
+            <button className='mx-2 flex h-full w-8 justify-center rounded-[50%] border-2 border-secondary-100 transition hover:text-slate-100'>
               <span className='flex'>
                 <img
-                  className='w-full rounded-[50%]'
+                  className='h-full w-full rounded-[50%]'
                   src={`${user.image}`}
-                  alt=''
+                  alt={`${user.firstName[0]}${user.lastName[0] || ''}`}
                 />
               </span>
             </button>
