@@ -1,16 +1,23 @@
 import { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCurrentPlanets } from '../features/todaySlice';
 import { getFullSignName } from '../util/utils';
 
 const DashboardPage = () => {
   const { data, planets, houses } = useSelector((state) => state.today);
   const { user } = useSelector((state) => state.auth);
+  // const dispatch = useDispatch();
+  // useEffect(() => {
+  //   if (user && planets?.length === 0) {
+  //     dispatch(getCurrentPlanets());
+  //   }
+  // }, [user, dispatch]);
   return (
     <section className='h-full overflow-scroll p-4 md:w-3/4'>
-      <h2 className='mb-4'>{`Hello, ${user.firstName}`}</h2>
+      <h2 className='mb-4 font-display'>{`Hello, ${user.firstName}`}</h2>
       <article className='grid h-full grid-cols-12 gap-4'>
         <section className='col-span-6 row-span-3 flex flex-col border-2 border-primary-800 p-4'>
-          <h3 className='bg-slate-800 p-2 text-secondary-200'>
+          <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
             The Planets Today
           </h3>
           <article>
@@ -25,7 +32,7 @@ const DashboardPage = () => {
           </article>
         </section>
         <section className='col-span-6 row-span-1 flex flex-col border-2 border-primary-800 p-4'>
-          <h3 className='h-fit bg-slate-800 p-2 text-secondary-200'>
+          <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
             The Moon
           </h3>
           <section className='flex h-full'>
@@ -42,7 +49,7 @@ const DashboardPage = () => {
           </section>
         </section>
         <section className='col-span-6 row-span-2 flex flex-col border-2 border-primary-800 p-4'>
-          <h3 className='bg-slate-800 p-2 text-secondary-200'>
+          <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
             Upcoming Events
           </h3>
           <article className='flex w-1/2 flex-col'>
