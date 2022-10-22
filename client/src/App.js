@@ -16,6 +16,8 @@ import GenerateChartPage from './pages/generate-chart';
 import Header from './components/Header';
 import Sidebar from './components/Sidebar';
 import FeedPage from './pages/feed';
+import ReferencePage from './pages/reference';
+import AstrologyPage from './pages/astrology';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
@@ -45,6 +47,12 @@ const App = () => {
               path='/dashboard'
               element={user ? <DashboardPage /> : <Navigate to='/login' />}
             />
+            <Route path='/reference' element={<ReferencePage />}>
+              <Route path='astrology' element={<AstrologyPage />} />
+              <Route path='tarot' element={<TarotPage />}>
+                <Route path='deck/:id' element={<TarotDeckPage />} />
+              </Route>
+            </Route>
             <Route
               path='/login'
               element={!user ? <LoginPage /> : <Navigate to='/' />}
@@ -55,9 +63,6 @@ const App = () => {
               path='/altar'
               element={user ? <AltarPage /> : <Navigate to='/login' />}
             >
-              <Route path='tarot' element={<TarotPage />}>
-                <Route path='deck/:id' element={<TarotDeckPage />} />
-              </Route>
               <Route path='charts' element={<ChartsPage />} />
             </Route>
           </Routes>

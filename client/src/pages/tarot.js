@@ -1,19 +1,14 @@
-import { Link, Outlet } from 'react-router-dom';
+import tarot from '../util/tarot';
 
 const TarotPage = () => {
   return (
-    <article className=''>
-      <h3>Your Tarot Decks</h3>
-      <ul>
-        <li>
-          <h4>Rider Waite</h4>
+    <ul className='flex flex-wrap overflow-y-scroll'>
+      {tarot?.map((card) => (
+        <li className='m-2 flex h-32 w-24 items-center justify-center border-2 p-2'>
+          <p className='text-center'>{card.name}</p>
         </li>
-
-        <li>
-          <h4>Deck 2</h4>
-        </li>
-      </ul>
-    </article>
+      ))}
+    </ul>
   );
 };
 export default TarotPage;

@@ -42,7 +42,7 @@ const Sidebar = () => {
             </span>
           </li>
         </Link>
-        <Link to='/'>
+        <Link to='/reference'>
           <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
             <span className='flex w-full items-center'>
               <GiOpenBook className='mx-2' size='1.25rem' />
