@@ -11,8 +11,8 @@ const Sidebar = () => {
       <ul className='flex w-full justify-evenly p-4 md:flex-col md:justify-start'>
         <Link to='/feed'>
           <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
-            <span className='flex w-full items-center'>
-              <BsStars className='mx-2' size='1.25rem' />
+            <span className='flex w-full items-center transition'>
+              <BsStars className='mx-2 text-secondary-100' size='1.25rem' />
               Feed
             </span>
             <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-rose-300 font-body text-sm font-bold text-slate-900 shadow-sm'>
@@ -22,8 +22,11 @@ const Sidebar = () => {
         </Link>
         <Link to='/dashboard'>
           <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
-            <span className='flex w-full items-center'>
-              <MdSpaceDashboard className='mx-2' size='1.25rem' />
+            <span className='flex w-full items-center transition'>
+              <MdSpaceDashboard
+                className='mx-2 text-secondary-100'
+                size='1.25rem'
+              />
               Dashboard
             </span>
             <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-rose-300 font-body text-sm font-bold text-slate-900 shadow-sm'>
@@ -33,8 +36,11 @@ const Sidebar = () => {
         </Link>
         <Link to='/altar'>
           <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
-            <span className='flex w-full items-center'>
-              <GiCandleLight className='mx-2' size='1.25rem' />
+            <span className='flex w-full items-center transition'>
+              <GiCandleLight
+                className='mx-2 text-secondary-100'
+                size='1.25rem'
+              />
               Altar
             </span>
             <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-rose-300 font-body text-sm font-bold text-slate-900 shadow-sm'>
@@ -44,25 +50,25 @@ const Sidebar = () => {
         </Link>
         <Link to='/reference'>
           <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
-            <span className='flex w-full items-center'>
-              <GiOpenBook className='mx-2' size='1.25rem' />
+            <span className='flex w-full items-center transition'>
+              <GiOpenBook className='mx-2 text-secondary-100' size='1.25rem' />
               Reference
             </span>
           </li>
         </Link>
         <Link to='/'>
           <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
-            <span className='flex w-full items-center'>
-              <FaBookmark className='mx-2' size='1.25rem' />
+            <span className='flex w-full items-center transition'>
+              <FaBookmark className='mx-2 text-secondary-100' size='1.25rem' />
               Archive
             </span>
           </li>
         </Link>
       </ul>
-      {/* <ul className='flex w-full items-center justify-center bg-slate-300'>
+      {/* <ul className='flex w-full items-center justify-center bg-slate-300 hover'>
         <li className='flex cursor-pointer items-center text-lg'>
           Friends
-          <HiUsers className='mx-2' size='1.25rem' />
+          <HiUsers className='secondary-100 transition mx-2' size='1.25rem' />
         </li>
         <li className='flex cursor-pointer items-center text-lg'>
           <span>5</span>

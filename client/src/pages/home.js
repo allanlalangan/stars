@@ -1,7 +1,9 @@
+import Hero from '../components/Hero';
+
 const HomePage = () => {
   return (
     <section className='p-4 md:w-3/4'>
-      <h2>Home</h2>
+      <Hero />
     </section>
   );
 };
