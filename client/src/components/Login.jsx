@@ -1,5 +1,3 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { googleAuth } from '../features/authSlice';
 import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
 import FormInput from './FormInput';
@@ -12,8 +10,8 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const handleGoogleLogin = () => {
-    window.open('http://localhost:5000/auth/google/callback', '_self');
+  const handleGoogleLogin = async () => {
+    await window.open('http://localhost:5000/auth/google/callback', '_self');
   };
 
   return (
