@@ -1,8 +1,10 @@
 import Register from '../components/Register';
 
-const CreateAccountPage = () => {
+const CreateAccountPage = ({ user }) => {
   return (
-    <section className='md:w-3/4 overflow-y-scroll p-4'>
+    <section
+      className={`${!user ? 'md:w-full' : 'md:w-3/4'} overflow-y-scroll p-4`}
+    >
       <Register />
     </section>
   );

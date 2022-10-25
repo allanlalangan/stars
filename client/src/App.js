@@ -36,7 +36,8 @@ const App = () => {
       <BrowserRouter>
         <Header />
         <main className='flex flex-col-reverse md:h-main md:flex-row'>
-          <Sidebar />
+          {user && <Sidebar />}
+
           <Routes>
             <Route path='/' element={<HomePage />} />
             <Route
@@ -55,10 +56,16 @@ const App = () => {
             </Route>
             <Route
               path='/login'
-              element={!user ? <LoginPage /> : <Navigate to='/' />}
+              element={!user ? <LoginPage user={user} /> : <Navigate to='/' />}
             />
-            <Route path='/create-account' element={<CreateAccountPage />} />
-            <Route path='/generate-chart' element={<GenerateChartPage />} />
+            <Route
+              path='/create-account'
+              element={<CreateAccountPage user={user} />}
+            />
+            <Route
+              path='/generate-chart'
+              element={<GenerateChartPage user={user} />}
+            />
             <Route
               path='/altar'
               element={user ? <AltarPage /> : <Navigate to='/login' />}
