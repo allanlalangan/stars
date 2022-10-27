@@ -18,6 +18,7 @@ import Sidebar from './components/Sidebar';
 import FeedPage from './pages/feed';
 import ReferencePage from './pages/reference';
 import AstrologyPage from './pages/astrology';
+import JournalPage from './pages/journal';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
@@ -47,6 +48,10 @@ const App = () => {
             <Route
               path='/dashboard'
               element={user ? <DashboardPage /> : <Navigate to='/login' />}
+            />
+            <Route
+              path='/journal'
+              element={user ? <JournalPage /> : <Navigate to='/login' />}
             />
             <Route path='/reference' element={<ReferencePage />}>
               <Route path='astrology' element={<AstrologyPage />} />
