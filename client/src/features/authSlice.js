@@ -19,7 +19,7 @@ const getUser = createAsyncThunk('auth/getUser', async (_, thunkAPI) => {
 });
 
 const initialState = {
-  user: true,
+  user: null,
   isLoading: false,
   isError: false,
   isSuccess: false,

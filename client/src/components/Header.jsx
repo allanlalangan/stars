@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { GiStarSattelites } from 'react-icons/gi';
 import { HiMenuAlt2, HiCog, HiSearch } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
+import { GoogleLogin } from '@react-oauth/google';
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
@@ -27,13 +28,17 @@ const Header = () => {
           />
           <HiSearch className='absolute right-6 h-full w-4' />
         </fieldset>
-        {!user && (
+        <GoogleLogin
+          onSuccess={(resp) => console.log(resp)}
+          onError={(err) => console.log(err)}
+        />
+        {/* {!user && (
           <Link to='/login'>
             <button className='mx-2 transition hover:text-slate-100'>
               Login
             </button>
           </Link>
-        )}
+        )} */}
         {user && (
           <>
             <button className='mx-2 flex h-full w-8 justify-center rounded-[50%] border-2 border-secondary-100 transition hover:text-slate-100'>

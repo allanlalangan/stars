@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUser, reset } from './features/authSlice';
 
+import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
@@ -33,54 +34,58 @@ const App = () => {
   //   };
   // }, [dispatch]);
   return (
-    <div className='app'>
-      <BrowserRouter>
-        <Header />
-        <main className='flex flex-col-reverse md:h-main md:flex-row'>
-          {user && <Sidebar />}
+    <GoogleOAuthProvider clientId={`${process.env.REACT_APP_GOOGLE_CLIENT_ID}`}>
+      <div className='app'>
+        <BrowserRouter>
+          <Header />
+          <main className='flex flex-col-reverse md:h-main md:flex-row'>
+            {user && <Sidebar />}
 
-          <Routes>
-            <Route path='/' element={<HomePage />} />
-            <Route
-              path='/feed'
-              element={user ? <FeedPage /> : <Navigate to='/login' />}
-            />
-            <Route
-              path='/dashboard'
-              element={user ? <DashboardPage /> : <Navigate to='/login' />}
-            />
-            <Route
-              path='/journal'
-              element={user ? <JournalPage /> : <Navigate to='/login' />}
-            />
-            <Route path='/reference' element={<ReferencePage />}>
-              <Route path='astrology' element={<AstrologyPage />} />
-              <Route path='tarot' element={<TarotPage />}>
-                <Route path='deck/:id' element={<TarotDeckPage />} />
+            <Routes>
+              <Route path='/' element={<HomePage />} />
+              <Route
+                path='/feed'
+                element={user ? <FeedPage /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/dashboard'
+                element={user ? <DashboardPage /> : <Navigate to='/login' />}
+              />
+              <Route
+                path='/journal'
+                element={user ? <JournalPage /> : <Navigate to='/login' />}
+              />
+              <Route path='/reference' element={<ReferencePage />}>
+                <Route path='astrology' element={<AstrologyPage />} />
+                <Route path='tarot' element={<TarotPage />}>
+                  <Route path='deck/:id' element={<TarotDeckPage />} />
+                </Route>
               </Route>
-            </Route>
-            <Route
-              path='/login'
-              element={!user ? <LoginPage user={user} /> : <Navigate to='/' />}
-            />
-            <Route
-              path='/create-account'
-              element={<CreateAccountPage user={user} />}
-            />
-            <Route
-              path='/generate-chart'
-              element={<GenerateChartPage user={user} />}
-            />
-            <Route
-              path='/altar'
-              element={user ? <AltarPage /> : <Navigate to='/login' />}
-            >
-              <Route path='charts' element={<ChartsPage />} />
-            </Route>
-          </Routes>
-        </main>
-      </BrowserRouter>
-    </div>
+              <Route
+                path='/login'
+                element={
+                  !user ? <LoginPage user={user} /> : <Navigate to='/' />
+                }
+              />
+              <Route
+                path='/create-account'
+                element={<CreateAccountPage user={user} />}
+              />
+              <Route
+                path='/generate-chart'
+                element={<GenerateChartPage user={user} />}
+              />
+              <Route
+                path='/altar'
+                element={user ? <AltarPage /> : <Navigate to='/login' />}
+              >
+                <Route path='charts' element={<ChartsPage />} />
+              </Route>
+            </Routes>
+          </main>
+        </BrowserRouter>
+      </div>
+    </GoogleOAuthProvider>
   );
 };
 export default App;
