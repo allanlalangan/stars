@@ -10,9 +10,9 @@ const Login = () => {
     e.preventDefault();
   };
 
-  const handleGoogleLogin = async () => {
-    await window.open('http://localhost:5000/auth/google/callback', '_self');
-  };
+  // const handleGoogleLogin = async () => {
+  //   await window.open('http://localhost:5000/auth/google/callback', '_self');
+  // };
 
   return (
     <form
@@ -21,7 +21,7 @@ const Login = () => {
     >
       <button
         type='button'
-        onClick={handleGoogleLogin}
+        // onClick={handleGoogleLogin}
         className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'
       >
         <FcGoogle className='mx-2 text-2xl' />

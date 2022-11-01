@@ -38,11 +38,15 @@ const Header = () => {
           <>
             <button className='mx-2 flex h-full w-8 justify-center rounded-[50%] border-2 border-secondary-100 transition hover:text-slate-100'>
               <span className='flex'>
-                <img
-                  className='h-full w-full rounded-[50%]'
-                  src={`${user.image}`}
-                  alt={`${user.firstName[0]}${user.lastName[0] || ''}`}
-                />
+                {user.image ? (
+                  <img
+                    className='h-full w-full rounded-[50%]'
+                    src={user.image}
+                    alt='user'
+                  />
+                ) : (
+                  'AL'
+                )}
               </span>
             </button>
             <button

@@ -22,16 +22,16 @@ import JournalPage from './pages/journal';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   useEffect(() => {
     console.log(user);
   }, [user]);
-  useEffect(() => {
-    dispatch(getUser());
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getUser());
+  //   return () => {
+  //     dispatch(reset());
+  //   };
+  // }, [dispatch]);
   return (
     <div className='app'>
       <BrowserRouter>
