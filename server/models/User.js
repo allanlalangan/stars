@@ -21,14 +21,14 @@ const UserSchema = Schema(
   { timestamps: true }
 );
 
-UserSchema.statics.registerUser = async function (name, email, password) {
+UserSchema.statics.registerUser = async function (username, email, password) {
   const existingUser = await this.findOne({ email });
   if (existingUser) {
     throw Error('Email is already registered');
   }
   const salt = await bcrypt.genSalt(10);
   const hash = await bcrypt.hash(password, salt);
-  const user = this.create({ firstName: name, email, password: hash });
+  const user = this.create({ username, email, password: hash });
   return user;
 };
 
