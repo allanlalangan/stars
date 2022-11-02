@@ -3,8 +3,11 @@ import { Link } from 'react-router-dom';
 import { inputs as registerInputs } from '../util/inputs';
 import { useState } from 'react';
 import { FcGoogle } from 'react-icons/fc';
+import { useDispatch } from 'react-redux';
+import { register } from '../features/authSlice';
 
 const Register = () => {
+  const dispatch = useDispatch();
   const [values, setValues] = useState({
     username: '',
     email: '',
@@ -15,6 +18,7 @@ const Register = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(register(values));
   };
 
   const onChange = (e) => {

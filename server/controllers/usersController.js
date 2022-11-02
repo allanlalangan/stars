@@ -6,21 +6,21 @@ const generateToken = (id) => {
 };
 
 const register = async (req, res) => {
-  const { name, email, password } = req.body;
-  console.log(req.body);
+  const { username, email, password } = req.body;
   try {
-    if (!email || !password) {
+    if (!email || !password || !username) {
       res.status(400).json({
         message: 'Please complete all required fields',
       });
     } else {
-      const user = await User.registerUser(name, email, password);
-      res
-        .status(201)
-        .json({
-          token: generateToken(user._id),
-          message: 'Account created. Welcome to Stars.',
-        });
+      const user = await User.registerUser(username, email, password);
+      res.status(201).json({
+        id: user.id,
+        username: user.username,
+        email: user.email,
+        token: generateToken(user._id),
+        message: 'Account created. Welcome to Stars.',
+      });
     }
   } catch (error) {
     console.log(error.message);

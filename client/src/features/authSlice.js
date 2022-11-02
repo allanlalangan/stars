@@ -11,16 +11,40 @@ const initialState = {
   message: '',
 };
 
-const register = createAsyncThunk('auth/register', async (_, thunkAPI) => {
-  console.log('register dispatch');
-  try {
-  } catch (error) {
-    console.log(error);
-    const message =
-      error.response?.data?.message || error.message || error.toString();
-    return thunkAPI.rejectWithValue(message);
+const register = createAsyncThunk(
+  'auth/register',
+  async (formData, thunkAPI) => {
+    console.log('register dispatch');
+    console.log(formData);
+    try {
+      const response = await axios.post(
+        'http://localhost:5000/api/users',
+        formData
+      );
+      if (response.data) {
+        console.log(response.data);
+        localStorage.setItem(
+          'user',
+          JSON.stringify({
+            id: response.data.id,
+            email: response.data.email,
+            username: response.data.username,
+          })
+        );
+        localStorage.setItem(
+          'credentials',
+          JSON.stringify({ token: response.data.token })
+        );
+      }
+      return response.data;
+    } catch (error) {
+      console.log(error);
+      const message =
+        error.response?.data?.message || error.message || error.toString();
+      return thunkAPI.rejectWithValue(message);
+    }
   }
-});
+);
 
 const googleLogin = createAsyncThunk(
   'auth/googleLogin',
@@ -84,6 +108,7 @@ const authSlice = createSlice({
       })
       .addCase(register.fulfilled, (state, action) => {
         state.message = 'Successfully created account. Welcome to Stars!';
+        state.user = action.payload;
         state.isLoading = false;
         state.isSuccess = true;
       })
