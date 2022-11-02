@@ -2,12 +2,11 @@ import { Link } from 'react-router-dom';
 import { GiStarSattelites } from 'react-icons/gi';
 import { HiMenuAlt2, HiCog, HiSearch } from 'react-icons/hi';
 import { useSelector } from 'react-redux';
-import { GoogleLogin } from '@react-oauth/google';
 
 const Header = () => {
   const { user } = useSelector((state) => state.auth);
   const handleLogout = () => {
-    window.open('http://localhost:5000/auth/logout', '_self');
+    console.log('handle logout');
   };
   return (
     <header className='flex h-header w-full items-center justify-between bg-slate-800 px-4 text-slate-300'>
@@ -28,17 +27,13 @@ const Header = () => {
           />
           <HiSearch className='absolute right-6 h-full w-4' />
         </fieldset>
-        <GoogleLogin
-          onSuccess={(resp) => console.log(resp)}
-          onError={(err) => console.log(err)}
-        />
-        {/* {!user && (
+        {!user && (
           <Link to='/login'>
             <button className='mx-2 transition hover:text-slate-100'>
               Login
             </button>
           </Link>
-        )} */}
+        )}
         {user && (
           <>
             <button className='mx-2 flex h-full w-8 justify-center rounded-[50%] border-2 border-secondary-100 transition hover:text-slate-100'>

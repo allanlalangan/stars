@@ -2,17 +2,28 @@ import { Link } from 'react-router-dom';
 import { inputs } from '../util/inputs';
 import FormInput from './FormInput';
 import { FcGoogle } from 'react-icons/fc';
+import { useGoogleLogin } from '@react-oauth/google';
+import axios from 'axios';
 
 const Login = () => {
   const loginInputs = inputs.slice(1, 3);
-
+  const handleGoogleLogin = useGoogleLogin({
+    onSuccess: async ({ code }) => {
+      const response = await axios.post('http://localhost:5000/auth/google', {
+        code,
+      });
+      console.log(response);
+    },
+    onError: (error) => console.log(error),
+    redirect_uri: 'http://localhost:3000',
+    flow: 'auth-code',
+    scope: 'email profile',
+    // scope:
+    //   'email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+  });
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-
-  // const handleGoogleLogin = async () => {
-  //   await window.open('http://localhost:5000/auth/google/callback', '_self');
-  // };
 
   return (
     <form
@@ -21,7 +32,7 @@ const Login = () => {
     >
       <button
         type='button'
-        // onClick={handleGoogleLogin}
+        onClick={handleGoogleLogin}
         className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'
       >
         <FcGoogle className='mx-2 text-2xl' />
