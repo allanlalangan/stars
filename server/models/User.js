@@ -21,6 +21,17 @@ const UserSchema = Schema(
   { timestamps: true }
 );
 
+UserSchema.statics.loginUser = async function (email, password) {
+  const user = await this.findOne({ email });
+  if (!user) throw Error('Invalid Email');
+  const isValid = await bcrypt.compare(password, user.password);
+  if (!isValid) {
+    throw Error('Invalid Password');
+  } else {
+    return user;
+  }
+};
+
 UserSchema.statics.registerUser = async function (username, email, password) {
   const existingUser = await this.findOne({ email });
   if (existingUser) {

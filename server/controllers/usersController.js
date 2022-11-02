@@ -15,7 +15,7 @@ const register = async (req, res) => {
     } else {
       const user = await User.registerUser(username, email, password);
       res.status(201).json({
-        id: user.id,
+        id: user._id,
         username: user.username,
         email: user.email,
         token: generateToken(user._id),
@@ -31,7 +31,19 @@ const register = async (req, res) => {
 const login = async (req, res) => {
   const { email, password } = req.body;
   try {
-    await res.status(200).json({ message: 'Login Route' });
+    if (!email || !password) {
+      res.status(400).json({
+        message: 'Please complete all required fields',
+      });
+    }
+    const user = await User.loginUser(email, password);
+    res.status(200).json({
+      id: user.id,
+      username: user.username,
+      email: user.email,
+      token: generateToken(user._id),
+      message: 'Successfully logged in. Redirecting to Dashboard',
+    });
   } catch (error) {
     await res.status(500).json({ message: error.message || error });
   }
