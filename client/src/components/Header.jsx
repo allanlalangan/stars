@@ -1,12 +1,18 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { GiStarSattelites } from 'react-icons/gi';
 import { HiMenuAlt2, HiCog, HiSearch } from 'react-icons/hi';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { logout, reset } from '../features/authSlice';
 
 const Header = () => {
+  const dispatch = useDispatch();
+  const redirect = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const handleLogout = () => {
     console.log('handle logout');
+    dispatch(logout());
+    dispatch(reset());
+    redirect('/');
   };
   return (
     <header className='flex h-header w-full items-center justify-between bg-slate-800 px-4 text-slate-300'>

@@ -55,6 +55,15 @@ const googleLogin = createAsyncThunk(
   }
 );
 
+const logout = createAsyncThunk('auth/logout', async (thunkAPI) => {
+  try {
+    await localStorage.removeItem('credentials');
+    await localStorage.removeItem('user');
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.toString());
+  }
+});
+
 const authSlice = createSlice({
   name: 'auth',
   initialState,
@@ -97,10 +106,14 @@ const authSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(logout.fulfilled, (state) => {
+        state.message = 'User successfully logged out';
+        state.user = null;
       });
   },
 });
 
 export default authSlice.reducer;
 export const { reset } = authSlice.actions;
-export { register, googleLogin };
+export { register, googleLogin, logout };
