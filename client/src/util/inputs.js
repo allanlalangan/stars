@@ -6,6 +6,7 @@ export const inputs = [
     label: 'Username',
     required: true,
     errorMessage: 'Username must be atleast 8 characters',
+    pattern: '[a-zA-Z0-9]{8,}',
   },
   {
     name: 'email',
