@@ -8,22 +8,25 @@ import { googleLogin } from '../features/authSlice';
 import axios from 'axios';
 
 const Login = () => {
-  const dispatch = useDispatch();
-  const loginInputs = inputs.slice(1, 3);
-  const handleGoogleLogin = useGoogleLogin({
-    onSuccess: ({ code }) => {
-      dispatch(googleLogin(code));
-    },
-    onError: (error) => console.log(error),
-    redirect_uri: 'http://localhost:3000',
-    flow: 'auth-code',
-    scope: 'email profile',
-    // scope:
-    //   'email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
-  });
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  const dispatch = useDispatch();
+  const loginInputs = inputs.slice(1, 3);
+  const handleGoogleLogin = () => {
+    console.log('handle google login');
+  };
+  // const handleGoogleLogin = useGoogleLogin({
+  //   onSuccess: ({ code }) => {
+  //     dispatch(googleLogin(code));
+  //   },
+  //   onError: (error) => console.log(error),
+  //   redirect_uri: 'http://localhost:3000',
+  //   flow: 'auth-code',
+  //   scope: 'email profile',
+  //   // scope:
+  //   //   'email profile openid https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email',
+  // });
 
   return (
     <form
