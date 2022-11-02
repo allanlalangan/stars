@@ -6,11 +6,10 @@ const {
   deletePost,
   likePost,
 } = require('../controllers/postsController');
-const { ensureAuth } = require('../middleware/auth');
 
-router.get('/', ensureAuth, getPosts);
-router.put('/:id', ensureAuth, likePost);
-router.delete('/:id', ensureAuth, deletePost);
-router.post('/', ensureAuth, createPost);
+router.get('/', getPosts);
+router.put('/:id', likePost);
+router.delete('/:id', deletePost);
+router.post('/', createPost);
 
 module.exports = router;
