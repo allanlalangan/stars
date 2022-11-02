@@ -66,7 +66,9 @@ const App = () => {
             />
             <Route
               path='/create-account'
-              element={<CreateAccountPage user={user} />}
+              element={
+                user ? <DashboardPage /> : <CreateAccountPage user={user} />
+              }
             />
             <Route
               path='/generate-chart'
