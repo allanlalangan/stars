@@ -22,21 +22,20 @@ const register = createAsyncThunk(
         formData
       );
       if (response.data) {
-        console.log(response.data);
-        localStorage.setItem(
-          'user',
-          JSON.stringify({
-            id: response.data.id,
-            email: response.data.email,
-            username: response.data.username,
-          })
-        );
+        const user = {
+          id: response.data.id,
+          email: response.data.email,
+          username: response.data.username,
+        };
+        localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem(
           'credentials',
           JSON.stringify({ token: response.data.token })
         );
+        return user;
+      } else {
+        throw Error('Something went wrong');
       }
-      return response.data;
     } catch (error) {
       console.log(error);
       const message =
@@ -45,6 +44,34 @@ const register = createAsyncThunk(
     }
   }
 );
+
+const login = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
+  console.log('login dispatch');
+  try {
+    console.log(formData);
+    const response = await axios.post(
+      'http://localhost:5000/api/users/login',
+      formData
+    );
+    if (response.data) {
+      const user = {
+        id: response.data.id,
+        email: response.data.email,
+        username: response.data.username,
+      };
+      localStorage.setItem('user', JSON.stringify(user));
+      localStorage.setItem(
+        'credentials',
+        JSON.stringify({ token: response.data.token })
+      );
+      return user;
+    } else {
+      throw Error('Something went wrong');
+    }
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.toString());
+  }
+});
 
 const googleLogin = createAsyncThunk(
   'auth/googleLogin',
@@ -79,7 +106,7 @@ const googleLogin = createAsyncThunk(
   }
 );
 
-const logout = createAsyncThunk('auth/logout', async (thunkAPI) => {
+const logout = createAsyncThunk('auth/logout', async (_, thunkAPI) => {
   try {
     await localStorage.removeItem('credentials');
     await localStorage.removeItem('user');
@@ -117,6 +144,21 @@ const authSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(login.pending, (state) => {
+        state.message = 'Logging In';
+        state.isLoading = true;
+      })
+      .addCase(login.fulfilled, (state, action) => {
+        state.message = 'Successful Login. Redirecting to Dashboard';
+        state.user = action.payload;
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(login.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(googleLogin.pending, (state) => {
         state.message = 'Logging in with Google';
         state.isLoading = true;
@@ -141,4 +183,4 @@ const authSlice = createSlice({
 
 export default authSlice.reducer;
 export const { reset } = authSlice.actions;
-export { register, googleLogin, logout };
+export { register, googleLogin, logout, login };

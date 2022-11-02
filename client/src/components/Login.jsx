@@ -4,15 +4,28 @@ import FormInput from './FormInput';
 import { FcGoogle } from 'react-icons/fc';
 import { useGoogleLogin } from '@react-oauth/google';
 import { useDispatch } from 'react-redux';
-import { googleLogin } from '../features/authSlice';
+import { googleLogin, login } from '../features/authSlice';
 import axios from 'axios';
+import { useState } from 'react';
 
 const Login = () => {
+  const dispatch = useDispatch();
+
+  const [values, setValues] = useState({
+    email: '',
+    password: '',
+  });
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(login(values));
   };
-  const dispatch = useDispatch();
+
   const loginInputs = inputs.slice(1, 3);
+  const onChange = (e) => {
+    setValues({ ...values, [e.target.name]: e.target.value });
+  };
+
   const handleGoogleLogin = () => {
     console.log('handle google login');
   };
@@ -48,6 +61,7 @@ const Login = () => {
       </span>
       {loginInputs?.map(({ name, type, placeholder, required, label }, i) => (
         <FormInput
+          onChange={onChange}
           key={i}
           name={name}
           type={type}
