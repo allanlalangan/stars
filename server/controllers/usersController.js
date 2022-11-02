@@ -1,4 +1,9 @@
+const jwt = require('jsonwebtoken');
 const User = require('../models/User');
+
+const generateToken = (id) => {
+  return jwt.sign({ id }, process.env.SECRET, { expiresIn: '1d' });
+};
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
@@ -12,7 +17,10 @@ const register = async (req, res) => {
       const user = await User.registerUser(name, email, password);
       res
         .status(201)
-        .json({ user, message: 'Account created. Welcome to Stars.' });
+        .json({
+          token: generateToken(user._id),
+          message: 'Account created. Welcome to Stars.',
+        });
     }
   } catch (error) {
     console.log(error.message);
