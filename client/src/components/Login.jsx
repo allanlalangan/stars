@@ -3,16 +3,16 @@ import { inputs } from '../util/inputs';
 import FormInput from './FormInput';
 import { FcGoogle } from 'react-icons/fc';
 import { useGoogleLogin } from '@react-oauth/google';
+import { useDispatch } from 'react-redux';
+import { googleLogin } from '../features/authSlice';
 import axios from 'axios';
 
 const Login = () => {
+  const dispatch = useDispatch();
   const loginInputs = inputs.slice(1, 3);
   const handleGoogleLogin = useGoogleLogin({
-    onSuccess: async ({ code }) => {
-      const response = await axios.post('http://localhost:5000/auth/google', {
-        code,
-      });
-      console.log(response);
+    onSuccess: ({ code }) => {
+      dispatch(googleLogin(code));
     },
     onError: (error) => console.log(error),
     redirect_uri: 'http://localhost:3000',
