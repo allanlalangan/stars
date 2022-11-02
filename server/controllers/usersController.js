@@ -2,17 +2,22 @@ const User = require('../models/User');
 
 const register = async (req, res) => {
   const { name, email, password } = req.body;
-
-  const existingUser = await User.findOne({ email });
-
+  console.log(req.body);
   try {
-    if (!name || !email || !password) {
-      await res.status(400).json({ message: 'Please complete all fields' });
+    if (!email || !password) {
+      res.status(400).json({
+        message: 'Please complete all required fields',
+      });
+    } else {
+      const user = await User.registerUser(name, email, password);
+      res
+        .status(201)
+        .json({ user, message: 'Account created. Welcome to Stars.' });
     }
-    if (existingUser) {
-      await res.status(400).json({ message: 'User already exists' });
-    }
-  } catch (error) {}
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ message: error.message });
+  }
 };
 
 const login = async (req, res) => {
@@ -31,7 +36,5 @@ const getUser = async (req, res) => {
     await res.status(500).json({ message: error.message || error });
   }
 };
-
-const requestFriendship = async (req, res) => {};
 
 module.exports = { register, login, getUser };

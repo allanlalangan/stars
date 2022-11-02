@@ -4,8 +4,8 @@ const bcrypt = require('bcryptjs');
 
 const UserSchema = Schema(
   {
-    googleId: { type: String, unique: true },
-    firstName: { type: String, required: [true, 'Please enter your name'] },
+    googleId: String,
+    firstName: String,
     lastName: String,
     image: String,
     email: {
@@ -15,19 +15,21 @@ const UserSchema = Schema(
     },
     password: {
       type: String,
-      minLength: 8,
-      select: false,
+      required: true,
     },
   },
   { timestamps: true }
 );
 
-UserSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) next();
-
+UserSchema.statics.registerUser = async function (name, email, password) {
+  const existingUser = await this.findOne({ email });
+  if (existingUser) {
+    throw Error('Email is already registered');
+  }
   const salt = await bcrypt.genSalt(10);
-  this.password = await bcrypt.hash(this.password, salt);
-  next();
-});
+  const hash = await bcrypt.hash(password, salt);
+  const user = this.create({ firstName: name, email, password: hash });
+  return user;
+};
 
 module.exports = mongoose.model('User', UserSchema);
