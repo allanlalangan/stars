@@ -15,7 +15,6 @@ const register = async (req, res) => {
     } else {
       const user = await User.registerUser(username, email, password);
       res.status(201).json({
-        id: user._id,
         username: user.username,
         email: user.email,
         token: generateToken(user._id),
@@ -38,7 +37,6 @@ const login = async (req, res) => {
     }
     const user = await User.loginUser(email, password);
     res.status(200).json({
-      id: user.id,
       username: user.username,
       email: user.email,
       token: generateToken(user._id),
