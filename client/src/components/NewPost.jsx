@@ -1,6 +1,11 @@
+import { useDispatch } from 'react-redux';
+import { createPost } from '../features/postsSlice';
+
 const NewPost = () => {
+  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
+    dispatch(createPost('create post'));
   };
   return (
     <form onSubmit={handleSubmit} className='p-4 shadow'>
