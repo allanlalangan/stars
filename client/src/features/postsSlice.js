@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const { token } = JSON.parse(localStorage.getItem('credentials'));
+const { token } = JSON.parse(localStorage.getItem('credentials')) || '';
 
 const initialState = {
   posts: [],

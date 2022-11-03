@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { getUser, reset } from './features/authSlice';
+import { useSelector } from 'react-redux';
 
-import { GoogleOAuthProvider } from '@react-oauth/google';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
@@ -23,16 +21,9 @@ import JournalPage from './pages/journal';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
-  // const dispatch = useDispatch();
   useEffect(() => {
     console.log(user);
   }, [user]);
-  // useEffect(() => {
-  //   dispatch(getUser());
-  //   return () => {
-  //     dispatch(reset());
-  //   };
-  // }, [dispatch]);
   return (
     <div className='app'>
       <BrowserRouter>

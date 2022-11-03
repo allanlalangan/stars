@@ -14,7 +14,9 @@ const DashboardPage = () => {
   // }, [user, dispatch]);
   return (
     <section className='h-full overflow-scroll p-4 md:w-3/4'>
-      <h2 className='mb-4 font-display'>Hello</h2>
+      <h2 className='mb-4 font-display'>
+        Hello {user?.firstName || user.username}
+      </h2>
       <article className='grid h-full grid-cols-12 gap-4'>
         <section className='col-span-6 row-span-3 flex flex-col border-2 border-primary-800 p-4'>
           <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>

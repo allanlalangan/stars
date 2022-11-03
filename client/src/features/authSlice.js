@@ -14,8 +14,6 @@ const initialState = {
 const register = createAsyncThunk(
   'auth/register',
   async (formData, thunkAPI) => {
-    console.log('register dispatch');
-    console.log(formData);
     try {
       const response = await axios.post(
         'http://localhost:5000/api/users',
@@ -46,9 +44,7 @@ const register = createAsyncThunk(
 );
 
 const login = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
-  console.log('login dispatch');
   try {
-    console.log(formData);
     const response = await axios.post(
       'http://localhost:5000/api/users/login',
       formData

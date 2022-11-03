@@ -40,19 +40,17 @@ const Register = () => {
         <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
       </span>
       {registerInputs?.map((input, i) => (
-        <>
-          <FormInput
-            key={i}
-            onChange={onChange}
-            {...input}
-            pattern={
-              input.name === 'confirm'
-                ? values.password
-                : input.pattern || undefined
-            }
-            value={values[input.name]}
-          />
-        </>
+        <FormInput
+          key={i}
+          onChange={onChange}
+          {...input}
+          pattern={
+            input.name === 'confirm'
+              ? values.password
+              : input.pattern || undefined
+          }
+          value={values[input.name]}
+        />
       ))}
       <button
         type='submit'
