@@ -3,7 +3,7 @@ const Feed = () => {
     <section className='flex flex-col overflow-y-scroll p-4'>
       <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Mischa</h4>
-        <p>celebrates their 33rd journey around the Sun!</p>
+        <p>celebrating my 33rd journey around the Sun!</p>
         <section>
           <button className='mr-2 rounded-tr-md rounded-br-md rounded-bl-md border-2 border-primary-400 px-2 py-1 text-sm'>
             Like
@@ -13,7 +13,7 @@ const Feed = () => {
           </button>
         </section>
       </article>
-      <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
+      {/* <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Ari</h4>
         <p>I feel best during air sign seasons!😜</p>
         <aside className='mb-2 flex flex-wrap'>
@@ -74,7 +74,7 @@ const Feed = () => {
             Comment
           </button>
         </section>
-      </article>
+      </article> */}
     </section>
   );
 };

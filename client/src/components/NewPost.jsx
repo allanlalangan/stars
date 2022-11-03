@@ -10,7 +10,7 @@ const NewPost = () => {
   return (
     <form onSubmit={handleSubmit} className='p-4 shadow'>
       <h3 className='mb-4'>What would you like to share?</h3>
-      <fieldset className='mb-4 flex'>
+      {/* <fieldset className='mb-4 flex'>
         <label htmlFor='text' className='flex w-1/2 flex-col justify-between'>
           <input type='radio' name='type' id='text' className='peer hidden' />
           <span className='flex w-full justify-center p-2 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
@@ -46,7 +46,7 @@ const NewPost = () => {
             The Planets Today
           </span>
         </label>
-      </fieldset>
+      </fieldset> */}
       <fieldset className='flex w-full items-center p-2'>
         <label htmlFor='caption' className='mr-2'>
           Note

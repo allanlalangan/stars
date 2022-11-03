@@ -51,7 +51,8 @@ const Header = () => {
                     alt='user'
                   />
                 ) : (
-                  'AL'
+                  user.username[0].toUpperCase() ||
+                  `${user.firstName[0]}${user.lastName[0]}`
                 )}
               </span>
             </button>
