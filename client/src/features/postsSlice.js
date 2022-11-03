@@ -13,17 +13,20 @@ const initialState = {
 
 const createPost = createAsyncThunk(
   'posts/createPost',
-  async (id, thunkAPI) => {
-    console.log(id);
+  async (data, thunkAPI) => {
     const config = {
       headers: {
-        Authorization: `Bearer ${token}`,
+        authorization: `Bearer ${token}`,
       },
     };
 
     try {
-      const resp = await axios.post('http://localhost:5000/api/posts', config);
-      console.log(resp);
+      const resp = await axios.post(
+        'http://localhost:5000/api/posts',
+        data,
+        config
+      );
+      return resp.data;
     } catch (error) {
       console.log(error);
       const message =
