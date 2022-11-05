@@ -20,17 +20,8 @@ const register = createAsyncThunk(
         formData
       );
       if (response.data) {
-        const user = {
-          id: response.data.id,
-          email: response.data.email,
-          username: response.data.username,
-        };
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem(
-          'credentials',
-          JSON.stringify({ token: response.data.token })
-        );
-        return user;
+        localStorage.setItem('user', JSON.stringify(response.data));
+        return response.data;
       } else {
         throw Error('Something went wrong');
       }
@@ -50,17 +41,8 @@ const login = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
       formData
     );
     if (response.data) {
-      const user = {
-        id: response.data.id,
-        email: response.data.email,
-        username: response.data.username,
-      };
-      localStorage.setItem('user', JSON.stringify(user));
-      localStorage.setItem(
-        'credentials',
-        JSON.stringify({ token: response.data.token })
-      );
-      return user;
+      localStorage.setItem('user', JSON.stringify(response.data));
+      return response.data;
     } else {
       throw Error('Something went wrong');
     }
