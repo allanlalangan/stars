@@ -2,7 +2,6 @@ require('dotenv').config();
 const cors = require('cors');
 const { connectDB } = require('./config/db');
 const express = require('express');
-const axios = require('axios');
 
 const app = express();
 
@@ -18,20 +17,8 @@ app.use(express.urlencoded({ extended: false }));
 // Routes
 app.use('/api/users', require('./routes/users'));
 app.use('/api/posts', require('./routes/posts'));
+app.use('/api/astro', require('./routes/astro'));
 app.use('/auth', require('./routes/auth'));
-
-// Get Current Plants Route
-app.get('/planetstoday', (req, res) => {
-  const options = {
-    method: 'GET',
-    url: 'https://astrologer.p.rapidapi.com/api/v2/now',
-    headers: {
-      'X-RapidAPI-Key': process.env.ASTROLOGER_RAPID_API_KEY,
-      'X-RapidAPI-Host': process.env.ASTROLOGER_RAPID_API_HOST,
-    },
-  };
-  axios(options).then((resp) => res.json(resp.data));
-});
 
 // FALLBACK ROUTE
 app.use('*', (req, res) => {
