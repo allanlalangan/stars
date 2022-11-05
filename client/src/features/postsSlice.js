@@ -1,8 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
-const { token } = JSON.parse(localStorage.getItem('credentials')) || '';
-
 const initialState = {
   posts: [],
   isLoading: false,
@@ -14,13 +12,13 @@ const initialState = {
 const createPost = createAsyncThunk(
   'posts/createPost',
   async (data, thunkAPI) => {
-    const config = {
-      headers: {
-        authorization: `Bearer ${token}`,
-      },
-    };
-
     try {
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
       const resp = await axios.post(
         'http://localhost:5000/api/posts',
         data,

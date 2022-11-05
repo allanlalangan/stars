@@ -2,9 +2,7 @@ import axios from 'axios';
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-  data: {},
-  planets: [],
-  houses: [],
+  data: null,
   isLoading: false,
   isError: false,
   isSuccess: false,
@@ -15,9 +13,19 @@ const getCurrentPlanets = createAsyncThunk(
   'today/getCurrentPlanets',
   async (_, thunkAPI) => {
     try {
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      };
       const {
         data: { data },
-      } = await axios.get('http://localhost:5000/planetstoday');
+      } = await axios.get(
+        'http://localhost:5000/api/astro/chart/today',
+        config
+      );
+      console.log(data);
       return data;
     } catch (error) {
       console.log('Error getting current planets');
@@ -32,8 +40,12 @@ const todaySlice = createSlice({
   name: 'today',
   initialState,
   reducers: {
-    setCurrentPlanets(state) {
-      return state;
+    reset(state) {
+      state.data = null;
+      state.isLoading = false;
+      state.isError = false;
+      state.isSuccess = false;
+      state.message = '';
     },
   },
   extraReducers: (builder) => {
@@ -46,18 +58,7 @@ const todaySlice = createSlice({
         state.message = '';
         state.isLoading = false;
         state.isSuccess = true;
-        // state.data = action.payload;
-        for (const prop in action.payload) {
-          if (typeof action.payload[prop] !== 'object') {
-            state.data[prop] = action.payload[prop];
-          }
-          if (action.payload[prop]?.point_type === 'Planet') {
-            state.planets.push(action.payload[prop]);
-          }
-          if (action.payload[prop]?.point_type === 'House') {
-            state.houses.push(action.payload[prop]);
-          }
-        }
+        state.data = action.payload;
       })
       .addCase(getCurrentPlanets.rejected, (state, action) => {
         state.isLoading = false;
@@ -68,5 +69,5 @@ const todaySlice = createSlice({
 });
 
 export default todaySlice.reducer;
-export const { setCurrentPlacements } = todaySlice.actions;
+export const { reset } = todaySlice.actions;
 export { getCurrentPlanets };
