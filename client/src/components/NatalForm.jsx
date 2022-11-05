@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import FormInput from './FormInput';
-
+import { timezones } from '../util/timezones';
 const NatalForm = () => {
   const [values, setValues] = useState({
     name: '',
@@ -12,7 +12,10 @@ const NatalForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(values);
   };
+
+  const tzoneValid = timezones.indexOf(values.timezone) !== -1;
 
   const handleValueChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value });
@@ -62,16 +65,37 @@ const NatalForm = () => {
         errorMessage='Enter your Place of Birth'
         required
       />
-      <FormInput
-        onChange={handleValueChange}
-        label='Timezone'
-        type='text'
-        name='timezone'
-        value={values.timezone}
-        placeholder='Search Timezone'
-        errorMessage='Enter a Timezone'
-        required
-      />
+      <fieldset className='relative mb-2 flex flex-col'>
+        <label htmlFor='timezone'>Timezone</label>
+        <input
+          onChange={handleValueChange}
+          list='timezones'
+          id='timezone'
+          name='timezone'
+          className='my-2 w-full p-2'
+          pattern={
+            tzoneValid ? `${timezones[timezones.indexOf(values.timezone)]}` : ''
+          }
+          required
+        />
+
+        <datalist id='timezones'>
+          {timezones?.map((tzone, i) => (
+            <option key={i} value={tzone}>
+              {tzone}
+            </option>
+          ))}
+        </datalist>
+        {!tzoneValid && (
+          <span className='text-xs font-medium tracking-wide text-red-500'>
+            {timezones.indexOf(values.timezone) === -1
+              ? 'Please select a valid timezone'
+              : `${
+                  timezones[timezones.indexOf(values.timezone)]
+                } is valid option`}
+          </span>
+        )}
+      </fieldset>
       <button
         type='submit'
         className='border border-indigo-200 p-4 font-heading uppercase transition hover:bg-indigo-200'
