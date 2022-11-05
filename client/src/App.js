@@ -18,12 +18,18 @@ import FeedPage from './pages/feed';
 import ReferencePage from './pages/reference';
 import AstrologyPage from './pages/astrology';
 import JournalPage from './pages/journal';
+import { useLoadScript } from '@react-google-maps/api';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
   useEffect(() => {
     console.log(user);
   }, [user]);
+
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
+    libraries: ['places'],
+  });
   return (
     <div className='app'>
       <BrowserRouter>
@@ -65,7 +71,7 @@ const App = () => {
             />
             <Route
               path='/generate-chart'
-              element={<GenerateChartPage user={user} />}
+              element={<GenerateChartPage user={user} isLoaded={isLoaded} />}
             />
             <Route
               path='/altar'
