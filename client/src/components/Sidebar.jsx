@@ -54,14 +54,14 @@ const Sidebar = () => {
             </span>
           </button>
         </Link>
-        <Link to='/'>
+        {/* <Link to='/'>
           <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <FaBookmark className='mx-2 text-secondary-200' size='1.25rem' />
               <p className='hidden md:block'>Archive</p>
             </span>
           </button>
-        </Link>
+        </Link> */}
       </ul>
     </nav>
   );

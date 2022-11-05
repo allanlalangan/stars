@@ -27,7 +27,7 @@ const FormInput = ({
         required={required}
       />
       {errorMessage && (
-        <span className='text-xs font-medium tracking-wide text-red-500'>
+        <span className='text-xs font-medium tracking-wide text-slate-500'>
           {errorMessage}
         </span>
       )}

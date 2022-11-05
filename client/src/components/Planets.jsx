@@ -131,7 +131,7 @@ const Planets = () => {
           <p className='font-heading'>at {data?.pluto?.position.toFixed(2)}°</p>
           <p className='font-heading'>{data?.pluto?.sign}</p>
         </li>
-        <li className='col-span-6 border border-slate-300 p-2'>
+        <li className='col-span-12 border border-slate-300 p-2 lg:col-span-6'>
           <p className='font-heading'>
             North Node
             {data?.true_node?.retrograde && (

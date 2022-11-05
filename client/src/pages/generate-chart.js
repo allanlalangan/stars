@@ -8,7 +8,7 @@ const GenerateChartPage = ({ user, isLoaded }) => {
     <section
       className={`${!user ? 'md:w-full' : 'md:w-3/4'} overflow-y-scroll p-4`}
     >
-      <h2>Generate Natal Chart</h2>
+      <h2 className='mb-4 font-display'>Generate Natal Chart</h2>
       {isLoaded && <NatalForm setActiveNatalChart={setActiveNatalChart} />}
 
       <NatalPlacements placements={activeNatalChart} />
