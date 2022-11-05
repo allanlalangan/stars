@@ -8,8 +8,8 @@ const NewPost = () => {
     dispatch(createPost('create post'));
   };
   return (
-    <form onSubmit={handleSubmit} className='p-4 shadow'>
-      <h3 className='mb-4'>What would you like to share?</h3>
+    <form onSubmit={handleSubmit} className='p-4'>
+      <h3 className='mb-4 text-lg'>What would you like to share?</h3>
       {/* <fieldset className='mb-4 flex'>
         <label htmlFor='text' className='flex w-1/2 flex-col justify-between'>
           <input type='radio' name='type' id='text' className='peer hidden' />

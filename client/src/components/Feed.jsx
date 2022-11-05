@@ -13,9 +13,9 @@ const Feed = () => {
           </button>
         </section>
       </article>
-      {/* <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
+      <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Ari</h4>
-        <p>I feel best during air sign seasons!😜</p>
+        <p>I feel best during air sign seasons!</p>
         <aside className='mb-2 flex flex-wrap'>
           <p className='mx-2 flex flex-col rounded-tr-lg border-2 border-primary-700 p-2'>
             <span>current Sun</span>
@@ -53,7 +53,7 @@ const Feed = () => {
       </article>
       <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Felipe</h4>
-        <p>Someone kiss me!😝</p>
+        <p>Someone kiss me!😜</p>
         <aside className='mb-2 flex flex-wrap'>
           <p className='mx-2 flex flex-col rounded-tr-lg border-2 border-primary-700 p-2'>
             <span>current Mars</span>
@@ -74,7 +74,7 @@ const Feed = () => {
             Comment
           </button>
         </section>
-      </article> */}
+      </article>
     </section>
   );
 };

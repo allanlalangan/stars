@@ -6,7 +6,7 @@ const AltarPage = () => {
       <h2>Altar</h2>
       <nav className='flex w-1/2'>
         <button className='mr-2 mt-1 flex cursor-pointer items-center bg-slate-700 p-2 text-lg tracking-wide text-slate-50'>
-          Divination & Ritual
+          Meditations
         </button>
         <Link to='charts'>
           <button className='mr-2 mt-1 flex cursor-pointer items-center bg-slate-700 p-2 text-lg tracking-wide text-slate-50'>
