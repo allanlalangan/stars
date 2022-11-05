@@ -6,70 +6,61 @@ import { Link } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <nav className='fixed bottom-0 flex w-screen flex-col items-center justify-between bg-slate-700 text-slate-50 md:static md:h-full md:w-1/4'>
-      <ul className='flex w-full justify-evenly p-4 md:flex-col md:justify-start'>
+    <nav className='fixed bottom-0 flex h-[10%] w-screen flex-col items-center justify-center bg-slate-700 text-slate-50 md:static md:h-full md:w-1/4 md:justify-between'>
+      <ul className='flex w-full justify-evenly md:flex-col md:justify-start md:p-4'>
         <Link to='/feed'>
-          <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
+          <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <BsStars className='mx-2 text-secondary-200' size='1.25rem' />
-              Feed
+              <p className='hidden md:block'>Feed</p>
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-rose-300 font-body text-sm font-bold text-slate-900 shadow-sm'>
-              8
-            </span>
-          </li>
+          </button>
         </Link>
         <Link to='/dashboard'>
-          <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
+          <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <MdSpaceDashboard
                 className='mx-2 text-secondary-200'
                 size='1.25rem'
               />
-              Dashboard
+              <p className='hidden md:block'>Dashboard</p>
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-rose-300 font-body text-sm font-bold text-slate-900 shadow-sm'>
-              2
-            </span>
-          </li>
+          </button>
         </Link>
         <Link to='/altar'>
-          <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
+          <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <GiCandleLight
                 className='mx-2 text-secondary-200'
                 size='1.25rem'
               />
-              Altar
+              <p className='hidden md:block'>Altar</p>
             </span>
-            <span className='flex h-6 w-6 items-center justify-center rounded-[50%] bg-rose-300 font-body text-sm font-bold text-slate-900 shadow-sm'>
-              4
-            </span>
-          </li>
+          </button>
         </Link>
         <Link to='/journal'>
-          <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
+          <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <GiNotebook className='mx-2 text-secondary-200' size='1.25rem' />
-              Journal
+              <p className='hidden md:block'>Journal</p>
             </span>
-          </li>
+          </button>
         </Link>
         <Link to='/reference'>
-          <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
+          <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <GiOpenBook className='mx-2 text-secondary-200' size='1.25rem' />
-              Reference
+              <p className='hidden md:block'>Reference</p>
             </span>
-          </li>
+          </button>
         </Link>
         <Link to='/'>
-          <li className='mt-1 flex w-full cursor-pointer content-between items-center p-2 font-heading text-sm font-semibold'>
+          <button className='flex w-full cursor-pointer content-between items-center font-heading text-sm font-semibold md:mt-2 md:p-2'>
             <span className='flex w-full items-center transition'>
               <FaBookmark className='mx-2 text-secondary-200' size='1.25rem' />
-              Archive
+              <p className='hidden md:block'>Archive</p>
             </span>
-          </li>
+          </button>
         </Link>
       </ul>
     </nav>

@@ -28,7 +28,7 @@ const App = () => {
     <div className='app'>
       <BrowserRouter>
         <Header />
-        <main className='flex flex-col-reverse md:h-main md:flex-row'>
+        <main className='flex h-[80%] flex-col-reverse md:h-main md:flex-row'>
           {user && <Sidebar />}
 
           <Routes>
@@ -39,7 +39,7 @@ const App = () => {
             />
             <Route
               path='/dashboard'
-              element={user ? <DashboardPage /> : <Navigate to='/login' />}
+              element={!user ? <Navigate to='/login' /> : <DashboardPage />}
             />
             <Route
               path='/journal'
@@ -53,7 +53,9 @@ const App = () => {
             </Route>
             <Route
               path='/login'
-              element={!user ? <LoginPage user={user} /> : <Navigate to='/' />}
+              element={
+                !user ? <LoginPage user={user} /> : <Navigate to='/dashboard' />
+              }
             />
             <Route
               path='/create-account'
