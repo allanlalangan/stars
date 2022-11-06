@@ -1,33 +1,35 @@
-import { useDispatch } from 'react-redux';
-import { createPost } from '../features/postsSlice';
-
 const NewPost = () => {
-  const dispatch = useDispatch();
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(createPost('create post'));
   };
   return (
     <form onSubmit={handleSubmit} className='p-4'>
-      <h3 className='mb-4 text-lg'>What would you like to share?</h3>
-      {/* <fieldset className='mb-4 flex'>
-        <label htmlFor='text' className='flex w-1/2 flex-col justify-between'>
+      <h3 className='mb-2 text-lg'>What would you like to share?</h3>
+      <h4 className='mb-2 text-base'>Select a category</h4>
+      <fieldset className='mb-4 flex'>
+        <label
+          htmlFor='text'
+          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
+        >
           <input type='radio' name='type' id='text' className='peer hidden' />
-          <span className='flex w-full justify-center p-2 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
-            Words
+          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+            Text
           </span>
         </label>
 
-        <label htmlFor='card' className='flex w-1/2 flex-col justify-between'>
+        <label
+          htmlFor='card'
+          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
+        >
           <input type='radio' name='type' id='card' className='peer hidden' />
-          <span className='flex w-full justify-center p-2 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
-            Card of the day
+          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+            Natal Chart
           </span>
         </label>
 
         <label
           htmlFor='transit'
-          className='flex w-1/2 flex-col justify-between'
+          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
         >
           <input
             type='radio'
@@ -35,18 +37,21 @@ const NewPost = () => {
             id='transit'
             className='peer hidden'
           />
-          <span className='flex w-full justify-center p-2 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
-            Transit
+          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+            The Moon
           </span>
         </label>
 
-        <label htmlFor='today' className='flex w-1/2 flex-col justify-between'>
+        <label
+          htmlFor='today'
+          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
+        >
           <input type='radio' name='type' id='today' className='peer hidden' />
-          <span className='flex w-full justify-center p-2 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
             The Planets Today
           </span>
         </label>
-      </fieldset> */}
+      </fieldset>
       <fieldset className='flex w-full items-center p-2'>
         <label htmlFor='caption' className='mr-2'>
           Note

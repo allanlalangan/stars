@@ -2,7 +2,7 @@ const Feed = () => {
   return (
     <section className='flex flex-col overflow-y-scroll p-4'>
       <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
-        <h4>Mischa</h4>
+        <h4>Aquemini420</h4>
         <p>celebrating my 33rd journey around the Sun!</p>
         <section>
           <button className='mr-2 rounded-tr-md rounded-br-md rounded-bl-md border-2 border-primary-400 px-2 py-1 text-sm'>
@@ -13,7 +13,7 @@ const Feed = () => {
           </button>
         </section>
       </article>
-      <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
+      {/* <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Ari</h4>
         <p>I feel best during air sign seasons!</p>
         <aside className='mb-2 flex flex-wrap'>
@@ -31,9 +31,9 @@ const Feed = () => {
             Comment
           </button>
         </section>
-      </article>
+      </article> */}
       <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
-        <h4>Cecilia</h4>
+        <h4>dood69</h4>
         <p>Been so tired lately 🥱, just want to stay home</p>
         <aside className='mb-2 flex flex-wrap'>
           <p className='mx-2 flex flex-col rounded-tr-lg border-2 border-primary-700 p-2'>
@@ -51,7 +51,7 @@ const Feed = () => {
           </button>
         </section>
       </article>
-      <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
+      {/* <article className='mb-4 rounded-tr-lg border-2 border-primary-700 p-4'>
         <h4>Felipe</h4>
         <p>Someone kiss me!😜</p>
         <aside className='mb-2 flex flex-wrap'>
@@ -74,7 +74,7 @@ const Feed = () => {
             Comment
           </button>
         </section>
-      </article>
+      </article> */}
     </section>
   );
 };
