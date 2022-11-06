@@ -1,9 +1,13 @@
 import { useRef, useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { getNatalData } from '../features/chartSlice';
+
 import FormInput from './FormInput';
 import { timezones } from '../util/timezones';
 import { Autocomplete } from '@react-google-maps/api';
 
 const NatalForm = () => {
+  const dispatch = useDispatch();
   const form = useRef();
   const [values, setValues] = useState({
     name: '',
@@ -52,6 +56,7 @@ const NatalForm = () => {
       timezone,
     };
     console.log(formData);
+    dispatch(getNatalData(formData));
   };
 
   const tzoneValid = timezones.indexOf(values.timezone) !== -1;
