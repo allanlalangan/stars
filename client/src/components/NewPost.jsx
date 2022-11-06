@@ -12,7 +12,7 @@ const NewPost = () => {
           className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
         >
           <input type='radio' name='type' id='text' className='peer hidden' />
-          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
             Text
           </span>
         </label>
@@ -22,7 +22,7 @@ const NewPost = () => {
           className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
         >
           <input type='radio' name='type' id='card' className='peer hidden' />
-          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
             Natal Chart
           </span>
         </label>
@@ -37,7 +37,7 @@ const NewPost = () => {
             id='transit'
             className='peer hidden'
           />
-          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
             The Moon
           </span>
         </label>
@@ -47,7 +47,7 @@ const NewPost = () => {
           className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
         >
           <input type='radio' name='type' id='today' className='peer hidden' />
-          <span className='flex w-full justify-center border border-slate-300 p-2 hover:border-primary-500 peer-checked:bg-primary-500 peer-checked:text-slate-50'>
+          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
             The Planets Today
           </span>
         </label>
