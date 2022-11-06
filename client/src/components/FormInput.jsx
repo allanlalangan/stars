@@ -11,8 +11,15 @@ const FormInput = ({
   required,
 }) => {
   return (
-    <fieldset className='relative mb-2 flex flex-col'>
-      <label htmlFor={name} className='w-1/2'>
+    <fieldset
+      className={`${
+        name === 'birth_date' || name === 'birth_time' ? 'w-1/2 ' : ''
+      }relative mb-2 flex flex-col`}
+    >
+      <label
+        htmlFor={name}
+        className='w-full font-heading text-sm font-semibold'
+      >
         {label}
       </label>
       <input
@@ -23,14 +30,18 @@ const FormInput = ({
         value={value}
         pattern={pattern}
         placeholder={placeholder}
-        className='input my-2 w-full p-2'
+        className={`input ${
+          (name === 'birth_date' && 'mr-1') ||
+          (name === 'birth_time' && 'ml-1') ||
+          'mb-2'
+        } border border-primary-800 p-2`}
         required={required}
       />
-      {errorMessage && (
+      {/* {errorMessage && (
         <span className='text-xs font-medium tracking-wide text-slate-500'>
           {errorMessage}
         </span>
-      )}
+      )} */}
     </fieldset>
   );
 };

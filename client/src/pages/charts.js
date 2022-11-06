@@ -1,30 +1,50 @@
 import { Link } from 'react-router-dom';
-
-const ChartsPage = () => {
+import NatalForm from '../components/NatalForm';
+const ChartsPage = ({ isLoaded }) => {
   return (
-    <article>
+    <article className='flex flex-col sm:w-1/2'>
       <h3>Star Charts</h3>
-      <Link to='/generate-chart'>
-        <button className='mr-2 mt-1 flex cursor-pointer items-center bg-slate-700 p-2 text-lg tracking-wide text-slate-50'>
-          Generate Natal Chart
-        </button>
-      </Link>
-      <section className='flex w-full'>
-        <article className='w-2/3'>
-          <h4>Your Chart</h4>
-          <h5>Chart</h5>
-        </article>
-        <aside className='w-1/3'>
-          <ul>
-            <h4>Saved Charts</h4>
-            <li>
-              <h5>Chart</h5>
-            </li>
-            <li>
-              <h5>Chart</h5>
-            </li>
-          </ul>
-        </aside>
+      {isLoaded && <NatalForm />}
+      <section className='flex w-full flex-col'>
+        <h5>Saved Charts</h5>
+        <ul className='flex h-1/2 flex-col p-4 px-8 sm:h-80 sm:overflow-scroll md:h-96'>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+            <p>Name</p>
+          </li>
+        </ul>
       </section>
     </article>
   );

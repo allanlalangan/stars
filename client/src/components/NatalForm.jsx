@@ -69,8 +69,9 @@ const NatalForm = () => {
     <form
       ref={form}
       onSubmit={handleSubmit}
-      className='m-auto flex flex-col p-4 md:w-1/2'
+      className='right-0 top-0 flex h-full flex-col bg-slate-100 p-4 sm:absolute sm:z-20 sm:h-full sm:w-1/2 sm:overflow-y-scroll'
     >
+      <h4>Generate Natal Chart</h4>
       <FormInput
         onChange={handleValueChange}
         label='Name'
@@ -82,28 +83,33 @@ const NatalForm = () => {
         errorMessage='Enter a name'
         required
       />
-      <FormInput
-        onChange={handleValueChange}
-        label='Date of Birth'
-        type='date'
-        name='birth_date'
-        id='birth_date'
-        value={values.birth_date}
-        placeholder=''
-        errorMessage='Enter your Date of Birth'
-        required
-      />
-      <FormInput
-        onChange={handleValueChange}
-        label='Time of Birth (Optional)'
-        type='time'
-        name='birth_time'
-        value={values.birth_time}
-        placeholder=''
-        errorMessage='Optional: Enter your Time of Birth'
-      />
+      <article className='flex w-full'>
+        <FormInput
+          onChange={handleValueChange}
+          label='Date of Birth'
+          type='date'
+          name='birth_date'
+          id='birth_date'
+          value={values.birth_date}
+          placeholder=''
+          errorMessage='Enter your Date of Birth'
+          required
+        />
+        <FormInput
+          onChange={handleValueChange}
+          label='Time of Birth'
+          type='time'
+          name='birth_time'
+          value={values.birth_time}
+          placeholder=''
+          errorMessage='Optional: Enter your Time of Birth'
+        />
+      </article>
       <fieldset className='relative mb-2 flex flex-col'>
-        <label htmlFor='birth_place' className='w-1/2'>
+        <label
+          htmlFor='birth_place'
+          className='w-full font-heading text-sm font-semibold'
+        >
           Place of Birth
         </label>
         <Autocomplete onLoad={onLoad} onPlaceChanged={onPlaceChanged}>
@@ -116,26 +122,31 @@ const NatalForm = () => {
             }
             id='birth_place'
             placeholder='Place of Birth'
-            className='input my-2 w-full p-2'
+            className='input mb-2 w-full border border-primary-800 p-2'
             required
             pattern={birthPlace ? `${birthPlace}` : ''}
           />
         </Autocomplete>
-        {birthPlace !== values.birth_place && (
+        {/* {birthPlace !== values.birth_place && (
           <span className='text-xs font-medium tracking-wide text-slate-500'>
             Please select a location with valid coordinates
           </span>
-        )}
+        )} */}
       </fieldset>
 
       <fieldset className='relative mb-2 flex flex-col'>
-        <label htmlFor='timezone'>Timezone</label>
+        <label
+          htmlFor='timezone'
+          className='w-full font-heading text-sm font-semibold'
+        >
+          Timezone
+        </label>
         <input
           onChange={handleValueChange}
           list='timezones'
           id='timezone'
           name='timezone'
-          className='my-2 w-full p-2'
+          className='mb-2 w-full border border-primary-800 p-2'
           placeholder='Birth Place Timezone'
           pattern={
             tzoneValid ? `${timezones[timezones.indexOf(values.timezone)]}` : ''
@@ -150,7 +161,7 @@ const NatalForm = () => {
             </option>
           ))}
         </datalist>
-        {!tzoneValid && (
+        {/* {!tzoneValid && (
           <span className='text-xs font-medium tracking-wide text-slate-500'>
             {timezones.indexOf(values.timezone) === -1
               ? 'Please select a valid timezone'
@@ -158,11 +169,11 @@ const NatalForm = () => {
                   timezones[timezones.indexOf(values.timezone)]
                 } is valid option`}
           </span>
-        )}
+        )} */}
       </fieldset>
       <button
         type='submit'
-        className='border border-indigo-200 p-4 font-heading uppercase transition hover:bg-indigo-200'
+        className='bg-slate-700 p-4 font-heading uppercase tracking-wider text-slate-50 transition hover:bg-primary-700 hover:text-secondary-200'
       >
         Submit
       </button>

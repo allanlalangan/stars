@@ -77,7 +77,10 @@ const App = () => {
               path='/altar'
               element={user ? <AltarPage /> : <Navigate to='/login' />}
             >
-              <Route path='charts' element={<ChartsPage />} />
+              <Route
+                path='charts'
+                element={<ChartsPage isLoaded={isLoaded} />}
+              />
             </Route>
           </Routes>
         </main>
