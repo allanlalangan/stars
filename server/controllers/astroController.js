@@ -1,8 +1,4 @@
-const User = require('../models/User');
 const Chart = require('../models/Chart');
-const Planet = require('../models/Planet');
-const House = require('../models/House');
-const LunarPhase = require('../models/LunarPhase');
 const axios = require('axios');
 
 const getToday = async (req, res) => {
@@ -37,14 +33,14 @@ const getNatalData = async (req, res) => {
   };
 
   try {
-    const resp = await axios.post(
-      'https://astrologer.p.rapidapi.com/api/v2/birth-data',
+    const { data } = await axios.post(
+      'https://astrologer.p.rapidapi.com/api/v2/birth-chart',
       req.body,
       options
     );
-    // console.log(resp.data.data);
-    console.log(req.user);
-    res.status(201).json(resp.data.data);
+    const chartData = await Chart.createChart(data, req);
+
+    res.status(201).json(chartData);
   } catch (error) {
     console.log(error);
   }
