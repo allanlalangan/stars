@@ -21,6 +21,11 @@ const getToday = async (req, res) => {
   }
 };
 
+const getCharts = async (req, res) => {
+  const charts = await Chart.find({ user: req.user.id });
+  await res.status(200).json(charts);
+};
+
 const getNatalData = async (req, res) => {
   const options = {
     method: 'POST',
@@ -46,4 +51,4 @@ const getNatalData = async (req, res) => {
   }
 };
 
-module.exports = { getNatalData, getToday };
+module.exports = { getNatalData, getToday, getCharts };
