@@ -13,6 +13,7 @@ const NatalForm = () => {
     name: '',
     birth_date: '',
     birth_time: '',
+    birth_place: '',
     timezone: '',
   });
   const [coordinates, setCoordinates] = useState(null);
@@ -57,6 +58,14 @@ const NatalForm = () => {
     };
     console.log(formData);
     dispatch(getNatalData(formData));
+    setValues({
+      name: '',
+      birth_date: '',
+      birth_time: '',
+      birth_place: '',
+      timezone: '',
+    });
+    setBirthPlace('');
   };
 
   const tzoneValid = timezones.indexOf(values.timezone) !== -1;
@@ -143,6 +152,7 @@ const NatalForm = () => {
         </label>
         <input
           onChange={handleValueChange}
+          value={values.timezone}
           list='timezones'
           id='timezone'
           name='timezone'
