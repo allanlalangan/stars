@@ -3,12 +3,36 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   data: null,
-  chart: null,
+  charts: [],
   isLoading: false,
   isError: false,
   isSuccess: false,
   message: '',
 };
+
+const getCharts = createAsyncThunk('chart/getCharts', async (_, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const resp = await axios.get(
+      'http://localhost:5000/api/astro/charts',
+      config
+    );
+    return resp.data;
+  } catch (error) {
+    console.log('ERROR getCharts getCharts asyncThunk throw error');
+    // const message =
+    //   (error.resp && error.resp.data && error.resp.data.message) ||
+    //   error.message ||
+    //   error.toString()
+    return thunkAPI.rejectWithValue(error.toString());
+  }
+});
 
 const getNatalData = createAsyncThunk(
   'chart/getNatalData',
@@ -21,7 +45,7 @@ const getNatalData = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        'http://localhost:5000/api/astro/chart',
+        'http://localhost:5000/api/astro/charts',
         formData,
         config
       );
@@ -59,9 +83,24 @@ const chartSlice = createSlice({
         state.message = '';
         state.isLoading = false;
         state.isSuccess = true;
-        state.data = action.payload;
+        state.charts.push(action.payload);
       })
       .addCase(getNatalData.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
+      .addCase(getCharts.pending, (state) => {
+        state.isLoading = true;
+        state.message = 'Loading your charts';
+      })
+      .addCase(getCharts.fulfilled, (state, action) => {
+        state.message = '';
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.charts = action.payload;
+      })
+      .addCase(getCharts.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -71,4 +110,4 @@ const chartSlice = createSlice({
 
 export default chartSlice.reducer;
 export const { reset } = chartSlice.actions;
-export { getNatalData };
+export { getNatalData, getCharts };
