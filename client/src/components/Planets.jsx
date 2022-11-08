@@ -19,8 +19,8 @@ const Planets = () => {
   }, [user, dispatch]);
 
   return (
-    <section className='col-span-12 row-span-3 flex flex-col border-2 border-primary-800 lg:col-span-6'>
-      <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
+    <section className='col-span-12 row-span-3 flex flex-col rounded border-2 border-primary-800 lg:col-span-6'>
+      <h3 className='rounded-t-sm bg-slate-800 p-2 font-display text-secondary-200'>
         The Planets Today
       </h3>
 
@@ -31,7 +31,7 @@ const Planets = () => {
           </span>
         ) : (
           <>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm'>
               <div className=''>
                 <p className='font-heading'>{data.sun.name}</p>
                 <p className='font-heading'>{data.sun.position.toFixed(2)}°</p>
@@ -41,7 +41,7 @@ const Planets = () => {
                 {planets[data.sun.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm'>
               <div className=''>
                 <p className='font-heading'>{data.moon.name}</p>
                 <p className='font-heading'>{data.moon.position.toFixed(2)}°</p>
@@ -53,7 +53,7 @@ const Planets = () => {
                 {planets[data.moon.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-4'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-4'>
               <div className=''>
                 <p className='font-heading'>
                   {data.mercury.name}
@@ -72,7 +72,7 @@ const Planets = () => {
                 {planets[data.mercury.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-4'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-4'>
               <div className=''>
                 <p className='font-heading'>
                   {data.venus.name}
@@ -93,7 +93,7 @@ const Planets = () => {
                 {planets[data.venus.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-4'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-4'>
               <div className=''>
                 <p className='font-heading'>
                   {data.mars.name}
@@ -112,7 +112,7 @@ const Planets = () => {
                 {planets[data.mars.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-6'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-6'>
               <div className=''>
                 <p className='font-heading'>
                   {data.jupiter.name}
@@ -133,7 +133,7 @@ const Planets = () => {
                 {planets[data.jupiter.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-6'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-6'>
               <div className=''>
                 <p className='font-heading'>
                   {data.saturn.name}
@@ -154,7 +154,7 @@ const Planets = () => {
                 {planets[data.saturn.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-6'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-6'>
               <div className=''>
                 <p className='font-heading'>
                   {data.uranus.name}
@@ -175,7 +175,7 @@ const Planets = () => {
                 {planets[data.uranus.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-6'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-6'>
               <div className=''>
                 <p className='font-heading'>
                   {data.neptune.name}
@@ -196,7 +196,7 @@ const Planets = () => {
                 {planets[data.neptune.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-6'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-6'>
               <div className=''>
                 <p className='font-heading'>
                   {data.pluto.name}
@@ -217,7 +217,7 @@ const Planets = () => {
                 {planets[data.pluto.name.toLowerCase()].glyph}
               </p>
             </li>
-            <li className='col-span-12 flex items-center justify-between border border-slate-300 p-2 lg:col-span-6'>
+            <li className='col-span-12 flex items-center justify-between rounded border border-primary-200 p-2 shadow-sm lg:col-span-6'>
               <div className=''>
                 <p className='font-heading'>
                   North Node

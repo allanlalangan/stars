@@ -34,7 +34,7 @@ const FormInput = ({
           (name === 'birth_date' && 'mr-1') ||
           (name === 'birth_time' && 'ml-1') ||
           'mb-2'
-        } border border-primary-800 p-2`}
+        } rounded border border-primary-800 p-2`}
         required={required}
       />
       {/* {errorMessage && (

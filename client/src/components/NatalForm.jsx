@@ -156,7 +156,7 @@ const NatalForm = () => {
           list='timezones'
           id='timezone'
           name='timezone'
-          className='mb-2 w-full border border-primary-800 p-2'
+          className='mb-2 w-full rounded border border-primary-800 p-2'
           placeholder='Birth Place Timezone'
           pattern={
             tzoneValid ? `${timezones[timezones.indexOf(values.timezone)]}` : ''
@@ -183,7 +183,7 @@ const NatalForm = () => {
       </fieldset>
       <button
         type='submit'
-        className='bg-slate-700 p-4 font-heading uppercase tracking-wider text-slate-50 transition hover:bg-primary-700 hover:text-secondary-200'
+        className='rounded bg-slate-700 p-4 font-heading uppercase tracking-wider text-slate-50 shadow transition hover:bg-primary-700 hover:text-secondary-200 hover:shadow-primary-300'
       >
         Submit
       </button>
