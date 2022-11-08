@@ -10,7 +10,11 @@ const getPosts = async (req, res) => {
 
 const createPost = async (req, res) => {
   try {
-    await res.status(200).json({ message: 'Create Post Route' });
+    const post = await Post.createPost(req);
+    console.log(post);
+    await res
+      .status(201)
+      .json({ post, message: 'Post Successfully Published' });
   } catch (error) {
     await res.status(500).json({ message: error.message || error });
   }

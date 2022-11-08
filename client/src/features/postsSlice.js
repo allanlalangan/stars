@@ -11,7 +11,8 @@ const initialState = {
 
 const createPost = createAsyncThunk(
   'posts/createPost',
-  async (data, thunkAPI) => {
+  async (formData, thunkAPI) => {
+    console.log(formData);
     try {
       const token = thunkAPI.getState().auth.user.token;
       const config = {
@@ -21,9 +22,10 @@ const createPost = createAsyncThunk(
       };
       const resp = await axios.post(
         'http://localhost:5000/api/posts',
-        data,
+        formData,
         config
       );
+      console.log(resp.data);
       return resp.data;
     } catch (error) {
       console.log(error);
