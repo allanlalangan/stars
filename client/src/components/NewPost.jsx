@@ -1,71 +1,78 @@
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getCharts } from '../features/chartSlice';
+import FormInput from './FormInput';
 const NewPost = () => {
+  const [shareChart, setShareChart] = useState(false);
+  const dispatch = useDispatch();
+  const { charts } = useSelector((state) => state.chart);
   const handleSubmit = (e) => {
     e.preventDefault();
   };
+  useEffect(() => {
+    console.log(shareChart);
+  }, [shareChart]);
+  useEffect(() => {
+    dispatch(getCharts());
+  }, []);
+
+  const onRadioChange = (e) => {
+    setShareChart(e.target.checked);
+  };
   return (
-    <form onSubmit={handleSubmit} className='p-4'>
-      <h3 className='mb-2 text-lg'>What would you like to share?</h3>
-      <h4 className='mb-2 text-base'>Select a category</h4>
-      <fieldset className='mb-4 flex'>
-        <label
-          htmlFor='text'
-          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
-        >
-          <input type='radio' name='type' id='text' className='peer hidden' />
-          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold transition hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
-            Text
-          </span>
-        </label>
-
-        <label
-          htmlFor='card'
-          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
-        >
-          <input type='radio' name='type' id='card' className='peer hidden' />
-          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold transition hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
-            Natal Chart
-          </span>
-        </label>
-
-        <label
-          htmlFor='transit'
-          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
+    <form onSubmit={handleSubmit} className='p-4 shadow'>
+      <h3 className='font-display text-lg'>Share something</h3>
+      <FormInput label='Text' type='text' name='text' id='text' />
+      <fieldset className='mb-2 flex w-full items-center'>
+        <button
+          htmlFor='today'
+          className='mr-1 flex h-full w-full flex-col justify-between'
         >
           <input
-            type='radio'
-            name='type'
-            id='transit'
+            type='checkbox'
+            onChange={onRadioChange}
+            checked={shareChart}
+            name='category'
+            id='today'
             className='peer hidden'
           />
-          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold transition hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
-            The Moon
-          </span>
-        </label>
+          <label
+            htmlFor='today'
+            className='flex w-full justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
+          >
+            Share Natal Chart
+          </label>
+        </button>
 
-        <label
-          htmlFor='today'
-          className='mx-1 flex w-1/2 cursor-pointer flex-col justify-between'
+        {/* <fieldset className='mb-2 flex w-full flex-col items-start'> */}
+        {/* <label
+            htmlFor='chart'
+            className='cursor pointer w-full font-heading text-sm font-semibold'
+          >
+            Select Chart:
+          </label> */}
+        <select
+          name='chart'
+          id='chart'
+          disabled={!shareChart}
+          className='ml-1 flex h-[42px] w-full flex-col justify-center rounded border border-primary-700 bg-white p-2 disabled:border-slate-300 disabled:bg-slate-50 disabled:p-2 disabled:text-slate-300'
         >
-          <input type='radio' name='type' id='today' className='peer hidden' />
-          <span className='flex w-full justify-center border-2 border-slate-300 p-2 font-semibold transition hover:border-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-secondary-200'>
-            The Planets Today
-          </span>
-        </label>
+          {charts?.map((chart) => (
+            <option value=''>{`${chart.name}: ${new Date(
+              chart.year,
+              chart.month - 1,
+              chart.day,
+              chart.hour,
+              chart.minute,
+              0
+            ).toLocaleDateString()}`}</option>
+          ))}
+        </select>
+        {/* </fieldset> */}
       </fieldset>
-      <fieldset className='flex w-full items-center p-2'>
-        <label htmlFor='caption' className='mr-2'>
-          Note
-        </label>
-        <input
-          type='text'
-          name='caption'
-          id='caption'
-          placeholder='Write a note'
-          className='w-full border-2 border-primary-700 px-4 py-2'
-        />
-      </fieldset>
-      <button className='mt-4 border-2 border-primary-700 p-2 hover:bg-slate-100'>
-        Share
+
+      <button className='w-full rounded bg-slate-700 p-2 font-bold text-slate-50 shadow transition hover:bg-primary-700 hover:text-secondary-200 hover:shadow-primary-300'>
+        Create New Post
       </button>
     </form>
   );
