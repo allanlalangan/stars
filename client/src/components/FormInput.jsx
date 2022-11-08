@@ -14,7 +14,7 @@ const FormInput = ({
     <fieldset
       className={`${
         name === 'birth_date' || name === 'birth_time' ? 'w-1/2 ' : ''
-      }relative mb-2 flex flex-col`}
+      } relative mb-2 flex flex-col`}
     >
       <label
         htmlFor={name}
@@ -31,9 +31,7 @@ const FormInput = ({
         pattern={pattern}
         placeholder={placeholder}
         className={`input ${
-          (name === 'birth_date' && 'mr-1') ||
-          (name === 'birth_time' && 'ml-1') ||
-          'mb-2'
+          (name === 'birth_date' && 'mr-1') || (name === 'birth_time' && 'ml-1')
         } rounded border border-primary-800 p-2`}
         required={required}
       />

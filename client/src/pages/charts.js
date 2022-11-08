@@ -4,9 +4,8 @@ import SavedCharts from '../components/SavedCharts';
 const ChartsPage = ({ isLoaded }) => {
   return (
     <article className='flex flex-col sm:w-1/2'>
-      <h3>Star Charts</h3>
-      {isLoaded && <NatalForm />}
       <SavedCharts />
+      {isLoaded && <NatalForm />}
     </article>
   );
 };

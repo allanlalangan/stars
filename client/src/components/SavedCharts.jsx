@@ -21,9 +21,9 @@ const SavedCharts = () => {
   return (
     <section className='flex w-full flex-col'>
       <h5>Saved Charts</h5>
-      <ul className='flex h-1/2 flex-col p-4 px-8 sm:h-80 sm:overflow-scroll md:h-96'>
+      <ul className='flex h-1/2 flex-col sm:h-80 sm:overflow-scroll md:h-96'>
         {charts?.map((chart) => (
-          <li className='my-2 cursor-pointer border border-slate-300 py-2 px-4'>
+          <li className='mb-2 cursor-pointer border border-slate-300 py-2 px-4'>
             <p>{chart.name}</p>
             <p>{`${getFullSignName(chart.planets.sun.sign)} ${
               chart.planets.sun.name
