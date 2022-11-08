@@ -1,11 +1,8 @@
 const Post = require('../models/Post');
 
 const getPosts = async (req, res) => {
-  try {
-    await res.status(200).json({ message: 'Get All Posts Route' });
-  } catch (error) {
-    await res.status(500).json({ message: error.message || error });
-  }
+  const posts = await Post.find();
+  await res.status(200).json(posts);
 };
 
 const createPost = async (req, res) => {
