@@ -38,7 +38,7 @@ const NewPost = () => {
           />
           <label
             htmlFor='today'
-            className='flex w-full justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
+            className='flex w-full cursor-pointer justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
           >
             Share Natal Chart
           </label>
