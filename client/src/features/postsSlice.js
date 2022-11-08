@@ -9,6 +9,25 @@ const initialState = {
   message: '',
 };
 
+const getPosts = createAsyncThunk('posts/getPosts', async (_, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    const config = {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    };
+    const resp = await axios.get('http://localhost:5000/api/posts', config);
+    console.log('resp data', resp.data);
+    return resp.data;
+  } catch (error) {
+    console.log(error);
+    const message =
+      error.response?.data?.message || error.message || error.toString();
+    return thunkAPI.rejectWithValue(message);
+  }
+});
+
 const createPost = createAsyncThunk(
   'posts/createPost',
   async (formData, thunkAPI) => {
@@ -46,6 +65,21 @@ const postsSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
+      .addCase(getPosts.pending, (state) => {
+        state.isLoading = true;
+        state.message = 'Fetching Posts';
+      })
+      .addCase(getPosts.fulfilled, (state, action) => {
+        state.message = 'Fetch Successful';
+        state.posts = action.payload;
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(getPosts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(createPost.pending, (state) => {
         state.isLoading = true;
         state.message = 'Creating Post';
@@ -65,4 +99,4 @@ const postsSlice = createSlice({
 });
 
 export default postsSlice.reducer;
-export { createPost };
+export { getPosts, createPost };
