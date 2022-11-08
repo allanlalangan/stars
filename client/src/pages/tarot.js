@@ -2,11 +2,12 @@ import tarot from '../util/tarot';
 
 const TarotPage = () => {
   return (
-    <article className='flex flex-wrap overflow-y-scroll'>
+    <article className='flex flex-wrap items-center justify-around overflow-y-scroll'>
       {tarot?.map((card) => (
-        <button className='m-2 flex h-32 w-24 items-center justify-center border-2 p-2'>
-          <p className='text-center'>{card.name}</p>
-        </button>
+        <li className='mb-2 flex flex-col items-center justify-center'>
+          <button className='mx-2 flex h-32 w-24 items-center justify-center rounded border border-primary-200 p-2 shadow transition hover:shadow-md active:shadow-sm'></button>
+          <p className='p-2 text-center text-sm'>{card.name}</p>
+        </li>
       ))}
     </article>
   );
