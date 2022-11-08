@@ -5,6 +5,7 @@ const User = require('./User');
 const PostSchema = Schema(
   {
     user: { type: Schema.Types.ObjectId, ref: 'User', required: true },
+    userDetails: { type: Object, required: true },
     // chart: { type: Schema.Types.ObjectId, ref: 'Chart', default: null },
     chart: { type: Object, default: null },
     body: { type: String, max: 200 },
@@ -19,9 +20,11 @@ const PostSchema = Schema(
 
 PostSchema.statics.createPost = async function (req) {
   let post;
+  const user = await User.findById(req.user.id).select('-password');
   if (!req.body.chart) {
     post = await this.create({
       user: req.user.id,
+      userDetails: { name: user.username, natalChart: user.natalChart },
       body: req.body.text,
     });
   } else {
@@ -42,6 +45,7 @@ PostSchema.statics.createPost = async function (req) {
 
     post = await this.create({
       user: req.user.id,
+      userDetails: { name: user.username, natalChart: user.natalChart },
       chart: postChart,
       body: req.body.text,
     });

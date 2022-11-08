@@ -17,7 +17,7 @@ const UserSchema = Schema(
     password: {
       type: String,
     },
-    natalChart: { type: Schema.Types.ObjectId, ref: 'Chart' },
+    natalChart: { type: Schema.Types.ObjectId, ref: 'Chart', default: null },
   },
   { timestamps: true }
 );
