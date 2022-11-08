@@ -1,18 +1,25 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const AltarPage = () => {
   return (
     <section className='relative flex h-full flex-col overflow-scroll p-4 md:w-3/4'>
-      <h2 className='mb-4 font-display'>Altar</h2>
+      <Link to=''>
+        <h2 className='mb-2 font-display'>Altar</h2>
+      </Link>
       <nav className='flex w-1/2'>
-        <button className='mr-2 mt-1 flex cursor-pointer items-center bg-slate-700 p-2 text-lg tracking-wide text-slate-50'>
+        <button className='mr-2 flex cursor-pointer items-center border-b-2 border-slate-200 font-heading text-lg font-semibold tracking-wide transition hover:border-primary-700 hover:text-primary-700'>
           Meditations
         </button>
-        <Link to='charts'>
-          <button className='mr-2 mt-1 flex cursor-pointer items-center bg-slate-700 p-2 text-lg tracking-wide text-slate-50'>
-            Charts
-          </button>
-        </Link>
+        <NavLink
+          to='charts'
+          className={({ isActive }) =>
+            `mr-2 flex cursor-pointer items-center border-b-2 font-heading text-lg font-semibold tracking-wide transition hover:border-primary-700 hover:text-primary-700 ${
+              isActive ? 'border-slate-700' : 'border-slate-200'
+            }`
+          }
+        >
+          Charts
+        </NavLink>
       </nav>
       <Outlet />
     </section>

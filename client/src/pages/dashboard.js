@@ -10,8 +10,8 @@ const DashboardPage = () => {
   const { data } = useSelector((state) => state.today);
 
   return (
-    <section className='overflow-scroll p-4 md:w-3/4'>
-      <h2 className='mb-4 font-display'>
+    <section className='overflow-y-scroll p-4 md:w-3/4'>
+      <h2 className='mb-2 font-display'>
         Hello {user?.firstName || user.username}
       </h2>
       <article className='grid grid-cols-12 grid-rows-3 gap-4'>
@@ -34,7 +34,7 @@ const DashboardPage = () => {
                   It appears you haven't generated your birth chart
                 </span>
                 <Link to='/altar/charts'>
-                  <button className='mr-2 mt-1 flex cursor-pointer items-center border border-slate-700 p-2 text-sm tracking-wide'>
+                  <button className='mr-2 mt-1 flex items-center rounded border border-slate-700 p-2 text-sm tracking-wide shadow hover:bg-slate-100'>
                     Generate Natal Chart
                   </button>
                 </Link>
@@ -46,7 +46,7 @@ const DashboardPage = () => {
           <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
             The Moon
           </h3>
-          <article className='flex h-full w-full flex-col justify-center'>
+          <article className='flex h-full w-full flex-col justify-center bg-slate-700 text-slate-50'>
             <section className='h-fullp-2 m-4'>
               <div>
                 <h4 className='border-b border-slate-300 text-base'>
