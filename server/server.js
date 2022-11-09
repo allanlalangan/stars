@@ -7,7 +7,14 @@ const app = express();
 
 connectDB();
 
-app.use(cors());
+// app.use(cors());
+app.use(
+  cors({
+    origin: 'https://iridescent-syrniki-e6cda5.netlify.app',
+    methods: 'GET,POST,PUT,DELETE',
+    credentials: true,
+  })
+);
 const PORT = process.env.PORT;
 
 // Body Parser Middleware
