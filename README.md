@@ -8,13 +8,15 @@ A social platform in the making. Observe astrological positions of the moon and 
 
 ## Features
 
-- Registered users can create, edit, and delete journal entries
+- Registered users can create, like, and delete posts
 - Fetches astrological data and current positions of the planets
-- Users can generate astrology birth charts
+- Users can create and save astrology charts and share them as posts
 
 ---
 
-## Demo in the works...
+## Demo
+
+https://stars-astro.netlify.app
 
 ### How To Use
 
@@ -27,13 +29,16 @@ A social platform in the making. Observe astrological positions of the moon and 
 - User is redirected to dashboard, which fetches and displays current planet positions, and moon phase
 - Users can navigate to different protected pages/routes from Sidebar navigation
 - On the Altar page, users can generate and view birth charts
+- Users can publish posts to the feed for all users to see
+- Birth chart data can be attached and shared
 - Users can learn about the Tarot and Astrology on the Reference page
 
 ---
 
 ## Optimization
 
-- Currently implementing post functionality that allows users to post their birth chart, which can be viewed with all other posts in a feed
+- Currently implementing feature to enable users to set their default birth chart
+- Implement different post reactions
 - (Implement Google Identity Services with Google OAuth2.0)
 - (Add multiple post types/topics/categories)
 - (Add guided meditations)
