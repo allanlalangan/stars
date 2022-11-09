@@ -17,7 +17,7 @@ const Post = ({ post }) => {
         {user.id === post.user && (
           <button
             onClick={handleDelete}
-            className='flex items-center rounded border border-primary-400 p-2'
+            className='flex items-center rounded border border-primary-300 p-2 transition hover:border-primary-700 hover:bg-slate-100'
           >
             <span className='text-xs font-semibold text-red-400'>
               Delete Post
