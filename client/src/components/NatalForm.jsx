@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { getNatalData } from '../features/chartSlice';
+import { createChart } from '../features/chartSlice';
 
 import FormInput from './FormInput';
 import { timezones } from '../util/timezones';
@@ -57,7 +57,7 @@ const NatalForm = () => {
       timezone,
     };
     console.log(formData);
-    dispatch(getNatalData(formData));
+    dispatch(createChart(formData));
     setValues({
       name: '',
       birth_date: '',

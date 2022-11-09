@@ -20,8 +20,8 @@ const getCharts = createAsyncThunk('chart/getCharts', async (_, thunkAPI) => {
     };
 
     const resp = await axios.get(
-      'http://localhost:5000/api/astro/charts',
-      // 'https://stars-production-0f42.up.railway.app/api/astro/charts',
+      // 'http://localhost:5000/api/astro/charts',
+      'https://stars-production-0f42.up.railway.app/api/astro/charts',
       config
     );
     return resp.data;
@@ -35,8 +35,8 @@ const getCharts = createAsyncThunk('chart/getCharts', async (_, thunkAPI) => {
   }
 });
 
-const getNatalData = createAsyncThunk(
-  'chart/getNatalData',
+const createChart = createAsyncThunk(
+  'chart/createChart',
   async (formData, thunkAPI) => {
     try {
       const token = thunkAPI.getState().auth.user.token;
@@ -46,8 +46,8 @@ const getNatalData = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        'http://localhost:5000/api/astro/charts',
-        // 'https://stars-production-0f42.up.railway.app/api/astro/charts',
+        // 'http://localhost:5000/api/astro/charts',
+        'https://stars-production-0f42.up.railway.app/api/astro/charts',
         formData,
         config
       );
@@ -74,8 +74,8 @@ const deleteChart = createAsyncThunk(
       };
 
       const resp = await axios.delete(
-        `http://localhost:5000/api/astro/charts/${id}`,
-        // `https://stars-production-0f42.up.railway.app/api/astro/charts/${id}`,
+        // `http://localhost:5000/api/astro/charts/${id}`,
+        `https://stars-production-0f42.up.railway.app/api/astro/charts/${id}`,
         config
       );
 
@@ -101,17 +101,17 @@ const chartSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getNatalData.pending, (state) => {
+      .addCase(createChart.pending, (state) => {
         state.isLoading = true;
         state.message = 'Getting natal placements...';
       })
-      .addCase(getNatalData.fulfilled, (state, action) => {
+      .addCase(createChart.fulfilled, (state, action) => {
         state.message = '';
         state.isLoading = false;
         state.isSuccess = true;
         state.charts.push(action.payload);
       })
-      .addCase(getNatalData.rejected, (state, action) => {
+      .addCase(createChart.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
@@ -151,4 +151,4 @@ const chartSlice = createSlice({
 
 export default chartSlice.reducer;
 export const { reset } = chartSlice.actions;
-export { getNatalData, getCharts, deleteChart };
+export { createChart, getCharts, deleteChart };

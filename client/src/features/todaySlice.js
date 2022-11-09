@@ -22,8 +22,8 @@ const getCurrentPlanets = createAsyncThunk(
       const {
         data: { data },
       } = await axios.get(
-        'http://localhost:5000/api/astro/charts/today',
-        // 'https://stars-production-0f42.up.railway.app/api/astro/charts/today',
+        // 'http://localhost:5000/api/astro/charts/today',
+        'https://stars-production-0f42.up.railway.app/api/astro/charts/today',
         config
       );
       console.log(data);
