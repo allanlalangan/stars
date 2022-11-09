@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const AltarPage = () => {
   return (
-    <section className='relative flex h-full w-full flex-col p-4'>
+    <section className='relative flex h-full w-full flex-col overflow-y-scroll p-4'>
       <Link to=''>
         <h2 className='mb-2 font-display'>Altar</h2>
       </Link>

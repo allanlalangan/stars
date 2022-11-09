@@ -34,7 +34,7 @@ const DashboardPage = () => {
                   It appears you haven't generated your birth chart
                 </span>
                 <Link to='/altar/charts'>
-                  <button className='mr-2 mt-1 flex items-center rounded border border-slate-700 p-2 text-sm tracking-wide shadow hover:bg-slate-100'>
+                  <button className='m-2 flex items-center rounded border border-slate-700 p-2 text-sm tracking-wide shadow hover:bg-slate-100'>
                     Generate Natal Chart
                   </button>
                 </Link>
