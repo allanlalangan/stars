@@ -28,9 +28,12 @@ const Register = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='m-auto mt-4 flex flex-col border border-indigo-200 p-4 md:w-1/2'
+      className='m-auto mt-4 flex flex-col rounded border border-indigo-200 p-4 md:w-1/2'
     >
-      <button className='flex items-center justify-center bg-indigo-50 py-4 transition hover:bg-indigo-200'>
+      <button
+        disabled
+        className='flex items-center justify-center rounded bg-indigo-50 py-4 transition hover:bg-indigo-200'
+      >
         <FcGoogle className='mx-2 text-2xl' />
 
         <span className=''>Continue with Google</span>
@@ -54,7 +57,7 @@ const Register = () => {
       ))}
       <button
         type='submit'
-        className='bg-indigo-50 py-4 transition hover:bg-indigo-200'
+        className='rounded bg-indigo-50 py-4 transition hover:bg-indigo-200'
       >
         Create My Account
       </button>
