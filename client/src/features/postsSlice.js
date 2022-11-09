@@ -18,8 +18,12 @@ const getPosts = createAsyncThunk('posts/getPosts', async (_, thunkAPI) => {
       },
     };
     const resp = await axios.get('http://localhost:5000/api/posts', config);
-    console.log('resp data', resp.data);
-    return resp.data;
+
+    const sorted = resp.data.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+
+    return sorted;
   } catch (error) {
     console.log(error);
     const message =
@@ -55,6 +59,28 @@ const createPost = createAsyncThunk(
   }
 );
 
+const likePost = createAsyncThunk('posts/likePost', async (goal, thunkAPI) => {
+  try {
+    const token = thunkAPI.getState().auth.user.token;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    };
+
+    const resp = await axios.put(
+      `http://localhost:5000/api/goals/${goal.id}`,
+      // `https://projectme-srv.herokuapp.com/api/goals/${goal.id}`,
+      { complete: goal.complete },
+      config
+    );
+    console.log(resp.data);
+    return resp.data;
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.toString());
+  }
+});
+
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
@@ -86,7 +112,7 @@ const postsSlice = createSlice({
       })
       .addCase(createPost.fulfilled, (state, action) => {
         state.message = 'New Post Added';
-        state.posts.push(action.payload);
+        state.posts.unshift(action.payload.post);
         state.isLoading = false;
         state.isSuccess = true;
       })
