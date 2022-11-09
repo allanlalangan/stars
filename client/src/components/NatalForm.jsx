@@ -131,7 +131,7 @@ const NatalForm = () => {
             }
             id='birth_place'
             placeholder='Place of Birth'
-            className='input mb-2 w-full rounded border border-primary-800 p-2'
+            className='input w-full rounded border border-primary-800 p-2'
             required
             pattern={birthPlace ? `${birthPlace}` : ''}
           />
@@ -150,9 +150,9 @@ const NatalForm = () => {
         >
           Timezone
         </label>
-        <input
+        {/* <input
           onChange={handleValueChange}
-          value={values.timezone}
+          // value={values.timezone}
           list='timezones'
           id='timezone'
           name='timezone'
@@ -162,15 +162,24 @@ const NatalForm = () => {
             tzoneValid ? `${timezones[timezones.indexOf(values.timezone)]}` : ''
           }
           required
-        />
+        /> */}
 
-        <datalist id='timezones'>
+        {/* <datalist id='timezones'> */}
+        <select
+          name='timezone'
+          id='timezone'
+          onChange={handleValueChange}
+          value={values.timezone}
+          className='h-full w-full rounded border border-primary-800 p-2'
+          required
+        >
           {timezones?.map((tzone, i) => (
             <option key={i} value={tzone}>
               {tzone}
             </option>
           ))}
-        </datalist>
+        </select>
+        {/* </datalist> */}
         {/* {!tzoneValid && (
           <span className='text-xs font-medium tracking-wide text-slate-500'>
             {timezones.indexOf(values.timezone) === -1
