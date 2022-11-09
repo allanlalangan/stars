@@ -54,19 +54,18 @@ const NewPost = () => {
       <fieldset className='mb-2 grid w-full grid-cols-4 items-center gap-2'>
         <button
           type='button'
-          htmlFor='today'
           className='col-span-2 flex h-full flex-col justify-between'
         >
           <input
             type='checkbox'
             onChange={onRadioChange}
             checked={shareChart}
-            name='category'
-            id='today'
+            name='shareChart'
+            id='shareChart'
             className='peer hidden'
           />
           <label
-            htmlFor='today'
+            htmlFor='shareChart'
             className='flex w-full cursor-pointer justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
           >
             Share Natal Chart

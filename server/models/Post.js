@@ -10,7 +10,7 @@ const PostSchema = Schema(
     chart: { type: Object, default: null },
     body: { type: String, max: 200 },
     likedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
-    reaction_LoveBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
+    reaction_PrayBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     reaction_FireBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     reaction_ApplaudBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
     reaction_SadBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],
@@ -28,10 +28,9 @@ PostSchema.statics.createPost = async function (req) {
       body: req.body.text,
     });
   } else {
-    const chart = await Chart.findById(req.body.chart);
+    const chart = await Chart.findById(req.body.chart).select('-chart_image');
     const postChart = {
       name: chart.name,
-      chart_image: chart.chart_image,
       day: chart.day,
       month: chart.month,
       year: chart.year,
