@@ -108,7 +108,7 @@ const deletePost = createAsyncThunk(
         config
       );
 
-      const sorted = resp.data.sort(
+      const sorted = resp.data.posts.sort(
         (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
       );
       return sorted;
@@ -179,7 +179,7 @@ const postsSlice = createSlice({
       })
       .addCase(deletePost.fulfilled, (state, action) => {
         state.message = 'Post Deleted';
-        state.posts = action.payload.posts;
+        state.posts = action.payload;
         state.isLoading = false;
         state.isSuccess = true;
       })

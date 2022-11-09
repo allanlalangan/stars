@@ -37,8 +37,8 @@ const App = () => {
         {user && <Sidebar />}
         <main
           className={`${
-            !user ? 'h-main ' : 'h-[80%]'
-          } absolute top-[10%] z-0 flex w-full flex-col md:left-[25vw] md:h-main md:w-3/4 md:flex-row`}
+            !user ? 'h-main w-full' : 'h-[80%] md:left-[25vw] md:w-3/4'
+          } absolute top-[10%] z-0 flex w-full flex-col md:h-main md:flex-row`}
         >
           <Routes>
             <Route

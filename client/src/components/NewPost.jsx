@@ -19,6 +19,8 @@ const NewPost = () => {
       chart: selectedChart?._id || null,
     };
     dispatch(createPost(formData));
+    setInputValue('');
+    setShareChart(false);
   };
   useEffect(() => {
     dispatch(getCharts());
@@ -50,6 +52,7 @@ const NewPost = () => {
       <h2 className='font-display'>Star Feed</h2>
       <FormInput
         onChange={handleInputChange}
+        value={inputValue}
         label='Share something'
         placeholder='Write a note'
         type='text'
