@@ -7,14 +7,14 @@ const app = express();
 
 connectDB();
 
-// app.use(cors());
-app.use(
-  cors({
-    origin: 'https://stars-astro.netlify.app',
-    methods: 'GET,POST,PUT,DELETE',
-    credentials: true,
-  })
-);
+app.use(cors());
+// app.use(
+//   cors({
+//     origin: 'https://stars-astro.netlify.app',
+//     methods: 'GET,POST,PUT,DELETE',
+//     credentials: true,
+//   })
+// );
 const PORT = process.env.PORT;
 
 // Body Parser Middleware
