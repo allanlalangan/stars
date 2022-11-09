@@ -89,6 +89,14 @@ const Post = ({ post }) => {
             id={`like ${post._id}`}
             className='peer hidden'
           />
+          {post.likedBy.length === 1 && (
+            <span className='w-full'>Someone liked this</span>
+          )}
+          {post.likedBy.length > 1 && (
+            <span className='w-full'>
+              {post.likedBy.length} people liked this
+            </span>
+          )}
           <label
             htmlFor={`like ${post._id}`}
             className='flex cursor-pointer justify-center rounded border border-primary-300 p-2 font-semibold shadow transition hover:border-primary-700 hover:bg-slate-100 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-primary-700 peer-checked:text-slate-50'
