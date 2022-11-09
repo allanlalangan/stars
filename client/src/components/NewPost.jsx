@@ -47,10 +47,11 @@ const NewPost = () => {
       onSubmit={handleSubmit}
       className='z-10 border-b border-slate-200 p-4 shadow-sm'
     >
-      <h3 className='font-display text-lg'>Share something</h3>
+      <h2 className='font-display'>Star Feed</h2>
       <FormInput
         onChange={handleInputChange}
-        label='Text'
+        label='Share something'
+        placeholder='Write a note'
         type='text'
         name='text'
         id='text'

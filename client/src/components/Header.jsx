@@ -10,7 +10,6 @@ const Header = () => {
   const redirect = useNavigate();
   const { user } = useSelector((state) => state.auth);
   const handleLogout = () => {
-    console.log('handle logout');
     dispatch(logout());
     dispatch(reset());
     dispatch(clearTodayData());
@@ -64,7 +63,7 @@ const Header = () => {
             >
               Logout
             </button>
-            <Link to='/'>
+            {/* <Link to='/'>
               <button className='mx-2 transition hover:text-slate-100'>
                 <HiMenuAlt2 />
               </button>
@@ -73,7 +72,7 @@ const Header = () => {
               <button className='mx-2 transition hover:text-slate-100'>
                 <HiCog />
               </button>
-            </Link>
+            </Link> */}
           </>
         )}
       </nav>

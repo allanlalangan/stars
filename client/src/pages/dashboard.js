@@ -23,7 +23,7 @@ const DashboardPage = () => {
           </section>
         )}
 
-        <section className='col-span-6 flex flex-col border-2 border-primary-800 lg:row-span-2'>
+        <section className='col-span-6 flex flex-col rounded border-2 border-primary-800 lg:row-span-2'>
           <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
             Your Chart
           </h3>
@@ -42,7 +42,7 @@ const DashboardPage = () => {
             </article>
           </section>
         </section>
-        <section className='col-span-6 flex flex-col border-2 border-primary-800 lg:row-span-1'>
+        <section className='col-span-6 flex flex-col rounded border-2 border-primary-800 lg:row-span-1'>
           <h3 className='bg-slate-800 p-2 font-display text-secondary-200'>
             The Moon
           </h3>
