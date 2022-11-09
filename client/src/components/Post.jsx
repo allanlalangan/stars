@@ -7,14 +7,12 @@ const Post = ({ post }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const liked = post.likedBy.includes(user.id);
-  console.log(`${post._id} liked ${liked}`);
 
   const handleDelete = (e) => {
     dispatch(deletePost(post._id));
   };
 
   const handleLike = (e) => {
-    console.log(e.target.checked);
     dispatch(likePost({ checked: e.target.checked, id: post._id }));
   };
   return (

@@ -26,7 +26,6 @@ const getCurrentPlanets = createAsyncThunk(
         'https://stars-production-0f42.up.railway.app/api/astro/charts/today',
         config
       );
-      console.log(data);
       return data;
     } catch (error) {
       console.log('Error getting current planets');

@@ -22,9 +22,6 @@ import { useLoadScript } from '@react-google-maps/api';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
-  useEffect(() => {
-    console.log(user);
-  }, [user]);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,

@@ -1,17 +1,13 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { reset } from '../features/authSlice';
 import { getCurrentPlanets } from '../features/todaySlice';
 import { getFullSignName } from '../util/utils';
-import { signs, planets } from '../util/astrology';
+import { planets } from '../util/astrology';
 
 const Planets = () => {
   const { data } = useSelector((state) => state.today);
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
   useEffect(() => {
     if (user && !data) {
       dispatch(getCurrentPlanets());
