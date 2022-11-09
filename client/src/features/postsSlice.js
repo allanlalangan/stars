@@ -17,7 +17,11 @@ const getPosts = createAsyncThunk('posts/getPosts', async (_, thunkAPI) => {
         authorization: `Bearer ${token}`,
       },
     };
-    const resp = await axios.get('http://localhost:5000/api/posts', config);
+    const resp = await axios.get(
+      // 'http://localhost:5000/api/posts',
+      'https://stars-production-0f42.up.railway.app/api/posts',
+      config
+    );
 
     const sorted = resp.data.sort(
       (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
@@ -44,7 +48,8 @@ const createPost = createAsyncThunk(
         },
       };
       const resp = await axios.post(
-        'http://localhost:5000/api/posts',
+        // 'http://localhost:5000/api/posts',
+        'https://stars-production-0f42.up.railway.app/api/posts',
         formData,
         config
       );
@@ -69,8 +74,9 @@ const likePost = createAsyncThunk('posts/likePost', async (goal, thunkAPI) => {
     };
 
     const resp = await axios.put(
-      `http://localhost:5000/api/goals/${goal.id}`,
-      // `https://projectme-srv.herokuapp.com/api/goals/${goal.id}`,
+      // `http://localhost:5000/api/goals/${goal.id}`,
+      `https://stars-production-0f42.up.railway.app/api/posts/${goal.id}`,
+
       { complete: goal.complete },
       config
     );
@@ -93,7 +99,8 @@ const deletePost = createAsyncThunk(
       };
 
       const resp = await axios.delete(
-        `http://localhost:5000/api/posts/${id}`,
+        // `http://localhost:5000/api/posts/${id}`,
+        `https://stars-production-0f42.up.railway.app/api/posts/${id}`,
         config
       );
 
