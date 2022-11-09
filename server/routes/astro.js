@@ -4,6 +4,7 @@ const {
   getNatalData,
   getToday,
   getCharts,
+  deleteChart,
 } = require('../controllers/astroController');
 const { protectRoute } = require('../middleware/auth');
 const router = express.Router();
@@ -11,5 +12,6 @@ const router = express.Router();
 router.get('/charts/today', protectRoute, getToday);
 router.get('/charts', protectRoute, getCharts);
 router.post('/charts', protectRoute, getNatalData);
+router.delete('/charts/:id', protectRoute, deleteChart);
 
 module.exports = router;

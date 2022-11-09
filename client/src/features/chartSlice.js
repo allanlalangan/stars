@@ -60,6 +60,29 @@ const getNatalData = createAsyncThunk(
   }
 );
 
+const deleteChart = createAsyncThunk(
+  'chart/deleteChart',
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const resp = await axios.delete(
+        `http://localhost:5000/api/astro/charts/${id}`,
+        config
+      );
+
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.toString());
+    }
+  }
+);
+
 const chartSlice = createSlice({
   name: 'today',
   initialState,
@@ -104,10 +127,25 @@ const chartSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(deleteChart.pending, (state) => {
+        state.isLoading = true;
+        state.message = 'Deleting chart...';
+      })
+      .addCase(deleteChart.fulfilled, (state, action) => {
+        state.message = '';
+        state.isLoading = false;
+        state.isSuccess = true;
+        state.charts = action.payload.charts;
+      })
+      .addCase(deleteChart.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
 
 export default chartSlice.reducer;
 export const { reset } = chartSlice.actions;
-export { getNatalData, getCharts };
+export { getNatalData, getCharts, deleteChart };

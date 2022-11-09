@@ -1,12 +1,22 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCharts, reset } from '../features/chartSlice';
+import { getCharts, reset, deleteChart } from '../features/chartSlice';
 import { getFullSignName } from '../util/utils';
 
 const SavedCharts = () => {
   const { user } = useSelector((state) => state.auth);
   const { charts } = useSelector((state) => state.chart);
   const dispatch = useDispatch();
+
+  const handleDeleteChart = (e, id) => {
+    console.log(id);
+    dispatch(deleteChart(id));
+  };
+
+  const handleSetDefaultChart = (e, id) => {
+    console.log(id);
+  };
+
   useEffect(() => {
     console.log(charts);
   }, [charts]);
@@ -40,10 +50,16 @@ const SavedCharts = () => {
               <button className='mb-1 rounded border border-primary-700 bg-slate-50 shadow hover:bg-slate-100'>
                 View Full Chart
               </button>
-              <button className='mb-1 rounded border border-primary-700 bg-slate-50 shadow hover:bg-slate-100'>
+              <button
+                onClick={(e) => handleSetDefaultChart(e, chart._id)}
+                className='mb-1 rounded border border-primary-700 bg-slate-50 shadow hover:bg-slate-100'
+              >
                 Set Default
               </button>
-              <button className='mb-1 rounded border border-primary-700 bg-slate-50 shadow hover:bg-slate-100'>
+              <button
+                onClick={(e) => handleDeleteChart(e, chart._id)}
+                className='mb-1 rounded border border-primary-700 bg-slate-50 shadow hover:bg-slate-100'
+              >
                 Delete
               </button>
             </section>
