@@ -18,6 +18,32 @@ const PostSchema = Schema(
   { timestamps: true }
 );
 
+PostSchema.statics.likePost = async function (req) {
+  const post = await this.findById(req.params.id);
+  const user = await User.findById(req.user.id);
+  let updatedLikes;
+  const liked = post.likedBy;
+  if (req.body.checked) {
+    console.log(`${user.id} liked ${req.body.id}`);
+    updatedLikes = [...liked, user.id];
+  } else if (!req.body.checked) {
+    console.log(`${user.id} unliked ${req.body.id}`);
+    updatedLikes = liked.filter((user) => user.toString() !== req.user.id);
+  }
+
+  const updatedPost = await this.findByIdAndUpdate(
+    req.params.id,
+    { likedBy: updatedLikes },
+    {
+      new: true,
+    }
+  );
+  const posts = await this.find();
+  console.log(posts);
+
+  return posts;
+};
+
 PostSchema.statics.createPost = async function (req) {
   let post;
   const user = await User.findById(req.user.id).select('-password');

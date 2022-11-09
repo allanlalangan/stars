@@ -18,8 +18,8 @@ const getPosts = createAsyncThunk('posts/getPosts', async (_, thunkAPI) => {
       },
     };
     const resp = await axios.get(
-      // 'http://localhost:5000/api/posts',
-      'https://stars-production-0f42.up.railway.app/api/posts',
+      'http://localhost:5000/api/posts',
+      // 'https://stars-production-0f42.up.railway.app/api/posts',
       config
     );
 
@@ -48,8 +48,8 @@ const createPost = createAsyncThunk(
         },
       };
       const resp = await axios.post(
-        // 'http://localhost:5000/api/posts',
-        'https://stars-production-0f42.up.railway.app/api/posts',
+        'http://localhost:5000/api/posts',
+        // 'https://stars-production-0f42.up.railway.app/api/posts',
         formData,
         config
       );
@@ -64,7 +64,7 @@ const createPost = createAsyncThunk(
   }
 );
 
-const likePost = createAsyncThunk('posts/likePost', async (goal, thunkAPI) => {
+const likePost = createAsyncThunk('posts/likePost', async (post, thunkAPI) => {
   try {
     const token = thunkAPI.getState().auth.user.token;
     const config = {
@@ -72,16 +72,20 @@ const likePost = createAsyncThunk('posts/likePost', async (goal, thunkAPI) => {
         Authorization: `Bearer ${token}`,
       },
     };
+    console.log(post);
 
     const resp = await axios.put(
-      // `http://localhost:5000/api/goals/${goal.id}`,
-      `https://stars-production-0f42.up.railway.app/api/posts/${goal.id}`,
+      `http://localhost:5000/api/posts/${post.id}`,
+      // `https://stars-production-0f42.up.railway.app/api/posts/${goal.id}`,
 
-      { complete: goal.complete },
+      post,
       config
     );
-    console.log(resp.data);
-    return resp.data;
+    const sorted = resp.data.sort(
+      (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+    );
+    return sorted;
+    // return resp.data;
   } catch (error) {
     return thunkAPI.rejectWithValue(error.toString());
   }
@@ -99,12 +103,15 @@ const deletePost = createAsyncThunk(
       };
 
       const resp = await axios.delete(
-        // `http://localhost:5000/api/posts/${id}`,
-        `https://stars-production-0f42.up.railway.app/api/posts/${id}`,
+        `http://localhost:5000/api/posts/${id}`,
+        // `https://stars-production-0f42.up.railway.app/api/posts/${id}`,
         config
       );
 
-      return resp.data;
+      const sorted = resp.data.sort(
+        (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
+      );
+      return sorted;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.toString());
     }
@@ -151,6 +158,21 @@ const postsSlice = createSlice({
         state.isError = true;
         state.message = action.payload;
       })
+      .addCase(likePost.pending, (state) => {
+        state.isLoading = true;
+        state.message = 'Creating Post';
+      })
+      .addCase(likePost.fulfilled, (state, action) => {
+        state.message = 'Post Liked!';
+        state.posts = action.payload;
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(likePost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
+      })
       .addCase(deletePost.pending, (state) => {
         state.isLoading = true;
         state.message = 'Deleting Post';
@@ -170,4 +192,4 @@ const postsSlice = createSlice({
 });
 
 export default postsSlice.reducer;
-export { getPosts, createPost, deletePost };
+export { getPosts, createPost, deletePost, likePost };

@@ -16,8 +16,8 @@ const register = createAsyncThunk(
   async (formData, thunkAPI) => {
     try {
       const response = await axios.post(
-        // 'http://localhost:5000/api/users',
-        'https://stars-production-0f42.up.railway.app/api/users',
+        'http://localhost:5000/api/users',
+        // 'https://stars-production-0f42.up.railway.app/api/users',
         formData
       );
       if (response.data) {
@@ -38,8 +38,8 @@ const register = createAsyncThunk(
 const login = createAsyncThunk('auth/login', async (formData, thunkAPI) => {
   try {
     const response = await axios.post(
-      // 'http://localhost:5000/api/users/login',
-      'https://stars-production-0f42.up.railway.app/api/users/login',
+      'http://localhost:5000/api/users/login',
+      // 'https://stars-production-0f42.up.railway.app/api/users/login',
       formData
     );
     if (response.data) {

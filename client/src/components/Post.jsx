@@ -1,14 +1,21 @@
 import { MdDeleteForever } from 'react-icons/md';
 import { useDispatch, useSelector } from 'react-redux';
-import { deletePost } from '../features/postsSlice';
+import { deletePost, likePost } from '../features/postsSlice';
 import { getFullSignName } from '../util/utils';
 
 const Post = ({ post }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const liked = post.likedBy.includes(user.id);
+  console.log(`${post._id} liked ${liked}`);
 
   const handleDelete = (e) => {
     dispatch(deletePost(post._id));
+  };
+
+  const handleLike = (e) => {
+    console.log(e.target.checked);
+    dispatch(likePost({ checked: e.target.checked, id: post._id }));
   };
   return (
     <article className='mb-4 rounded border border-primary-200 bg-slate-50 p-4 shadow-sm'>
@@ -75,6 +82,8 @@ const Post = ({ post }) => {
           className='my-2 w-full items-center text-sm tracking-wide'
         >
           <input
+            checked={liked}
+            onChange={handleLike}
             type='checkbox'
             name='reaction'
             id={`like ${post._id}`}

@@ -1,4 +1,5 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
 
 const getPosts = async (req, res) => {
   const posts = await Post.find();
@@ -40,12 +41,16 @@ const deletePost = async (req, res) => {
 };
 
 const likePost = async (req, res) => {
-  const post = await Post.findById(req.params.id);
-  console.log(post.body);
+  // const post = await Post.findById(req.params.id);
+  // const user = await User.findById(req.user.id);
+  // // console.log(post);
+  // // console.log(user.id);
+
   try {
-    await res.status(200).json({ message: 'Like Post Route' });
+    const posts = await Post.likePost(req);
+    res.status(200).json(posts);
   } catch (error) {
-    await res.status(500).json({ message: error.message || error });
+    res.status(500).json({ message: error.message || error });
   }
 };
 

@@ -20,8 +20,8 @@ const getCharts = createAsyncThunk('chart/getCharts', async (_, thunkAPI) => {
     };
 
     const resp = await axios.get(
-      // 'http://localhost:5000/api/astro/charts',
-      'https://stars-production-0f42.up.railway.app/api/astro/charts',
+      'http://localhost:5000/api/astro/charts',
+      // 'https://stars-production-0f42.up.railway.app/api/astro/charts',
       config
     );
     return resp.data;
@@ -46,8 +46,8 @@ const getNatalData = createAsyncThunk(
         },
       };
       const response = await axios.post(
-        // 'http://localhost:5000/api/astro/charts',
-        'https://stars-production-0f42.up.railway.app/api/astro/charts',
+        'http://localhost:5000/api/astro/charts',
+        // 'https://stars-production-0f42.up.railway.app/api/astro/charts',
         formData,
         config
       );
@@ -74,8 +74,8 @@ const deleteChart = createAsyncThunk(
       };
 
       const resp = await axios.delete(
-        // `http://localhost:5000/api/astro/charts/${id}`,
-        `https://stars-production-0f42.up.railway.app/api/astro/charts/${id}`,
+        `http://localhost:5000/api/astro/charts/${id}`,
+        // `https://stars-production-0f42.up.railway.app/api/astro/charts/${id}`,
         config
       );
 
