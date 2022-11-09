@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getCharts } from '../features/chartSlice';
 import FormInput from './FormInput';
 import { createPost } from '../features/postsSlice';
@@ -42,7 +43,10 @@ const NewPost = () => {
     setInputValue(e.target.value);
   };
   return (
-    <form onSubmit={handleSubmit} className='p-4 shadow'>
+    <form
+      onSubmit={handleSubmit}
+      className='z-10 border-b border-slate-200 p-4 shadow-sm'
+    >
       <h3 className='font-display text-lg'>Share something</h3>
       <FormInput
         onChange={handleInputChange}
@@ -52,25 +56,49 @@ const NewPost = () => {
         id='text'
       />
       <fieldset className='mb-2 grid w-full grid-cols-4 items-center gap-2'>
-        <button
-          type='button'
-          className='col-span-2 flex h-full flex-col justify-between'
-        >
-          <input
-            type='checkbox'
-            onChange={onRadioChange}
-            checked={shareChart}
-            name='shareChart'
-            id='shareChart'
-            className='peer hidden'
-          />
-          <label
-            htmlFor='shareChart'
-            className='flex w-full cursor-pointer justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
+        {charts?.length > 0 ? (
+          <button
+            type='button'
+            className='col-span-2 flex h-full flex-col justify-between'
           >
-            Share Natal Chart
-          </label>
-        </button>
+            <input
+              type='checkbox'
+              onChange={onRadioChange}
+              checked={shareChart}
+              name='shareChart'
+              id='shareChart'
+              className='peer hidden'
+            />
+            <label
+              htmlFor='shareChart'
+              className='flex w-full cursor-pointer justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
+            >
+              Share Natal Chart
+            </label>
+          </button>
+        ) : (
+          <button
+            type='button'
+            className='col-span-4 flex h-full flex-col justify-between'
+          >
+            <Link to='/altar/charts'>
+              <input
+                type='checkbox'
+                onChange={onRadioChange}
+                checked={shareChart}
+                name='shareChart'
+                id='shareChart'
+                className='peer hidden'
+              />
+              <label
+                htmlFor='shareChart'
+                className='flex w-full cursor-pointer justify-center rounded border border-slate-700 p-2 text-primary-400 transition hover:border-primary-700 hover:text-primary-700 peer-checked:border-transparent peer-checked:bg-slate-700 peer-checked:text-secondary-200'
+              >
+                You don't have charts. Click here to create a new one.
+              </label>
+            </Link>
+          </button>
+        )}
 
         {/* <fieldset className='mb-2 flex w-full flex-col items-start'> */}
         {/* <label
