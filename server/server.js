@@ -10,7 +10,7 @@ connectDB();
 // app.use(cors());
 app.use(
   cors({
-    origin: 'https://stars-astro.netlify.app/',
+    origin: 'https://stars-astro.netlify.app',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
