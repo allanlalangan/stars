@@ -10,7 +10,7 @@ connectDB();
 // app.use(cors());
 app.use(
   cors({
-    origin: 'https://iridescent-syrniki-e6cda5.netlify.app',
+    origin: 'https://stars-astro.netlify.app/',
     methods: 'GET,POST,PUT,DELETE',
     credentials: true,
   })
