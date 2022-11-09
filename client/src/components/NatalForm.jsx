@@ -136,11 +136,11 @@ const NatalForm = () => {
             pattern={birthPlace ? `${birthPlace}` : ''}
           />
         </Autocomplete>
-        {/* {birthPlace !== values.birth_place && (
-          <span className='text-xs font-medium tracking-wide text-slate-500'>
+        {birthPlace !== values.birth_place && (
+          <span className='text-xs font-medium tracking-wide text-primary-700'>
             Please select a location with valid coordinates
           </span>
-        )} */}
+        )}
       </fieldset>
 
       <fieldset className='relative mb-2 flex flex-col'>
@@ -180,15 +180,15 @@ const NatalForm = () => {
           ))}
         </select>
         {/* </datalist> */}
-        {/* {!tzoneValid && (
-          <span className='text-xs font-medium tracking-wide text-slate-500'>
+        {!tzoneValid && (
+          <span className='text-xs font-medium tracking-wide text-primary-700'>
             {timezones.indexOf(values.timezone) === -1
               ? 'Please select a valid timezone'
               : `${
                   timezones[timezones.indexOf(values.timezone)]
                 } is valid option`}
           </span>
-        )} */}
+        )}
       </fieldset>
       <button
         type='submit'

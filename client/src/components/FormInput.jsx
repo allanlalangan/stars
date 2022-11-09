@@ -36,11 +36,11 @@ const FormInput = ({
         } rounded border border-primary-800 p-2`}
         required={required}
       />
-      {/* {errorMessage && (
-        <span className='text-xs font-medium tracking-wide text-slate-500'>
+      {errorMessage && (
+        <span className='text-xs font-medium tracking-wide text-primary-700'>
           {errorMessage}
         </span>
-      )} */}
+      )}
     </fieldset>
   );
 };

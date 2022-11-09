@@ -5,8 +5,8 @@ export const inputs = [
     placeholder: 'Username',
     label: 'Username',
     required: true,
-    errorMessage: 'Username must be atleast 8 characters',
-    pattern: '[a-zA-Z0-9]{8,}',
+    errorMessage: 'Username must be atleast 4 characters',
+    pattern: '[a-zA-Z0-9]{4,}',
   },
   {
     name: 'email',
