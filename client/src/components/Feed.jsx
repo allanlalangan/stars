@@ -29,10 +29,10 @@ const Feed = () => {
   return (
     <section className='flex flex-col overflow-y-scroll bg-slate-100 p-4'>
       {posts?.map((post) => (
-        <Post post={post} />
+        <Post key={post._id} post={post} />
       ))}
-      {dummy?.map((post) => (
-        <Post post={post} />
+      {dummy?.map((post, i) => (
+        <Post key={i} post={post} />
       ))}
     </section>
   );
