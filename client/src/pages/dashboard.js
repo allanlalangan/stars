@@ -10,7 +10,7 @@ const DashboardPage = () => {
   const { data } = useSelector((state) => state.today);
 
   return (
-    <section className='overflow-y-scroll p-4 md:w-3/4'>
+    <section className='w-full overflow-y-scroll p-4'>
       <h2 className='mb-2 font-display'>
         Hello {user?.firstName || user.username}
       </h2>

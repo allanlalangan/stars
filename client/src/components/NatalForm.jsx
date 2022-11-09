@@ -92,7 +92,7 @@ const NatalForm = () => {
         errorMessage='Enter a name'
         required
       />
-      <article className='flex w-full'>
+      <article className='flex w-full flex-col lg:flex-row'>
         <FormInput
           onChange={handleValueChange}
           label='Date of Birth'
@@ -131,7 +131,7 @@ const NatalForm = () => {
             }
             id='birth_place'
             placeholder='Place of Birth'
-            className='input mb-2 w-full border border-primary-800 p-2'
+            className='input mb-2 w-full rounded border border-primary-800 p-2'
             required
             pattern={birthPlace ? `${birthPlace}` : ''}
           />

@@ -2,7 +2,7 @@ import { Link, NavLink, Outlet } from 'react-router-dom';
 
 const ReferencePage = () => {
   return (
-    <section className='flex h-full flex-col p-4 md:w-3/4'>
+    <section className='flex h-full w-full flex-col p-4'>
       <h2 className='mb-2 font-display'>Reference</h2>
       <nav className='mb-4 flex w-1/2'>
         <NavLink

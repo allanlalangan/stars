@@ -3,7 +3,7 @@ import NewPost from '../components/NewPost';
 
 const FeedPage = () => {
   return (
-    <section className='flex h-full flex-col md:w-3/4'>
+    <section className='flex h-full w-full flex-col'>
       <NewPost />
       <Feed />
     </section>

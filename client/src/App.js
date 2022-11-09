@@ -31,14 +31,14 @@ const App = () => {
     libraries: ['places'],
   });
   return (
-    <div className='app'>
+    <div className='app relative'>
       <BrowserRouter>
         <Header />
         {user && <Sidebar />}
         <main
           className={`${
             !user ? 'h-main ' : 'h-[80%]'
-          } fixed top-[10%] flex w-full flex-col md:left-[25vw] md:h-main md:flex-row`}
+          } absolute top-[10%] z-0 flex w-full flex-col md:left-[25vw] md:h-main md:w-3/4 md:flex-row`}
         >
           <Routes>
             <Route

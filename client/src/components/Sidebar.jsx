@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom';
 
 const Sidebar = () => {
   return (
-    <nav className='absolute bottom-0 flex h-[10%] w-screen flex-col items-center justify-center bg-slate-700 text-slate-50 md:h-main md:w-1/4 md:justify-between'>
+    <nav className='absolute bottom-0 z-20 flex h-[10%] w-screen flex-col items-center justify-center bg-slate-700 text-slate-50 md:h-main md:w-1/4 md:justify-between'>
       <ul className='flex h-full w-full items-center justify-evenly md:flex-col md:items-start md:justify-start md:p-4'>
         <NavLink
           to='/feed'
