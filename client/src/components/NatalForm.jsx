@@ -78,7 +78,7 @@ const NatalForm = () => {
     <form
       ref={form}
       onSubmit={handleSubmit}
-      className='right-0 top-0 flex h-full flex-col bg-slate-100 p-4 sm:absolute sm:z-20 sm:h-full sm:w-1/2 sm:overflow-y-scroll'
+      className='right-0 top-0 flex h-full flex-col rounded bg-slate-100 p-4 sm:absolute sm:z-20 sm:h-full sm:w-1/2 sm:overflow-y-scroll'
     >
       <h4>Generate Natal Chart</h4>
       <FormInput

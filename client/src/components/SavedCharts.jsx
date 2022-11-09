@@ -31,7 +31,7 @@ const SavedCharts = () => {
   return (
     <section className='flex w-full flex-col'>
       <h5>Saved Charts</h5>
-      <ul className='mr-4 flex h-1/2 flex-col sm:h-80 sm:overflow-scroll md:h-96'>
+      <ul className='flex h-1/2 flex-col p-4 sm:h-80 sm:overflow-y-scroll md:h-96'>
         {charts?.map((chart) => (
           <li className='mb-2 flex cursor-pointer items-center justify-between rounded border border-slate-300 py-2 px-4'>
             <article className='flex w-1/2 flex-col'>

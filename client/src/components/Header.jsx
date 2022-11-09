@@ -16,7 +16,7 @@ const Header = () => {
     redirect('/');
   };
   return (
-    <header className='flex h-header w-full items-center justify-between bg-slate-800 px-4 text-slate-300'>
+    <header className='absolute top-0 flex h-header w-full items-center justify-between bg-slate-800 px-4 text-slate-300'>
       <Link className='p-2 md:w-1/5' to='/'>
         <span className='flex cursor-pointer items-center justify-center font-display text-3xl uppercase tracking-wider transition hover:text-secondary-100'>
           Stars
