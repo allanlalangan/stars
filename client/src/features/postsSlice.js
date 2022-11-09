@@ -81,6 +81,29 @@ const likePost = createAsyncThunk('posts/likePost', async (goal, thunkAPI) => {
   }
 });
 
+const deletePost = createAsyncThunk(
+  'posts/deletePost',
+  async (id, thunkAPI) => {
+    try {
+      const token = thunkAPI.getState().auth.user.token;
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const resp = await axios.delete(
+        `http://localhost:5000/api/posts/${id}`,
+        config
+      );
+
+      return resp.data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.toString());
+    }
+  }
+);
+
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
@@ -120,9 +143,24 @@ const postsSlice = createSlice({
         state.isLoading = false;
         state.isError = true;
         state.message = action.payload;
+      })
+      .addCase(deletePost.pending, (state) => {
+        state.isLoading = true;
+        state.message = 'Deleting Post';
+      })
+      .addCase(deletePost.fulfilled, (state, action) => {
+        state.message = 'Post Deleted';
+        state.posts = action.payload.posts;
+        state.isLoading = false;
+        state.isSuccess = true;
+      })
+      .addCase(deletePost.rejected, (state, action) => {
+        state.isLoading = false;
+        state.isError = true;
+        state.message = action.payload;
       });
   },
 });
 
 export default postsSlice.reducer;
-export { getPosts, createPost };
+export { getPosts, createPost, deletePost };
