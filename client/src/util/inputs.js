@@ -14,7 +14,8 @@ export const inputs = [
     placeholder: 'Email',
     label: 'Email',
     required: true,
-    errorMessage: 'Please enter a valid email',
+    errorMessage:
+      'Dummy emails allowed. Must be correctly formatted (demo@email) ',
   },
   {
     name: 'password',
