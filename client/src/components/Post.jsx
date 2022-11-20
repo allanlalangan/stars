@@ -7,7 +7,6 @@ const Post = ({ post }) => {
   const { user } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const liked = post.likedBy.includes(user.id);
-  console.log(`${post._id} liked ${liked}`);
 
   const handleDelete = (e) => {
     dispatch(deletePost(post._id));
