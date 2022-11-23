@@ -39,7 +39,7 @@ const FullChartPage = ({ charts }) => {
           }}
         />
       </figure>
-      <h3>Summary of {selectedChart.name}'s chart</h3>
+      <h3>Summary of {selectedChart?.name}'s chart</h3>
       <section></section>
     </div>
   );
