@@ -23,6 +23,7 @@ import FullChartPage from './pages/full-chart';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
+  const { charts } = useSelector((state) => state.chart);
 
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_MAPS_API_KEY,
@@ -85,7 +86,10 @@ const App = () => {
                 path='charts'
                 element={<ChartsPage isLoaded={isLoaded} />}
               />
-              <Route path='charts/:id' element={<FullChartPage />} />
+              <Route
+                path='charts/:id'
+                element={<FullChartPage charts={charts} />}
+              />
             </Route>
           </Routes>
         </main>

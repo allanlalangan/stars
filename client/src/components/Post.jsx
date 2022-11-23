@@ -35,42 +35,15 @@ const Post = ({ post }) => {
       {post.chart && (
         <section>
           <article className='grid grid-cols-12 gap-2'>
-            <p className='col-span-12 rounded border border-slate-300 p-2'>{`${getFullSignName(
+            <p className='col-span-4 rounded border border-slate-300 p-2'>{`${getFullSignName(
               post.chart.planets.sun.sign
             )} ${post.chart.planets.sun.name}`}</p>
-            <p className='col-span-12 rounded border border-slate-300 p-2'>{`${getFullSignName(
+            <p className='col-span-4 rounded border border-slate-300 p-2'>{`${getFullSignName(
               post.chart.planets.moon.sign
             )} ${post.chart.planets.moon.name}`}</p>
-            <p className='col-span-12 rounded border border-slate-300 p-2'>{`${getFullSignName(
+            <p className='col-span-4 rounded border border-slate-300 p-2'>{`${getFullSignName(
               post.chart.houses.first_house.sign
             )} Rising`}</p>
-            <p className='col-span-6 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.mercury.sign
-            )} ${post.chart.planets.mercury.name}`}</p>
-            <p className='col-span-6 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.venus.sign
-            )} ${post.chart.planets.venus.name}`}</p>
-            <p className='col-span-6 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.mars.sign
-            )} ${post.chart.planets.mars.name}`}</p>
-            <p className='col-span-6 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.jupiter.sign
-            )} ${post.chart.planets.jupiter.name}`}</p>
-            <p className='col-span-4 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.saturn.sign
-            )} ${post.chart.planets.saturn.name}`}</p>
-            <p className='col-span-4 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.uranus.sign
-            )} ${post.chart.planets.uranus.name}`}</p>
-            <p className='col-span-4 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.neptune.sign
-            )} ${post.chart.planets.neptune.name}`}</p>
-            <p className='col-span-12 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.pluto.sign
-            )} ${post.chart.planets.pluto.name}`}</p>
-            <p className='col-span-12 rounded border border-slate-300 p-2'>{`${getFullSignName(
-              post.chart.planets.true_node.sign
-            )} North Node`}</p>
           </article>
         </section>
       )}
