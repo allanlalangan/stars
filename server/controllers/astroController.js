@@ -51,6 +51,23 @@ const getNatalData = async (req, res) => {
   }
 };
 
+const getChart = async (req, res) => {
+  const chart = await Chart.findById(req.params.id);
+  try {
+    if (!chart) {
+      res.status(404);
+      throw new Error('Chart not found');
+    } else if (chart.user.toString() !== req.user.id) {
+      res.status(401);
+      throw new Error('Chart delete not authorized');
+    }
+
+    res.status(200).json(chart);
+  } catch (error) {
+    res.status(500).send(error.message);
+  }
+};
+
 const deleteChart = async (req, res) => {
   const chart = await Chart.findById(req.params.id);
   try {
@@ -73,4 +90,4 @@ const deleteChart = async (req, res) => {
   }
 };
 
-module.exports = { getNatalData, getToday, getCharts, deleteChart };
+module.exports = { getNatalData, getToday, getCharts, deleteChart, getChart };
