@@ -14,13 +14,15 @@ const NewPost = () => {
   const { charts } = useSelector((state) => state.chart);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = {
-      text: inputValue,
-      chart: selectedChart?._id || null,
-    };
-    dispatch(createPost(formData));
-    setInputValue('');
-    setShareChart(false);
+    if (inputValue.trim() !== '') {
+      const formData = {
+        text: inputValue,
+        chart: selectedChart?._id || null,
+      };
+      dispatch(createPost(formData));
+      setInputValue('');
+      setShareChart(false);
+    }
   };
   useEffect(() => {
     dispatch(getCharts());
