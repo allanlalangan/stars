@@ -44,22 +44,37 @@ const Login = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='m-auto mt-4 flex flex-col rounded border border-indigo-200 p-4 md:w-1/2'
+      className='m-auto mt-4 flex flex-col rounded border border-primary-200 p-4 md:w-1/2'
     >
-      <button
+      {/* <button
         disabled
         type='button'
         onClick={handleGoogleLogin}
-        className='flex items-center justify-center rounded bg-indigo-50 py-4 transition hover:bg-indigo-200'
+        className='flex items-center justify-center rounded bg-primary-50 py-4 transition hover:bg-primary-200'
       >
         <FcGoogle className='mx-2 text-2xl' />
 
         <span className=''>Login with Google</span>
-      </button>
-      <span className='relative m-auto flex w-full flex-col content-center items-center py-2 text-center'>
-        <span className='z-10 bg-slate-50 px-4'>or</span>
-        <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
-      </span>
+      </button> */}
+      <section className='mb-4 rounded border border-primary-200 p-4'>
+        <h3 className='text-lg font-bold'>Try it out!</h3>
+        <p className='mb-2'>
+          Login with the following credentials or{' '}
+          <Link className='underline underline-offset-4' to='/create-account'>
+            Create an account
+          </Link>{' '}
+        </p>
+        <figure>
+          <article className='flex items-center'>
+            <h5 className='w-1/4 font-body text-lg font-semibold'>email:</h5>{' '}
+            <p className='w-3/4'>demo@demo</p>
+          </article>
+          <article className='flex items-center'>
+            <h5 className='w-1/4 font-body text-lg font-semibold'>password:</h5>{' '}
+            <p className='w-3/4'>Demo1234!</p>
+          </article>
+        </figure>
+      </section>
       {loginInputs?.map(({ name, type, placeholder, required, label }, i) => (
         <FormInput
           onChange={onChange}
@@ -73,20 +88,10 @@ const Login = () => {
       ))}
       <button
         type='submit'
-        className='rounded bg-indigo-50 py-4 transition hover:bg-indigo-200'
+        className='rounded bg-primary-50 py-4 transition hover:bg-primary-200'
       >
         Login
       </button>
-      <span>
-        Not a member?{' '}
-        <Link
-          className='underline-offset-4 hover:underline'
-          to='/create-account'
-        >
-          <strong>Create an account</strong>
-        </Link>{' '}
-        to map the stars!
-      </span>
     </form>
   );
 };

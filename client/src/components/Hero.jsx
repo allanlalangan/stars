@@ -3,14 +3,11 @@ import { Link } from 'react-router-dom';
 const Hero = () => {
   return (
     <section className='p-4'>
-      <h2 className='font-display'>You're a Star</h2>
+      <h2 className='mb-4 font-display'>You're a Star</h2>
       <article>
         {/* <h3 className='text-lg'>Center yourself</h3> */}
-        <p className='font-sm mx-2 font-heading font-semibold'>
+        <p className='font-sm m-2 font-heading font-semibold'>
           Plan your days, manifest goals, and write your story
-        </p>
-        <p className='font-sm mx-2 font-heading font-semibold'>
-          Move with the Cosmos{' '}
         </p>
       </article>
       <Link to='/login'>

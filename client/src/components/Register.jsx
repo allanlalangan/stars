@@ -30,7 +30,7 @@ const Register = () => {
       onSubmit={handleSubmit}
       className='m-auto mt-4 flex flex-col rounded border border-indigo-200 p-4 md:w-1/2'
     >
-      <button
+      {/* <button
         disabled
         className='flex items-center justify-center rounded bg-indigo-50 py-4 transition hover:bg-indigo-200'
       >
@@ -41,7 +41,7 @@ const Register = () => {
       <span className='relative m-auto flex w-full flex-col content-center items-center py-2 text-center'>
         <span className='z-10 bg-slate-50 px-4'>or</span>
         <div className='absolute top-1/2 h-[1px] w-full bg-indigo-100'></div>
-      </span>
+      </span> */}
       {registerInputs?.map((input, i) => (
         <FormInput
           key={i}
