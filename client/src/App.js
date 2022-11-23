@@ -19,6 +19,7 @@ import ReferencePage from './pages/reference';
 import AstrologyPage from './pages/astrology';
 import JournalPage from './pages/journal';
 import { useLoadScript } from '@react-google-maps/api';
+import FullChartPage from './pages/full-chart';
 
 const App = () => {
   const { user } = useSelector((state) => state.auth);
@@ -84,6 +85,7 @@ const App = () => {
                 path='charts'
                 element={<ChartsPage isLoaded={isLoaded} />}
               />
+              <Route path='charts/:id' element={<FullChartPage />} />
             </Route>
           </Routes>
         </main>
