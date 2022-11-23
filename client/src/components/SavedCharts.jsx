@@ -1,10 +1,11 @@
-import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getCharts, reset, deleteChart } from '../features/chartSlice';
+import { deleteChart } from '../features/chartSlice';
 import { getFullSignName } from '../util/utils';
 
-const SavedCharts = ({ charts }) => {
+const SavedCharts = () => {
+  const { charts } = useSelector((state) => state.chart);
+
   const dispatch = useDispatch();
 
   const handleDeleteChart = (e, id) => {

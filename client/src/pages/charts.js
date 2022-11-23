@@ -9,20 +9,10 @@ const ChartsPage = ({ isLoaded }) => {
   const { user } = useSelector((state) => state.auth);
 
   const { charts } = useSelector((state) => state.chart);
-
-  useEffect(() => {
-    dispatch(getCharts());
-
-    //Cleanup function, will reset on charts component unmount
-    return () => {
-      dispatch(reset());
-    };
-  }, [dispatch, user]);
   return (
     <article className='flex h-full flex-col sm:w-1/2'>
-      <SavedCharts charts={charts} />
+      <SavedCharts />
       {isLoaded && <NatalForm />}
-      <Outlet />
     </article>
   );
 };

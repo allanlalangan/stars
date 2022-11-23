@@ -1,6 +1,20 @@
-import { Link, NavLink, Outlet } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, NavLink, Outlet, useParams } from 'react-router-dom';
+import { getCharts, reset } from '../features/chartSlice';
 
 const AltarPage = () => {
+  const { user } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getCharts());
+
+    //Cleanup function, will reset on charts component unmount
+    return () => {
+      dispatch(reset());
+    };
+  }, [dispatch, user]);
+
   return (
     <section className='relative flex h-full w-full flex-col overflow-y-scroll p-4'>
       <Link to=''>
