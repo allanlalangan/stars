@@ -20,7 +20,7 @@ const SavedCharts = () => {
   return (
     <section className='mb-4 flex h-full w-full flex-col md:mb-2'>
       <h5>Saved Charts</h5>
-      <ul className='flex h-full flex-col p-4 sm:h-80 sm:overflow-y-scroll md:h-96'>
+      <ul className='flex h-full flex-col p-4 sm:h-96 sm:overflow-y-scroll md:h-[65vh]'>
         {charts?.map((chart) => (
           <li
             key={chart._id}
