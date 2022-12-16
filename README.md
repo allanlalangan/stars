@@ -37,8 +37,9 @@ https://stars-astro.netlify.app
 
 ## Optimization
 
-- Currently implementing feature to enable users to set their default birth chart
-- Implement different post reactions
+- Add feature to enable users to set their default birth chart
+- Add full chart data visualization with Chart.JS
+- Add different post reactions to data models and controllers
 - (Implement Google Identity Services with Google OAuth2.0)
 - (Add multiple post types/topics/categories)
 - (Add guided meditations)
