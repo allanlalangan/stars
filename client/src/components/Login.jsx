@@ -44,7 +44,7 @@ const Login = () => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='m-auto mt-4 flex flex-col rounded border border-primary-200 p-4 md:w-1/2'
+      className='m-auto mt-4 flex flex-col rounded border border-primary-200 p-4 md:w-2/3 lg:w-1/2'
     >
       {/* <button
         disabled
@@ -62,16 +62,21 @@ const Login = () => {
           Login with the following credentials or{' '}
           <Link className='underline underline-offset-4' to='/create-account'>
             Create an account
-          </Link>{' '}
+          </Link>
         </p>
         <figure>
           <article className='flex items-center'>
-            <h5 className='w-1/4 font-body text-lg font-semibold'>email:</h5>{' '}
-            <p className='w-3/4'>demo@demo</p>
+            <h5 className='w-1/2 font-body text-lg font-semibold'>email:</h5>{' '}
+            <p className='w-1/2 text-center'>demo@demo</p>
           </article>
           <article className='flex items-center'>
-            <h5 className='w-1/4 font-body text-lg font-semibold'>password:</h5>{' '}
-            <p className='w-3/4'>Demo1234!</p>
+            <h5 className='w-1/2 font-body text-lg font-semibold'>password:</h5>
+            <p className='relative w-1/2 text-center'>
+              Demo1234!
+              <span className='absolute bottom-[-1rem] left-0 w-full text-center text-sm font-semibold tracking-wide text-primary-500'>
+                case-sensitive
+              </span>
+            </p>
           </article>
         </figure>
       </section>
@@ -88,7 +93,7 @@ const Login = () => {
       ))}
       <button
         type='submit'
-        className='rounded bg-primary-50 py-4 transition hover:bg-primary-200'
+        className='rounded bg-primary-50 py-4 font-bold uppercase tracking-wide transition hover:bg-primary-200'
       >
         Login
       </button>
