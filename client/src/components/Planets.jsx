@@ -12,7 +12,7 @@ const Planets = () => {
     if (user && !data) {
       dispatch(getCurrentPlanets());
     }
-  }, [user, dispatch]);
+  }, [user, dispatch, data]);
 
   return (
     <section className='col-span-12 row-span-3 flex flex-col rounded border-2 border-primary-800 lg:col-span-6'>
